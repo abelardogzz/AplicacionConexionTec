@@ -1,0 +1,10 @@
+@import "../external/external.scss";
+
+*{
+  font-family: 'Open Sans', sans-serif;
+  color: $carbon;
+}
+
+div.text_container{
+  margin: 1rem;
+}

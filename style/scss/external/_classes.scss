@@ -1,0 +1,44 @@
+// Flex
+[class*="flRow"]  { display: flex; flex-direction: row;             }
+[class*="flCol"]  { display: flex; flex-direction: column;          }
+[class*="flRowR"] { display: flex; flex-direction: row-reverse;     }
+[class*="flColR"] { display: flex; flex-direction: column-reverse;  }
+[class*="aiBas"]  { align-items: baseline;    }
+[class*="aiCen"]  { align-items: center;      }
+[class*="aiEnd"]  { align-items: flex-end;    }
+[class*="aiSta"]  { align-items: flex-start;  }
+[class*="aiStr"]  { align-items: stretch;     }
+[class*="jcCen"]  { justify-content: center;        }
+[class*="jcEnd"]  { justify-content: flex-end;      }
+[class*="jcSta"]  { justify-content: flex-start;    }
+[class*="jcAro"]  { justify-content: space-around;  }
+[class*="jcBet"]  { justify-content: space-between; }
+
+// Margin center
+.margin-center{
+  margin: 0 auto;
+}
+
+// Breakpoints
+// Variable boundries
+$phone-only-size:           599px;
+$tablet-portrait-up-size:   600px;
+$tablet-landscape-up-size:  900px;
+$desktop-up-size:           1200px;
+$big-desktop-up-size:       1600px;
+// Mixins
+@mixin for-phone-only {
+  @media (max-width: $phone-only-size) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: $tablet-portrait-up-size) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: $tablet-landscape-up-size) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
