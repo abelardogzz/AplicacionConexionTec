@@ -37,11 +37,11 @@
 				// output data of each row
 			    while($row = $result->fetch_assoc()) 
 			    {
-			    	$response = array('fName' => $row['uFName'],
-		    	 					'lName' => $row['uLName'],
+			    	$response = array('Pnombre' => $row['uPNombre'],
+		    	 					'ApellidoP' => $row['uApellidoP'],
+		    	 					'ApellidoP' => $row['uApellidoM'],
 		    	 					'username' => $row['userName'], 
-		    	 					'email' => $row['uEmail'], 
-		    	 					'address' => $row['uAddress'] );   
+		    	 					'email' => $row['uEmail']);   
 			    	//array_push($comments, $response);
 			    	
 
@@ -66,6 +66,39 @@
 		}
 	}
 
+	function attemptEditProfileService($cambios){
+		$conn = connectionToDataBase();
+
+		if ($conn != null){
+			$conn ->set_charset('utf8mb4');
+
+			//$sql = " INSERT INTO Users(uPNombre, uApellidoP, uApellidoM, userName, uEmail) WHERE userName = '$username' ";
+			$sql = "";
+			$result = $conn->query($sql); 
+
+			//echo $result->num_rows;
+			if ($result->num_rows > 0)//Double check
+			{
+				
+				//echo ($response['fName']);
+			    //echo json_encode($response);
+			    $conn-> close();
+			    return array("status" => "SUCCESS","profile" => $response);
+
+			    //echo json_encode($result->fetch_assoc());
+			}
+			else
+			{
+				$conn -> close();
+				return array("status" => "Error al Editar informacion");
+		    	//header('HTTP/1.1 406 User not found'); //Pre-Prepares a json file with mssg
+		        //die("Wrong credentials provided!"); 
+			}
+		}else{
+				$conn -> close();
+				return array("status" => "Problema de conexion con la Base de datos");
+		}
+	}
 
 
 

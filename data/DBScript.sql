@@ -1,11 +1,14 @@
 CREATE DATABASE conexionTec;
 
 CREATE TABLE Users (
+	IdUsuario INT NOT NULL PRIMARY KEY,
 	uPNombre VARCHAR(20) NOT NULL,
-	uApellido VARCHAR(20) NOT NULL,
-	userName VARCHAR(15) NOT NULL PRIMARY KEY,
+	uApellidoP VARCHAR(20) NOT NULL,
+	uApellidoM VARCHAR(20) NOT NULL,
+	userName VARCHAR(15) NOT NULL ,
 	uPassword VARCHAR(30) NOT NULL,
-	uEmail VARCHAR(25) NOT NULL
+	uEmail VARCHAR(25) NOT NULL,
+	TipoDeUsuario VARCHAR(25) NOT NULL
 );
 
 CREATE TABLE Proyecto (
@@ -34,8 +37,8 @@ CREATE TABLE Comments (
 
 );
 
-INSERT INTO Users(uPNombre, uApellido, userName, uPassword, uEmail)
-VALUES ('Luis', 'Flores', 'lucfg', 'password123', 'luis@mail.com');
+INSERT INTO Users(IdUsuario,uPNombre, uApellidoP, uApellidoM, userName, uPassword, uEmail,TipoDeUsuario)
+VALUES ('1','Luis', 'Flores','Gallardo', 'lucfg', 'password123', 'luis@mail.com','AdminProyecto');
 
 INSERT INTO Proyecto(mNombre, mDescripcion)
 VALUES ('Papel Reciclado', 'Se trabajo el desarrollo de un proceso para el reciclaje del papel');
