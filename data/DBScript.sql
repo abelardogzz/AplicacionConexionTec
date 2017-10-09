@@ -1,4 +1,4 @@
-CREATE DATABASE restaurantDB;
+CREATE DATABASE conexionTec;
 
 CREATE TABLE Users (
 	uPNombre VARCHAR(20) NOT NULL,
