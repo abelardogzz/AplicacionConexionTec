@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 			//funcion iniciar session
 		function startSession() {
+
 			var jsonToSend = {
 		                "username" : $("#username").val(),
 		                "ACTION" : "STARTSESSION"
