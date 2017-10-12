@@ -17,7 +17,11 @@ var jsonToSend = {
         success: function(jsonData){
             /*On success, it returns an array of objects*/
             console.log(jsonData);
-                      
+            $('#dshowProfile').append(jsonData.Pnombre);
+            $('#dshowProfile').append(jsonData.ApellidoP);
+            $('#dshowProfile').append(jsonData.ApellidoM);
+            $('#dshowProfile').append(jsonData.username);
+            $('#dshowProfile').append(jsonData.email);
 
         },
         error: function(errMessage){
