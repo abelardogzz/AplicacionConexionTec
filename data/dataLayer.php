@@ -39,7 +39,7 @@
 			    {
 			    	$response = array('Pnombre' => $row['uPNombre'],
 		    	 					'ApellidoP' => $row['uApellidoP'],
-		    	 					'ApellidoP' => $row['uApellidoM'],
+		    	 					'ApellidoM' => $row['uApellidoM'],
 		    	 					'username' => $row['userName'], 
 		    	 					'email' => $row['uEmail']);   
 			    	//array_push($comments, $response);
@@ -66,35 +66,46 @@
 		}
 	}
 
-	function attemptEditProfileService($cambios){
+	function attemptEditProfileService($nombre,$appP,$appM,$username,$email){
 		$conn = connectionToDataBase();
 
 		if ($conn != null){
 			$conn ->set_charset('utf8mb4');
 
-			//$sql = " INSERT INTO Users(uPNombre, uApellidoP, uApellidoM, userName, uEmail) WHERE userName = '$username' ";
-			$sql = "";
+			$sqlVerifica = "SELECT * FROM Users WHERE uEmail = '$email'";
 			$result = $conn->query($sql); 
 
-			//echo $result->num_rows;
+			//Verifica si no esta registrado ese correo antes
 			if ($result->num_rows > 0)//Double check
 			{
-				
-				//echo ($response['fName']);
-			    //echo json_encode($response);
-			    $conn-> close();
-			    return array("status" => "SUCCESS","profile" => $response);
-
-			    //echo json_encode($result->fetch_assoc());
-			}
-			else
-			{
 				$conn -> close();
-				return array("status" => "Error al Editar informacion");
+				return array("status" => "Ese Correo ya esta registrado!");
 		    	//header('HTTP/1.1 406 User not found'); //Pre-Prepares a json file with mssg
 		        //die("Wrong credentials provided!"); 
 			}
-		}else{
+			else
+			{//Realiza el update de datos
+	//Queda pendiente el campo que hace referencia al registro
+	//Eso lo puedo obtener de las sesiones pero no se cual vamos a usar
+		        $sql = "UPDATE Users SET uPNombre = '$nombre', uApellidoP = '$appP', uApellidoM = '$appM', userName = '$username', uEmail = '$email' WHERE uEmail = '$email' ";
+
+		        if (mysqli_query($conn,$sql)){//True si se ejectua correcto
+				    $conn-> close();
+				    $datos = array('Pnombre' => $nombre,
+		    	 					'ApellidoP' => $appP,
+		    	 					'ApellidoM' => $appM,
+		    	 					'username' => $username, 
+		    	 					'email' => $email);  
+				    return array("status" => "SUCCESS","profile" => $datos);
+				}
+				else{//Error al hacer UPDATE en la BD
+					$conn -> close();
+					return array("status" => "ERROR al Editar");
+				}
+
+			    
+			}
+		}else{//Error de conexion con BD
 				$conn -> close();
 				return array("status" => "Problema de conexion con la Base de datos");
 		}

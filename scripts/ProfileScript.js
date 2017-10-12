@@ -1,7 +1,11 @@
 $(document).ready(function(){
-	
+	//Agregar los archivos de Sessiones
+
+
+
 var jsonToSend = {
-                "action" : "LOADPROFILE"
+                "action" : "LOADPROFILE",
+                "email" : $_SESSION["email"]
         };
 
     $.ajax({
@@ -13,27 +17,11 @@ var jsonToSend = {
         success: function(jsonData){
             /*On success, it returns an array of objects*/
             console.log(jsonData);
-            /*
-                var newhtml ="";
-                newhtml += " <b>Name:</b> "+ jsonData.fName + " "+
-                             jsonData.lName + "</br> "+
-                            " <b>User Name:</b> " + jsonData.username + "</br> "+
-                            " <b>Email:</b> " +jsonData.email + "</br> ";
-                if(jsonData.gender == "M"){
-                    newhtml += " <b>Gender:</b> Masculine </br>";
-                }
-                else{
-                   newhtml += " <b>Gender:</b> Femenine </br>"; 
-                }
-
-                newhtml+= "<b>Country:</b>" + jsonData.country ;
-            
-                $("#sUserInformation").append(newhtml);
-            */           
+                      
 
         },
         error: function(errMessage){
-            alert("ERROR IN PROFILE");
+            alert("ERROR IN Load PROFILE");
                 //alert(errorMessage.responseText);
             alert(errMessage.statusText);
             console.log(errMessage);
