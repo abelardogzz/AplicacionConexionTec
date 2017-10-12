@@ -20,7 +20,8 @@ switch($action){
 function ProfileSerivce(){
 	session_start();
 	
-	$username = $_SESSION["user"];
+	//$username = $_SESSION["user"];
+	$username = $_POST["email"]; //Se utiliza el email para identificarlo
 	$result = attemptProfileService($username);
 
 	//El resultado, si el 'status' es 'success' manda los datos del perfil
@@ -36,14 +37,18 @@ function ProfileSerivce(){
 }
 
 function EditProfileSerivce(){
-	$cambios = $_POST["datos"];
+	$nombre = $_POST["Nombre"];
+	$appP = $_POST["ApellidoP"];
+	$appM = $_POST["ApellidoM"];
+	$username = $_POST["username"];
+	$email = $_POST["email"];
 
-	$result = attemptEditProfileService($cambios);
+	$result = attemptEditProfileService($nombre,$appP,$appM,$username,$email);
 
 	//El resultado, si el 'status' es 'success' manda los datos del perfil
 	if ($result["status"] == "SUCCESS"){
 
-		echo json_encode();
+		echo json_encode($result);
 	}	
 	else{
 		//Si no es 'success' manda un error
