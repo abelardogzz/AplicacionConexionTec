@@ -28,9 +28,8 @@ $(document).ready(function(){
 		                    }
 
 		                });
-		}
+		});
 
 	});
 
-});
 
