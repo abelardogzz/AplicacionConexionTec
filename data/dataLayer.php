@@ -27,7 +27,7 @@
 			//$userName = $_POST['username'];
 			//$userPassword = $_POST['userPassword'];
 			//PROFILE EXAMPLE 
-			$sql = " SELECT * FROM Users WHERE userName = '$username' ";
+			$sql = " SELECT * FROM Users WHERE uEmail = '$username' ";
 			$result = $conn->query($sql); 
 
 			//echo $result->num_rows;
@@ -73,10 +73,10 @@
 			$conn ->set_charset('utf8mb4');
 
 			$sqlVerifica = "SELECT * FROM Users WHERE uEmail = '$email'";
-			$result = $conn->query($sql); 
+			$result = $conn->query($sqlVerifica); 
 
 			//Verifica si no esta registrado ese correo antes
-			if ($result->num_rows > 0)//Double check
+			if ($result->num_rows > 1)//Double check
 			{
 				$conn -> close();
 				return array("status" => "Ese Correo ya esta registrado!");
@@ -85,8 +85,8 @@
 			}
 			else
 			{//Realiza el update de datos
-	//Queda pendiente el campo que hace referencia al registro
-	//Eso lo puedo obtener de las sesiones pero no se cual vamos a usar
+			//Queda pendiente el campo que hace referencia al registro
+			//Eso lo puedo obtener de las sesiones pero no se cual vamos a usar
 		        $sql = "UPDATE Users SET uPNombre = '$nombre', uApellidoP = '$appP', uApellidoM = '$appM', userName = '$username', uEmail = '$email' WHERE uEmail = '$email' ";
 
 		        if (mysqli_query($conn,$sql)){//True si se ejectua correcto
