@@ -1,7 +1,6 @@
 <?php
 	header('Content-type: application/json');
 
-	//test server
 	$servername = "localhost";
 	$username = "root";
 	$password = "root";
@@ -33,17 +32,19 @@
 		{
 			
 			$password = $_POST['password'];
-			$firstName = $_POST['firstName'];
-			$lastName = $_POST['lastName'];
 			$email = $_POST['email'];
-
 
 			$hash = md5($password);
 
-			$sql = "INSERT INTO Users (fName, lName, username, passwrd, email) VALUES ('$firstName', '$lastName', '$username', '$hash', '$email')";
+
+
+			
+			$sql = "INSERT INTO Users (username, passwrd, email) VALUES ('$username', '$hash', '$email')";
 	    	
 	    	if (mysqli_query($conn, $sql)) 
 	    	{
+	    		session_start();
+				$_SESSION["username"] = $username;
 			    echo json_encode("New record created successfully");
 			} 
 			else 

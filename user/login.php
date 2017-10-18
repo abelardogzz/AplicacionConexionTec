@@ -1,7 +1,6 @@
 <?php
 	header('Content-type: application/json');
 
-	//test server
 	$servername = "localhost";
 	$username = "root";
 	$password = "root";
@@ -34,6 +33,10 @@
 		if ($result->num_rows > 0)
 		{
 
+			session_start();
+
+			$_SESSION["username"] = $username;
+			// output data of each row
 		    while($row = $result->fetch_assoc()) 
 		    {
 		    	$response = array('fName' => $row['fName'], 'lName' => $row['lName']);   

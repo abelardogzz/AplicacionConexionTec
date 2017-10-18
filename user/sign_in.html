@@ -18,10 +18,11 @@
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Style -->
-    <link rel="stylesheet" href="../style/master.css">
+    <!-- Style 
+    <link rel="stylesheet" href="../style/master.css">-->
 
     <!-- JS -->
+    <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="login.js"></script>
 
     <!-- Title -->
@@ -34,13 +35,22 @@
 
     <!-- Section 1 - Sign In Form -->
     <section id="sSignIn">
+        <p>
         Username:<br/>
-        <input id="username" type="text"/><br/>
-        
+        <input id="username" type="text"/>
+        <span id="checkUserName" class="check" ></span> <br/>
+        </p> 
+
+        <p>
         Password:<br/>
-        <input id="password" type="password"/><br/>
+        <input id="password" type="password"/>
+        <span id="checkPassword" class="check"></span><br/>
+        </p> 
 
         <input id="login" type="submit" value= Login />
+
+        <br/>
+        <p> Dont have an account yet? <a href="sign_up.html"> Register </a></p>
     </section>
 
     <!-- Footer -->

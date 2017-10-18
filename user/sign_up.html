@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="../style/master.css">
 
     <!-- JS -->
+    <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="register.js"></script>
 
     <!-- Title -->
@@ -34,19 +35,33 @@
 
     <!-- Section 1 - Sign Up Form -->
     <section id="sSignUp">
-      Username:<br/>
-      <input id="username" type="text"/><br/>
-        
-      Password:<br/>
-      <input id="password" type="password"/><br/>
+        <p>
+        username:<br/>
+        <input id="username" type="text" />
+        <span id="checkUsername" class="check"> </span><br/>
+        </p>
 
-      Confirm Password:<br/>
-      <input id="confirmPassword" type="password"/><br/>
+        <p>
+        email:<br/>
+        <input id="email" type="text" />
+        <span id="checkEmail" class="check"> </span><br/>
+        </p>
 
-      Email:<br/>
-      <input id="email" type="text"/><br/>
+        <p>
+        Password:<br/>
+        <input id="password" type="password"/>
+        <span id="checkPassword" class="check"> </span><br/>
+        </p>
 
-      <input id="register" type="submit" value= Register />
+        <p>
+        password confirmation:<br/>
+        <input id="passwordConfirmation" type="password"/>
+        <span id="checkPasswordConfirmation" class="check"> </span><br/>
+        </p>
+
+        <input id="register" type="submit" value= "Sign up" />
+
+      <p> Already have an account? <a href="sign_in.html"> Login </a></p>
     </section>
 
     <!-- Footer -->
