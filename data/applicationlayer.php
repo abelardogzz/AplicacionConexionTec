@@ -64,7 +64,7 @@ function ProjectSerivce(){
 	$result = attemptProjectService($pID);
 
 	if($result["status"] == "SUCCESS"){
-		echo json_encode($result["project"])
+		echo json_encode($result["project"]);
 	}
 	else{
 		//Si no es 'success' manda un error
@@ -82,7 +82,7 @@ function EditProjectSerivce(){
 	$result = attemptEditProjectService($pID,$Nombre,$Descripcion,$Area);
 
 	if($result["status"] == "SUCCESS"){
-		echo json_encode($result)
+		echo json_encode($result);
 	}
 	else{
 		//Si no es 'success' manda un error
