@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 var jsonToSend = {
                 "action" : "LOADPROFILE",
-                "email" : $_SESSION["email"]
+                "username" : $_SESSION["username"]
         };
 
     $.ajax({
