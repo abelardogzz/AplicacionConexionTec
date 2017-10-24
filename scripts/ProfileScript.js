@@ -5,7 +5,7 @@ $.ajax({
                         url : "./sessions/checksession.php",
                         contentType : "application/x-www-form-urlencoded",
                         success: function(jsonResponse){
-                             window.location.replace("../profile.html");
+                             window.location.replace("/user/sign_in.html");
                         },
                         error : function(errorMessage){
 
