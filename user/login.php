@@ -4,7 +4,7 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "root";
-	$dbname = "ReginaGallardo11";
+	$dbname = "conexionTec2";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -25,7 +25,7 @@
 		//echo $userName;
 		//echo $userPassword;
 		
-		$sql = "SELECT username, fName, lName FROM Users WHERE username = '$username' AND passwrd = '$hash'";
+		$sql = "SELECT * FROM Users WHERE username = '$username' AND passwrd = '$hash'";
 		$result = $conn->query($sql);
 		//echo $result;
 
