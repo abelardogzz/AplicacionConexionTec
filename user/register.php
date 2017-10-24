@@ -39,7 +39,7 @@
 
 
 			
-			$sql = "INSERT INTO Users(user_id,uPNombre, uApellidoP, uApellidoM, uPassword, uEmail,TipoDeUsuario,Deleted) VALUES (,'$username','$username' ,'$username' ,'$hash' , '$email','Admin',FALSE)";
+			$sql = "INSERT INTO Users(uPNombre, uApellidoP, uApellidoM, uPassword, uEmail,TipoDeUsuario,Deleted) VALUES ('$username','$username' ,'$username' ,'$hash' , '$email','Admin',FALSE)";
 	    	
 	    	if (mysqli_query($conn, $sql)) 
 	    	{

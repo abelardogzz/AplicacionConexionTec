@@ -4,7 +4,7 @@
 		$servername = "localhost";
 		$username = "root";
 		$password = "root";
-		$dbname = "conexionTec";
+		$dbname = "conexionTec2";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
 		

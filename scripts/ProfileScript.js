@@ -1,6 +1,17 @@
 $(document).ready(function(){
 	//Agregar los archivos de Sessiones
+$.ajax({
 
+                        url : "./sessions/checksession.php",
+                        contentType : "application/x-www-form-urlencoded",
+                        success: function(jsonResponse){
+                             window.location.replace("../profile.html");
+                        },
+                        error : function(errorMessage){
+
+                        }
+
+                    });
 
 
 var jsonToSend = {
