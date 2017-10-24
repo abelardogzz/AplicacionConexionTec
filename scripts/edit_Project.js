@@ -9,7 +9,7 @@ $(document).ready(function(){
                 "projectID" : 1 
         };
     $.ajax({
-        url:"../data/applicationlayer.php",
+        url:"../data/applicationLayer.php",
         type: "POST", <!--GET|POST|PUT-->
         data: jsonToSend,
         dataType: "json",
@@ -33,8 +33,7 @@ $(document).ready(function(){
             console.log(errMessage);
         }
     });
-
-      /*  
+/*  
     $("#BtnEdit").on("click",function(){
         alert("Editando proyecto!");
         //Datos actializados del usuario para hacer cambios
@@ -46,7 +45,7 @@ $(document).ready(function(){
                 "ID" :  $("#ieditProjectID").val() 
         };
         $.ajax({
-            url:"../data/applicationlayer.php",
+            url:"../data/applicationLayer.php",
             type: "POST", <!--GET|POST|PUT-->
             data: jsonToSend,
             dataType: "json",
