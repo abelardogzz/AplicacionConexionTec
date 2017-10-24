@@ -32,14 +32,5 @@ var jsonToSend = {
         }
     });
 
-/*
-    $("#HomePage").on("click",function(){
-        window.location.replace("home.php");
-    });
-
-    $("#FriendsPage").on("click",function(){
-        window.location.replace("friends.php");
-    });
-*/
 
 });
