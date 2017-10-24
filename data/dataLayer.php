@@ -25,7 +25,7 @@
 			//$userName = $_POST['username'];
 			//$userPassword = $_POST['userPassword'];
 			//PROFILE EXAMPLE 
-			$sql = " SELECT * FROM Users WHERE userName = '$username' ";
+			$sql = " SELECT * FROM Users WHERE uPNombre = '$username' ";
 			$result = $conn->query($sql); 
 
 			//echo $result->num_rows;
