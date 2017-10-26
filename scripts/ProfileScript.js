@@ -5,7 +5,8 @@ $.ajax({
                         url : "./sessions/checksession.php",
                         contentType : "application/x-www-form-urlencoded",
                         success: function(jsonResponse){
-                             window.location.replace("/user/sign_in.html");
+                            alert("Session no inciada en ProfileScript");
+                             window.location.replace("./user/sign_in.html");
                         },
                         error : function(errorMessage){
 
@@ -43,5 +44,8 @@ var jsonToSend = {
         }
     });
 
+$("#EditBtn").on("click", function(){
+    window.location.replace("/user/edit.html");
+});
 
 });

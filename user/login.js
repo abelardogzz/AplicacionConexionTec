@@ -6,7 +6,7 @@ $(document).ready(function(){
 		                url : "../sessions/checksession.php",
 		                contentType : "application/x-www-form-urlencoded",
 		                success: function(jsonResponse){
-		                	 window.location.replace("../profile.html");
+		                	 window.location.replace("./profile.html");
 		                },
 		                error : function(errorMessage){
 		                }
@@ -50,7 +50,7 @@ $(document).ready(function(){
 		                dataType : "json",
 		                contentType : "application/x-www-form-urlencoded",
 		                success: function(jsonResponse){
-		                    window.location.replace("../profile.html");
+		                    window.location.replace("./profile.html");
 		                },
 		                error : function(errorMessage){
 		                    alert(errorMessage.responseText);
