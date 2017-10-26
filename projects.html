@@ -23,6 +23,10 @@
     <!-- Style -->
     <link rel="stylesheet" href="style/master.css">
 
+    <!-- JS -->
+    <script type="text/javascript" src="user/jquery.js"></script>
+    <script type="text/javascript" src="projects/projectList.js"></script>
+
     <!-- Title -->
     <title>Perfil - ConexiónTec</title>
   </head>
@@ -30,6 +34,18 @@
     <!-- Navbar -->
     <nav id="navbar">
     </nav>
+
+    <!-- Section 0 - Search Bar -->
+    <section id="search">
+    <input id="searchbox" type="text"/>
+    <input id="doSearch" type="submit" value="search" />
+    <select id='sort'>
+    <option name='sort' value='1'> newest </option>
+    <option name='sort' value='2'> oldest </option>
+    <option name='sort' value='3'> highest ratings </option>
+    <option name='sort' value='4'> most comments </option>
+    </select>
+    </section>
 
     <!-- Section 1 - Project Filters -->
     <section id="sProjectFilter">
