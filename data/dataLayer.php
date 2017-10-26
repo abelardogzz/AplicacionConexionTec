@@ -25,7 +25,7 @@
 			//$userName = $_POST['username'];
 			//$userPassword = $_POST['userPassword'];
 			//PROFILE EXAMPLE 
-			$sql = " SELECT * FROM Users WHERE uPNombre = '$username' ";
+			$sql = " SELECT * FROM Users WHERE uEmail = '$username' ";
 			$result = $conn->query($sql); 
 
 			//echo $result->num_rows;
@@ -85,7 +85,7 @@
 			{//Realiza el update de datos
 	//Queda pendiente el campo que hace referencia al registro
 	//Eso lo puedo obtener de las sesiones pero no se cual vamos a usar
-		        $sql = "UPDATE Users SET uPNombre = '$nombre', uApellidoP = '$appP', uApellidoM = '$appM', userName = '$username', uEmail = '$email' WHERE uEmail = '$email' ";
+		        $sql = "UPDATE Users SET uPNombre = '$nombre', uApellidoP = '$appP', uApellidoM = '$appM', uEmail = '$email' WHERE uEmail = '$email' ";
 
 		        if (mysqli_query($conn,$sql)){//True si se ejectua correcto
 				    $conn-> close();
@@ -98,7 +98,7 @@
 				}
 				else{//Error al hacer UPDATE en la BD
 					$conn -> close();
-					return array("status" => "ERROR al Editar");
+					return array("status" => $sql);
 				}
 
 			    

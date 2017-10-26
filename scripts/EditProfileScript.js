@@ -1,14 +1,26 @@
 $(document).ready(function(){
     //var url = window.location.href;
     //alert(url.substr(url.indexOf("Q")+2));
+$.ajax({
 
-    //AgregarScripts de sesiones
-    //Carga el perfil para ponerlo en los campos 
-    //Modifica los campos y al darle "save" se actualiza
+    url : "../sessions/checksession.php",
+    contentType : "application/x-www-form-urlencoded",
+    success: function(jsonResponse){
+        alert("There is a session");
+        console.log(jsonResponse);
+        
+    },
+    error : function(errorMessage){
+        alert("There is no session");
+        alert("DONSHITE");
+        console.log(errorMessage);
+        window.location.replace("../profile.html");
+    }
+});
 
     var jsonToSend = {
                 "action" : "LOADPROFILE",
-                "email" : $_SESSION["username"]
+                "email" : ""
         };
     $.ajax({
         url:"../data/applicationLayer.php",
@@ -25,7 +37,6 @@ $(document).ready(function(){
             $("#iedituserName").val(jsonData.username );
             $("#ieditEmail").val(jsonData.email);
 
-                      
 
         },
         error: function(errMessage){
@@ -61,6 +72,7 @@ $(document).ready(function(){
                     //window.location.replace("profile.html");
                     alert("Se Edito con exito!");
                     console.log(jsonData.profile);
+                    window.location.replace("../profile.html");
                 }
                 else{
                     alert("Error al actualizar los campos");

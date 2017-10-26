@@ -1,14 +1,15 @@
 $(document).ready(function(){
 
 // CHECK SESSION
-alert("got the file")
+alert("got the filey")
 
 			$.ajax({
 
 		                url : "../sessions/checksession.php",
 		                contentType : "application/x-www-form-urlencoded",
 		                success: function(jsonResponse){
-		                	 window.location.replace("./profile.html");
+		                	alert("got the file2.0")
+		                	 window.location.replace("../profile.html");
 		                },
 		                error : function(errorMessage){
 
@@ -81,7 +82,7 @@ alert("got the file")
 		                    contentType : "application/x-www-form-urlencoded",
 		                    success: function(jsonResponse){
 		                        alert("Registration succesfull");
-		                        window.location.replace("./profile.html");
+		                        window.location.replace("../profile.html");
 		                    },
 		                    error : function(errorMessage){
 		                        alert(errorMessage.responseText);

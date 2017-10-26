@@ -21,7 +21,7 @@ function ProfileSerivce(){
 	session_start();
 	
 	//$username = $_SESSION["user"];
-	$email = $_POST["email"]; //Se utiliza el email para identificarlo
+	$email = $_SESSION["username"];// $_POST["email"]; //Se utiliza el email para identificarlo
 	$result = attemptProfileService($email);
 
 	//El resultado, si el 'status' es 'success' manda los datos del perfil
