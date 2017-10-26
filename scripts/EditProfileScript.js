@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     var jsonToSend = {
                 "action" : "LOADPROFILE",
-                "email" : "luis@mail.com" 
+                "email" : $_SESSION["username"]
         };
     $.ajax({
         url:"../data/applicationLayer.php",
