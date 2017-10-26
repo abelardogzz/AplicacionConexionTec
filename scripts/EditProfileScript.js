@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    //var url = window.location.href;
+    //alert(url.substr(url.indexOf("Q")+2));
 
     //AgregarScripts de sesiones
     //Carga el perfil para ponerlo en los campos 
@@ -36,7 +38,7 @@ $(document).ready(function(){
 
         
     $("#BtnEdit").on("click",function(){
-        alert("Editando proyecto!");
+        alert("Editando Perfil!");
         //Datos actializados del usuario para hacer cambios
         var jsonToSend = {
                 "action" : "EDITPROFILE",

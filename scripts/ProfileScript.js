@@ -12,16 +12,17 @@ $.ajax({
 
                         }
 
-                    });
+     });
+
 
 
 var jsonToSend = {
                 "action" : "LOADPROFILE",
-                "username" : $_SESSION["username"]
+                "email" : $_SESSION["username"]
         };
 
     $.ajax({
-        url:"data/applicationLayer.php",
+        url:"../data/applicationLayer.php",
         type: "POST", <!--GET|POST|PUT-->
         data: jsonToSend,
         dataType: "json",
@@ -45,7 +46,7 @@ var jsonToSend = {
     });
 
 $("#EditBtn").on("click", function(){
-    window.location.replace("/user/edit.html");
+    window.location.replace("user/edit.html");
 });
 
 });
