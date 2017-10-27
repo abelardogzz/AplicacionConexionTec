@@ -11,8 +11,9 @@ $.ajax({
                         },
                         error : function(errorMessage){
                             alert("There is no session");
+                            window.location.replace("./user/sign_in.html");
                             console.log(errorMessage);
-                            window.location.replace("../profile.html");
+                            
                         }
         });
 
@@ -41,9 +42,9 @@ var jsonToSend = {
 
         },
         error: function(errMessage){
-            alert("ERROR IN Load PROFILE");
+            //alert("ERROR IN Load PROFILE");
                 //alert(errorMessage.responseText);
-            alert(errMessage.responseText);
+            alert("Error " + errMessage.responseText);
             console.log(errMessage);
             console.log(sess);
         }

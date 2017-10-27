@@ -12,9 +12,9 @@ $.ajax({
     },
     error : function(errorMessage){
         alert("There is no session");
-        alert("DONSHITE");
-        console.log(errorMessage);
         window.location.replace("../profile.html");
+        console.log(errorMessage);
+        
     }
 });
 
@@ -31,16 +31,21 @@ $.ajax({
         success: function(jsonData){
             //On success, it returns an array of objects
             console.log(jsonData);
+            $("#ieditNombre").removeAttr("disabled");
             $("#ieditNombre").val(jsonData.Pnombre);
+
+            $("#ieditApellidoP").removeAttr("disabled");
+            $("#ieditApellidoM").removeAttr("disabled");
             $("#ieditApellidoP").val(jsonData.ApellidoP) ;
             $("#ieditApellidoM").val(jsonData.ApellidoM );
-            $("#iedituserName").val(jsonData.username );
+
+            $("#ieditEmail").removeAttr("disabled");
             $("#ieditEmail").val(jsonData.email);
 
 
         },
         error: function(errMessage){
-            alert("ERROR IN Load PROFILE");
+            alert("ERROR al editar PROFILE");
                 //alert(errorMessage.responseText);
             alert(errMessage.responseText);
             console.log(errMessage);
