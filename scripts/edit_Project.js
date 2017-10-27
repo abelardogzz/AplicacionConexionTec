@@ -20,6 +20,7 @@ $(document).ready(function(){
             
             $("#ieditNombre").val(jsonData.Nombre);
             $("#ieditDescripcion").val(jsonData.Descripcion);
+            $("#ieditImagen").val(jsonData.Imagen);
             $("#ieditProjectID").val(jsonData.ID); //Este tiene que estar hidden en el HTML
             $("#ieditArea").val(jsonData.Area); 
 
@@ -41,7 +42,9 @@ $(document).ready(function(){
                 "action" : "EDITPROJECT",
                 "Nombre": $("#ieditNombre").val(),
                 "Descripcion" :  $("#ieditDescripcion").val(),
+                "Imagen" : $("#ieditImagen").val(), 
                 "Area" : $("#ieditArea").val(), 
+                
                 "ID" :  $("#ieditProjectID").val() 
         };
         $.ajax({

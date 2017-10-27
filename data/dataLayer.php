@@ -130,6 +130,7 @@
 			    	$response = array('ID' => $row['project_id'],
 		    	 					'Nombre' => $row['pNombre'], 
 		    	 					'Descripcion' => $row['pDescripcion'],
+		    	 					'Imagen' => $row["pImage"],
 		    	 					'Area' => $row['pArea']);   
 			    	//array_push($comments, $response);
 			    	
@@ -149,7 +150,7 @@
 		}
 	}
 
-	function attemptEditProjectService($pID,$Nombre,$Descripcion,$Area){
+	function attemptEditProjectService($pID,$Nombre,$Descripcion,$Imagen,$Area){
 		$conn = connectionToDataBase();
 
 		if ($conn != null){
@@ -170,12 +171,13 @@
 			{//Realiza el update de datos
 			//Queda pendiente el campo que hace referencia al registro
 			//Eso lo puedo obtener de las sesiones pero no se cual vamos a usar
-		        $sql = "UPDATE Projecto SET pNombre = '$Nombre',pDescripcion = '$Descripcion',pArea = '$Area' WHERE project_id = '$pID' ";
+		        $sql = "UPDATE Projecto SET pNombre = '$Nombre',pDescripcion = '$Descripcion',pImage = '$Imagen',pArea = '$Area' WHERE project_id = '$pID' ";
 
 		        if (mysqli_query($conn,$sql)){//True si se ejectua correcto
 				    $conn-> close();
 				    $datos = array('Pombre' => $Nombre,
 		    	 					'email' => $Descripcion,
+		    	 					'Imagen' => $Imagen,
 		    	 					'Area' => $Area);  
 				    return array("status" => "SUCCESS","projecto" => $datos);
 				}

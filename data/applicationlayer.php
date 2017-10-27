@@ -77,9 +77,10 @@ function EditProjectSerivce(){
 	$pID = $_POST["ID"];
 	$Nombre = $_POST["Nombre"];
 	$Descripcion = $_POST["Descripcion"];
+	$Imagen = $_POST["Imagen"];
 	$Area = $_POST["Area"];
 
-	$result = attemptEditProjectService($pID,$Nombre,$Descripcion,$Area);
+	$result = attemptEditProjectService($pID,$Nombre,$Descripcion,$Imagen,$Area);
 
 	if($result["status"] == "SUCCESS"){
 		echo json_encode($result);
