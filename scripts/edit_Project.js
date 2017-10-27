@@ -9,7 +9,7 @@ $(document).ready(function(){
                 "projectID" : 1 
         };
     $.ajax({
-        url:"./data/applicationLayer.php",
+        url:"../data/applicationLayer.php",
         type: "POST", <!--GET|POST|PUT-->
         data: jsonToSend,
         dataType: "json",
