@@ -6,7 +6,11 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-/* line 2, ../scss/external/_classes.scss */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+/* line 26, ../scss/external/_classes.scss */
 [class*="flRow"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -16,7 +20,7 @@
       -ms-flex-direction: row;
           flex-direction: row; }
 
-/* line 3, ../scss/external/_classes.scss */
+/* line 27, ../scss/external/_classes.scss */
 [class*="flCol"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -26,7 +30,7 @@
       -ms-flex-direction: column;
           flex-direction: column; }
 
-/* line 4, ../scss/external/_classes.scss */
+/* line 28, ../scss/external/_classes.scss */
 [class*="flRowR"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -36,7 +40,7 @@
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse; }
 
-/* line 5, ../scss/external/_classes.scss */
+/* line 29, ../scss/external/_classes.scss */
 [class*="flColR"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -46,66 +50,81 @@
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse; }
 
-/* line 6, ../scss/external/_classes.scss */
+/* line 30, ../scss/external/_classes.scss */
 [class*="aiBas"] {
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline; }
 
-/* line 7, ../scss/external/_classes.scss */
+/* line 31, ../scss/external/_classes.scss */
 [class*="aiCen"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
 
-/* line 8, ../scss/external/_classes.scss */
+/* line 32, ../scss/external/_classes.scss */
 [class*="aiEnd"] {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end; }
 
-/* line 9, ../scss/external/_classes.scss */
+/* line 33, ../scss/external/_classes.scss */
 [class*="aiSta"] {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start; }
 
-/* line 10, ../scss/external/_classes.scss */
+/* line 34, ../scss/external/_classes.scss */
 [class*="aiStr"] {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch; }
 
-/* line 11, ../scss/external/_classes.scss */
+/* line 35, ../scss/external/_classes.scss */
 [class*="jcCen"] {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
 
-/* line 12, ../scss/external/_classes.scss */
+/* line 36, ../scss/external/_classes.scss */
 [class*="jcEnd"] {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end; }
 
-/* line 13, ../scss/external/_classes.scss */
+/* line 37, ../scss/external/_classes.scss */
 [class*="jcSta"] {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start; }
 
-/* line 14, ../scss/external/_classes.scss */
+/* line 38, ../scss/external/_classes.scss */
 [class*="jcAro"] {
   -ms-flex-pack: distribute;
       justify-content: space-around; }
 
-/* line 15, ../scss/external/_classes.scss */
+/* line 39, ../scss/external/_classes.scss */
 [class*="jcBet"] {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between; }
 
-/* line 18, ../scss/external/_classes.scss */
+/* line 40, ../scss/external/_classes.scss */
+[class*="fwNow"] {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; }
+
+/* line 41, ../scss/external/_classes.scss */
+[class*="fwWra"] {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+/* line 42, ../scss/external/_classes.scss */
+[class*="fwRev"] {
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse; }
+
+/* line 45, ../scss/external/_classes.scss */
 .margin-center {
   margin: 0 auto; }
 
@@ -124,7 +143,7 @@ body {
 a {
   text-decoration: none; }
 
-/* line 2, ../scss/external/_classes.scss */
+/* line 26, ../scss/external/_classes.scss */
 [class*="flRow"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -134,7 +153,7 @@ a {
       -ms-flex-direction: row;
           flex-direction: row; }
 
-/* line 3, ../scss/external/_classes.scss */
+/* line 27, ../scss/external/_classes.scss */
 [class*="flCol"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -144,7 +163,7 @@ a {
       -ms-flex-direction: column;
           flex-direction: column; }
 
-/* line 4, ../scss/external/_classes.scss */
+/* line 28, ../scss/external/_classes.scss */
 [class*="flRowR"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -154,7 +173,7 @@ a {
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse; }
 
-/* line 5, ../scss/external/_classes.scss */
+/* line 29, ../scss/external/_classes.scss */
 [class*="flColR"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -164,66 +183,81 @@ a {
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse; }
 
-/* line 6, ../scss/external/_classes.scss */
+/* line 30, ../scss/external/_classes.scss */
 [class*="aiBas"] {
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline; }
 
-/* line 7, ../scss/external/_classes.scss */
+/* line 31, ../scss/external/_classes.scss */
 [class*="aiCen"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
 
-/* line 8, ../scss/external/_classes.scss */
+/* line 32, ../scss/external/_classes.scss */
 [class*="aiEnd"] {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end; }
 
-/* line 9, ../scss/external/_classes.scss */
+/* line 33, ../scss/external/_classes.scss */
 [class*="aiSta"] {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start; }
 
-/* line 10, ../scss/external/_classes.scss */
+/* line 34, ../scss/external/_classes.scss */
 [class*="aiStr"] {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch; }
 
-/* line 11, ../scss/external/_classes.scss */
+/* line 35, ../scss/external/_classes.scss */
 [class*="jcCen"] {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
 
-/* line 12, ../scss/external/_classes.scss */
+/* line 36, ../scss/external/_classes.scss */
 [class*="jcEnd"] {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end; }
 
-/* line 13, ../scss/external/_classes.scss */
+/* line 37, ../scss/external/_classes.scss */
 [class*="jcSta"] {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start; }
 
-/* line 14, ../scss/external/_classes.scss */
+/* line 38, ../scss/external/_classes.scss */
 [class*="jcAro"] {
   -ms-flex-pack: distribute;
       justify-content: space-around; }
 
-/* line 15, ../scss/external/_classes.scss */
+/* line 39, ../scss/external/_classes.scss */
 [class*="jcBet"] {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between; }
 
-/* line 18, ../scss/external/_classes.scss */
+/* line 40, ../scss/external/_classes.scss */
+[class*="fwNow"] {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; }
+
+/* line 41, ../scss/external/_classes.scss */
+[class*="fwWra"] {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+/* line 42, ../scss/external/_classes.scss */
+[class*="fwRev"] {
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse; }
+
+/* line 45, ../scss/external/_classes.scss */
 .margin-center {
   margin: 0 auto; }
 
@@ -251,7 +285,7 @@ a {
 div.text_container {
   margin: 1rem; }
 
-/* line 2, ../scss/external/_classes.scss */
+/* line 26, ../scss/external/_classes.scss */
 [class*="flRow"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -261,7 +295,7 @@ div.text_container {
       -ms-flex-direction: row;
           flex-direction: row; }
 
-/* line 3, ../scss/external/_classes.scss */
+/* line 27, ../scss/external/_classes.scss */
 [class*="flCol"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -271,7 +305,7 @@ div.text_container {
       -ms-flex-direction: column;
           flex-direction: column; }
 
-/* line 4, ../scss/external/_classes.scss */
+/* line 28, ../scss/external/_classes.scss */
 [class*="flRowR"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -281,7 +315,7 @@ div.text_container {
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse; }
 
-/* line 5, ../scss/external/_classes.scss */
+/* line 29, ../scss/external/_classes.scss */
 [class*="flColR"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -291,66 +325,81 @@ div.text_container {
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse; }
 
-/* line 6, ../scss/external/_classes.scss */
+/* line 30, ../scss/external/_classes.scss */
 [class*="aiBas"] {
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline; }
 
-/* line 7, ../scss/external/_classes.scss */
+/* line 31, ../scss/external/_classes.scss */
 [class*="aiCen"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
 
-/* line 8, ../scss/external/_classes.scss */
+/* line 32, ../scss/external/_classes.scss */
 [class*="aiEnd"] {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end; }
 
-/* line 9, ../scss/external/_classes.scss */
+/* line 33, ../scss/external/_classes.scss */
 [class*="aiSta"] {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start; }
 
-/* line 10, ../scss/external/_classes.scss */
+/* line 34, ../scss/external/_classes.scss */
 [class*="aiStr"] {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch; }
 
-/* line 11, ../scss/external/_classes.scss */
+/* line 35, ../scss/external/_classes.scss */
 [class*="jcCen"] {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
 
-/* line 12, ../scss/external/_classes.scss */
+/* line 36, ../scss/external/_classes.scss */
 [class*="jcEnd"] {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end; }
 
-/* line 13, ../scss/external/_classes.scss */
+/* line 37, ../scss/external/_classes.scss */
 [class*="jcSta"] {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start; }
 
-/* line 14, ../scss/external/_classes.scss */
+/* line 38, ../scss/external/_classes.scss */
 [class*="jcAro"] {
   -ms-flex-pack: distribute;
       justify-content: space-around; }
 
-/* line 15, ../scss/external/_classes.scss */
+/* line 39, ../scss/external/_classes.scss */
 [class*="jcBet"] {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between; }
 
-/* line 18, ../scss/external/_classes.scss */
+/* line 40, ../scss/external/_classes.scss */
+[class*="fwNow"] {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; }
+
+/* line 41, ../scss/external/_classes.scss */
+[class*="fwWra"] {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+/* line 42, ../scss/external/_classes.scss */
+[class*="fwRev"] {
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse; }
+
+/* line 45, ../scss/external/_classes.scss */
 .margin-center {
   margin: 0 auto; }
 
@@ -370,11 +419,11 @@ a {
   text-decoration: none; }
 
 /* line 3, ../scss/components/_base.scss */
-body {
+main {
   min-height: 100vh;
-  background-image: linear-gradient(-135deg, #61ABFA 0%, #1C70F7 100%); }
+  width: 100vw; }
 
-/* line 8, ../scss/components/_base.scss */
+/* line 9, ../scss/components/_base.scss */
 div.card {
   -webkit-box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
           box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
@@ -382,7 +431,7 @@ div.card {
   max-width: 90%;
   background-color: #FFFFFF; }
 
-/* line 2, ../scss/external/_classes.scss */
+/* line 26, ../scss/external/_classes.scss */
 [class*="flRow"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -392,7 +441,7 @@ div.card {
       -ms-flex-direction: row;
           flex-direction: row; }
 
-/* line 3, ../scss/external/_classes.scss */
+/* line 27, ../scss/external/_classes.scss */
 [class*="flCol"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -402,7 +451,7 @@ div.card {
       -ms-flex-direction: column;
           flex-direction: column; }
 
-/* line 4, ../scss/external/_classes.scss */
+/* line 28, ../scss/external/_classes.scss */
 [class*="flRowR"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -412,7 +461,7 @@ div.card {
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse; }
 
-/* line 5, ../scss/external/_classes.scss */
+/* line 29, ../scss/external/_classes.scss */
 [class*="flColR"] {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -422,66 +471,81 @@ div.card {
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse; }
 
-/* line 6, ../scss/external/_classes.scss */
+/* line 30, ../scss/external/_classes.scss */
 [class*="aiBas"] {
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline; }
 
-/* line 7, ../scss/external/_classes.scss */
+/* line 31, ../scss/external/_classes.scss */
 [class*="aiCen"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
 
-/* line 8, ../scss/external/_classes.scss */
+/* line 32, ../scss/external/_classes.scss */
 [class*="aiEnd"] {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end; }
 
-/* line 9, ../scss/external/_classes.scss */
+/* line 33, ../scss/external/_classes.scss */
 [class*="aiSta"] {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start; }
 
-/* line 10, ../scss/external/_classes.scss */
+/* line 34, ../scss/external/_classes.scss */
 [class*="aiStr"] {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch; }
 
-/* line 11, ../scss/external/_classes.scss */
+/* line 35, ../scss/external/_classes.scss */
 [class*="jcCen"] {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
 
-/* line 12, ../scss/external/_classes.scss */
+/* line 36, ../scss/external/_classes.scss */
 [class*="jcEnd"] {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end; }
 
-/* line 13, ../scss/external/_classes.scss */
+/* line 37, ../scss/external/_classes.scss */
 [class*="jcSta"] {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start; }
 
-/* line 14, ../scss/external/_classes.scss */
+/* line 38, ../scss/external/_classes.scss */
 [class*="jcAro"] {
   -ms-flex-pack: distribute;
       justify-content: space-around; }
 
-/* line 15, ../scss/external/_classes.scss */
+/* line 39, ../scss/external/_classes.scss */
 [class*="jcBet"] {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between; }
 
-/* line 18, ../scss/external/_classes.scss */
+/* line 40, ../scss/external/_classes.scss */
+[class*="fwNow"] {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; }
+
+/* line 41, ../scss/external/_classes.scss */
+[class*="fwWra"] {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+/* line 42, ../scss/external/_classes.scss */
+[class*="fwRev"] {
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse; }
+
+/* line 45, ../scss/external/_classes.scss */
 .margin-center {
   margin: 0 auto; }
 
@@ -522,3 +586,362 @@ a {
     border-bottom: 1px solid #161519;
     width: 25rem;
     margin-bottom: 2rem; }
+
+/* line 26, ../scss/external/_classes.scss */
+[class*="flRow"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row; }
+
+/* line 27, ../scss/external/_classes.scss */
+[class*="flCol"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+/* line 28, ../scss/external/_classes.scss */
+[class*="flRowR"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse; }
+
+/* line 29, ../scss/external/_classes.scss */
+[class*="flColR"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse; }
+
+/* line 30, ../scss/external/_classes.scss */
+[class*="aiBas"] {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline; }
+
+/* line 31, ../scss/external/_classes.scss */
+[class*="aiCen"] {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+/* line 32, ../scss/external/_classes.scss */
+[class*="aiEnd"] {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end; }
+
+/* line 33, ../scss/external/_classes.scss */
+[class*="aiSta"] {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
+
+/* line 34, ../scss/external/_classes.scss */
+[class*="aiStr"] {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch; }
+
+/* line 35, ../scss/external/_classes.scss */
+[class*="jcCen"] {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+/* line 36, ../scss/external/_classes.scss */
+[class*="jcEnd"] {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+
+/* line 37, ../scss/external/_classes.scss */
+[class*="jcSta"] {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
+
+/* line 38, ../scss/external/_classes.scss */
+[class*="jcAro"] {
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+
+/* line 39, ../scss/external/_classes.scss */
+[class*="jcBet"] {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+/* line 40, ../scss/external/_classes.scss */
+[class*="fwNow"] {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; }
+
+/* line 41, ../scss/external/_classes.scss */
+[class*="fwWra"] {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+/* line 42, ../scss/external/_classes.scss */
+[class*="fwRev"] {
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse; }
+
+/* line 45, ../scss/external/_classes.scss */
+.margin-center {
+  margin: 0 auto; }
+
+/* line 1, ../scss/external/_global.scss */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+/* line 7, ../scss/external/_global.scss */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+/* line 12, ../scss/external/_global.scss */
+a {
+  text-decoration: none; }
+
+/* line 7, ../scss/components/_gallery.scss */
+.gallery {
+  padding: 1rem;
+  background-color: #F0EFF7; }
+  /* line 11, ../scss/components/_gallery.scss */
+  .gallery div.element {
+    margin: 1rem 0.5rem;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #D3D2DE; }
+    /* line 16, ../scss/components/_gallery.scss */
+    .gallery div.element header {
+      width: 100%;
+      border-radius: 4px 4px 0 0; }
+      /* line 20, ../scss/components/_gallery.scss */
+      .gallery div.element header.image_header {
+        background: url("https://www.what-dog.net/Images/faces2/scroll0015.jpg");
+        background-position: center;
+        background-size: cover;
+        width: 300px;
+        height: 300px; }
+        @media (max-width: 599px) {
+          /* line 20, ../scss/components/_gallery.scss */
+          .gallery div.element header.image_header {
+            width: 240px;
+            height: 240px; } }
+        /* line 32, ../scss/components/_gallery.scss */
+        .gallery div.element header.image_header .gradient_curtain {
+          height: 100%;
+          width: 100%;
+          background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, transparent), to(rgba(22, 21, 25, 0.8)));
+          background-image: linear-gradient(180deg, transparent 20%, rgba(22, 21, 25, 0.8) 100%); }
+          /* line 37, ../scss/components/_gallery.scss */
+          .gallery div.element header.image_header .gradient_curtain h5, .gallery div.element header.image_header .gradient_curtain p {
+            color: #FFFFFF; }
+          /* line 41, ../scss/components/_gallery.scss */
+          .gallery div.element header.image_header .gradient_curtain a.details_link {
+            -webkit-box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+            background-color: #FFFFFF;
+            border-radius: 0 0 5px 5px;
+            padding: 8px;
+            line-height: 30px;
+            margin-left: 30px; }
+            /* line 48, ../scss/components/_gallery.scss */
+            .gallery div.element header.image_header .gradient_curtain a.details_link:hover {
+              margin-top: -5px; }
+
+/* line 26, ../scss/external/_classes.scss */
+[class*="flRow"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row; }
+
+/* line 27, ../scss/external/_classes.scss */
+[class*="flCol"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+/* line 28, ../scss/external/_classes.scss */
+[class*="flRowR"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse; }
+
+/* line 29, ../scss/external/_classes.scss */
+[class*="flColR"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse; }
+
+/* line 30, ../scss/external/_classes.scss */
+[class*="aiBas"] {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline; }
+
+/* line 31, ../scss/external/_classes.scss */
+[class*="aiCen"] {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+/* line 32, ../scss/external/_classes.scss */
+[class*="aiEnd"] {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end; }
+
+/* line 33, ../scss/external/_classes.scss */
+[class*="aiSta"] {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
+
+/* line 34, ../scss/external/_classes.scss */
+[class*="aiStr"] {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch; }
+
+/* line 35, ../scss/external/_classes.scss */
+[class*="jcCen"] {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+/* line 36, ../scss/external/_classes.scss */
+[class*="jcEnd"] {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+
+/* line 37, ../scss/external/_classes.scss */
+[class*="jcSta"] {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
+
+/* line 38, ../scss/external/_classes.scss */
+[class*="jcAro"] {
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+
+/* line 39, ../scss/external/_classes.scss */
+[class*="jcBet"] {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+/* line 40, ../scss/external/_classes.scss */
+[class*="fwNow"] {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; }
+
+/* line 41, ../scss/external/_classes.scss */
+[class*="fwWra"] {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+/* line 42, ../scss/external/_classes.scss */
+[class*="fwRev"] {
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse; }
+
+/* line 45, ../scss/external/_classes.scss */
+.margin-center {
+  margin: 0 auto; }
+
+/* line 1, ../scss/external/_global.scss */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+/* line 7, ../scss/external/_global.scss */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+/* line 12, ../scss/external/_global.scss */
+a {
+  text-decoration: none; }
+
+/* line 6, ../scss/components/_navbar.scss */
+nav {
+  background-color: #FFFFFF;
+  width: 100vw;
+  border-bottom: 1px solid #D3D2DE; }
+  /* line 11, ../scss/components/_navbar.scss */
+  nav div.nav_section {
+    margin: 1rem; }
+    @media (max-width: 599px) {
+      /* line 11, ../scss/components/_navbar.scss */
+      nav div.nav_section {
+        width: 100%; } }
+    /* line 18, ../scss/components/_navbar.scss */
+    nav div.nav_section a {
+      text-align: center; }
+    /* line 22, ../scss/components/_navbar.scss */
+    nav div.nav_section a.home {
+      font-size: 1.5rem; }
+    /* line 26, ../scss/components/_navbar.scss */
+    nav div.nav_section a.page {
+      border: 1px solid #FFFFFF; }
+      @media (min-width: 600px) {
+        /* line 26, ../scss/components/_navbar.scss */
+        nav div.nav_section a.page {
+          margin-right: 2rem; } }
+      /* line 33, ../scss/components/_navbar.scss */
+      nav div.nav_section a.page:hover {
+        border-bottom: 1px solid #161519; }
+  /* line 39, ../scss/components/_navbar.scss */
+  nav div.filter {
+    margin: 0.5rem;
+    width: 180px; }
+    @media (max-width: 599px) {
+      /* line 39, ../scss/components/_navbar.scss */
+      nav div.filter {
+        width: 100%; } }
+    /* line 47, ../scss/components/_navbar.scss */
+    nav div.filter select {
+      width: 100%;
+      font-size: 14px; }
+      @media (max-width: 599px) {
+        /* line 47, ../scss/components/_navbar.scss */
+        nav div.filter select {
+          width: 70%; } }

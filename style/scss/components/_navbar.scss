@@ -1,0 +1,60 @@
+@import "../external/external.scss";
+
+// Local variables
+$filter_width: 180px;
+
+nav{
+  background-color: $snow;
+  width: 100vw;
+  border-bottom: 1px solid $platinum;
+
+  div.nav_section{
+    margin: 1rem;
+
+    @include for-phone-only{
+      width: 100%;
+    }
+
+    a{
+      text-align: center;
+    }
+
+    a.home{
+      font-size: 1.5rem;
+    }
+
+    a.page{
+      border: 1px solid $snow;
+
+      @include for-tablet-portrait-up{
+        margin-right: 2rem;
+      }
+
+      &:hover{
+        border-bottom: 1px solid $carbon;
+      }
+    }
+  }
+
+  div.filter{
+    margin: 0.5rem;
+    width: $filter_width;
+
+    @include for-phone-only{
+      width: 100%;
+    }
+
+    select{
+      width: 100%;
+      font-size: 14px;
+
+      @include for-phone-only{
+        width: 70%;
+      }
+    }
+
+    input{
+      
+    }
+  }
+}

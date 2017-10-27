@@ -4,6 +4,9 @@
     <!-- UTF-8 charset -->
     <meta charset="utf-8">
 
+    <!-- Title -->
+    <title>Test</title>
+
     <!-- Metadata -->
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -15,11 +18,93 @@
     <!-- Style -->
     <link rel="stylesheet" href="master/master.css">
 
-    <!-- Title -->
-    <title>Test</title>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+    <script src="design_js/_adder.js"></script>
   </head>
-  <body class="flRow-aiCen-jcCen">
-    <div class="card">
+  <body class="flCol-aiCen-jcCen">
+
+    <nav class="flRow-jcBet-aiCen-fwWra">
+      <div class="nav_section flRow-jcAro">
+        <a href="#" class="home">Conexión Tec</a>
+      </div>
+      <div class="nav_section flRow-jcAro">
+        <a href="#" class="page">Proyectos</a>
+        <a href="#" class="page">Contacto</a>
+        <a href="#" class="page">Conexión Tec</a>
+      </div>
+    </nav>
+    <nav class="flRow-jcAro-aiCen-fwWra">
+      <div class="search">
+        <input type="text" name="" value="">
+      </div>
+      <div class="filter flCol">
+        <p>Muestra virtual</p>
+        <select>
+          <option value="">A</option>
+          <option value="">B</option>
+          <option value="">C</option>
+        </select>
+      </div>
+      <div class="filter flCol">
+        <p>Calificación</p>
+        <select>
+          <option value="">A</option>
+          <option value="">B</option>
+          <option value="">C</option>
+        </select>
+      </div>
+      <div class="filter flCol">
+        <p>Área</p>
+        <select>
+          <option value="">A</option>
+          <option value="">B</option>
+          <option value="">C</option>
+        </select>
+      </div>
+    </nav>
+
+    <main class="flR-aiCen-jcCen">
+      <div class="gallery flRow-fwWra-jcAro-aiSta">
+        <div class="element">
+          <header class="image_header">
+            <div class="gradient_curtain flCol-aiBas-jcBet">
+              <a href="#" class="details_link">Ver Detalles</a>
+              <div class="text_container">
+                <h5>Title</h5>
+                <p>Subtitle</p>
+              </div>
+            </div>
+          </header>
+          <footer class="flRow-jcBet">
+            <div class="text_container">
+              <h5>Project owner</h5>
+              <p>Area</p>
+            </div>
+          </footer>
+        </div>
+        <div class="element">
+          <header class="image_header">
+            <div class="gradient_curtain flCol-aiBas-jcBet">
+              <a href="#" class="details_link">Ver Detalles</a>
+              <div class="text_container">
+                <h5>Title</h5>
+                <p>Subtitle</p>
+              </div>
+            </div>
+          </header>
+          <footer class="flRow-jcBet">
+            <div class="text_container">
+              <h5>Project owner</h5>
+              <p>Area</p>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </main>
+
+    <!-- Card form -->
+    <!-- <div class="card">
       <div class="form">
         <div class="title flCol-aiCen-jcCen">
           <h1>Crear cuenta</h1>
@@ -33,6 +118,8 @@
           <input type="password" class="input">
         </div>
       </div>
-    </div>
+    </div> -->
+
+
   </body>
 </html>
