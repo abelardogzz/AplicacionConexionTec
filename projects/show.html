@@ -1,0 +1,80 @@
+<html>
+<head>
+    <title>Show Project Details</title>
+    <meta charset="UTF-8" />
+    <script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+    <div>
+    </div>
+    <div>
+        <h1>Show Project</h1>    
+    </div>
+    <span id="slogan">Show Project info</span></br>
+        <div id="getProject" class="hiddenSection">
+            <fieldset id="getProject">
+                <legend>Project Info</legend>
+                <div id="projectContainer">
+                    <div id="readIdOfProject">
+                    </div>
+                    <table id="projectTable">
+                        <tr>
+                            <th>projectID</th>
+                            <th>VirtualSample</th>
+                            <th>userID</th>
+                            <th>PNombre</th>
+                            <th>Boton</th>
+                        </tr>
+                    </table>
+                </div>    
+            </fieldset>
+        </div>
+</body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+            var idRetrieved = getUrlParameter("id");
+			$("#readIdOfProject").text(getUrlParameter("id"));	
+    
+        var verProyecto = { 
+            "action" : "VIEWPROJECT",
+            "id" :   idRetrieved                
+                           };
+        $.ajax({
+            url : "applicationLayer.php",
+            type : "POST",
+            data: verProyecto,
+            dataType : "json",
+            contentType : "application/x-www-form-urlencoded",
+            success : function(jsonReceived){  
+                var projects = jsonReceived;
+                var listaProjects = "";
+                var projectsID = [];
+                for(var i = 0; i < projects.length; i++){
+                    listaProjects += 
+                            '<tr>' +
+                            '<td>' + projects[i].projectID + '</td>' +
+                            '<td>' + projects[i].virtualSampleID + '</td>' +
+                            '<td>' + projects[i].userID + '</td>' +
+                            '<td>' + projects[i].contactInfo + '</td>' +
+                            '<td>' + projects[i].imageURL + '</td>' +
+                            '<td>' + projects[i].imageURL2 + '</td>' +
+                            '<td>' + projects[i].imageURL3 + '</td>' +
+                            '<td>' + projects[i].videoURL + '</td>' +
+                            '<td>' + projects[i].deleted + '</td>' +
+                            '<td>' + projects[i].area + '</td>' +
+                            '</tr>'   
+                }
+                $("#projectTable").append(listaProjects);
+            },
+            error : function(errorMessage){
+                alert(errorMessage.responseText);
+            }
+        });
+    });
+
+		function getUrlParameter(paramName){
+				var results = new RegExp('[\?&]' + paramName + '=([^&#]*)').exec(window.location.href);
+				return results[1] || 0;
+			}
+	</script>
+</html>

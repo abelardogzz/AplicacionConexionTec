@@ -1,8 +1,38 @@
 $(document).ready(function(){
-
     //AgregarScripts de sesiones
     //Carga el perfil para ponerlo en los campos 
     //Modifica los campos y al darle "save" se actualiza
+    
+    var loadProjects = { "action" : "GETPROJECT"};
+    $.ajax({
+        url : "../data/applicationLayer.php",
+        type : "POST",
+        data: loadProjects,
+        dataType : "json",
+        contentType : "application/x-www-form-urlencoded",
+        success : function(jsonReceived){
+            var projects = jsonReceived;
+            console.log(projects);
+            var listaProjects = "";
+            var projectsID = [];
+            console.log(projects.length);
+            for(var i = 0; i < projects.length; i++){
+                listaProjects += 
+                        '<tr>' +
+                        '<td>' + projects[i].projectID + '</td>' +
+                        '<td>' + projects[i].virtualSampleID + '</td>' +
+                        '<td>' + projects[i].userID + '</td>' +
+                        '<td>' + projects[i].pNombre + '</td>' +
+                        '<td> <button class="viewProject" id="'+ projects[i].projectID +'" type="submit" value="'+ projects[i].projectID +'">Ver Proyecto</button> </td>' + 
+                        '</tr>'   
+            }
+            $("#projectTable").append(listaProjects);
+        },
+        error : function(errorMessage){
+            alert(errorMessage.responseText);
+        }
+    });
+    $(".viewProject").on("click", verProyecto);
 
     var jsonToSend = {
                 "action" : "LOADPROJECT",
@@ -16,7 +46,6 @@ $(document).ready(function(){
         contentType : "application/x-www-form-urlencoded", 
         success: function(jsonData){
             //On success, it returns an array of objects
-            console.log(jsonData);
             
             $("#ieditNombre").val(jsonData.Nombre);
             $("#ieditDescripcion").val(jsonData.Descripcion);
@@ -79,3 +108,29 @@ $(document).ready(function(){
     });
     
 });
+function verProyecto(){
+    var getId = $(this).val();
+    $(location).attr('href', 'show.html?id='+ getId);
+}
+
+function verProyecto2() {
+    var verProyectoJson = {
+        "action" : "VIEWPROJECT",
+        "id" : $(".viewProject").val()
+    };
+    console.log(verProyectoJson);
+    $.ajax({
+        url: "../data/applicationLayer.php",
+        type: "POST",
+        data: verProyectoJson,
+        dataType: "json",
+        contentType: "application/x-www-form-urlencoded",
+        success: function(jsonReceived){
+            window.location.href = "show_project.html?id='jsonReceived.'";
+            
+        },
+        error: function(errorMessage){
+            alert(errorMessage.responseText);
+        }
+    });
+}

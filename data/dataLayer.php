@@ -1,12 +1,10 @@
-
-
 <?php
 	
 	function connectionToDataBase(){
 		$servername = "localhost";
 		$username = "root";
-		$password = "root";
-		$dbname = "conexionTec2";
+		$password = "";
+		$dbname = "conexionTec";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
 		
@@ -130,7 +128,7 @@
 			    	$response = array('ID' => $row['project_id'],
 		    	 					'Nombre' => $row['pNombre'], 
 		    	 					'Descripcion' => $row['pDescripcion'],
-		    	 					'Imagen' => $row["pImage"],
+		    	 					'Imagen' => $row["pImagen1"],
 		    	 					'Area' => $row['pArea']);   
 			    	//array_push($comments, $response);
 			    	
@@ -193,7 +191,78 @@
 				return array("status" => "Problema de conexion con la Base de datos");
 		}
 	}
+function attemptViewProject($id){
+    $connection = connectionToDataBase();
+		if ($connection != null) {
+			$sql = "SELECT * FROM projecto WHERE project_id = '$id'";
+			$result = $connection ->query($sql);
 
+			if($result ->num_rows > 1) {
+                $connection -> close();
+				return array("status" => "409");
+			    }else{
+                $responseStatus = array("status" =>"EXITO");
+	  			while ($row = $result->fetch_assoc()) {	
+			    	$responseData = array('projectID' => $row['project_id'], 
+                                          'virtualSampleID' => $row['virtualSample_id'],
+                                          'userID' => $row['user_id'], 
+                                          'pNombre' => $row['pNombre'], 
+                                          'pDescripcion' => $row['pDescripcion'], 
+                                          'pArea' => $row['pArea'], 
+                                          'deleted' => $row['Deleted'], 
+                                          'pFechaRegistro' => $row['pFechaRegistro'],  
+                                          'pImagen1' => $row['pImagen1'], 
+                                          'pImagen2' => $row['pImagen2'], 
+                                          'pVideo' => $row['pVideo']);
+			    }
+			    $connection -> close();
+				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
+			}	
+		}
+		else {
+			$responseStatus = array("status" => "500");
+			return array("responseStatus"=>$responseStatus);;
+		}
+    $responseStatus = array("status" => "500");
+    return array("responseStatus"=>$responseStatus);;
+}
+function attemptLoadProjects(){
+    $connection = connectionToDataBase();
+		if ($connection != null) {
+			$sql = "SELECT * FROM projecto";
+			$result = $connection ->query($sql);
 
+			if($result ->num_rows > 0) {
+	  			$responseStatus = array("status" =>"EXITO");
+
+	  			while ($row = $result->fetch_assoc()) {	
+                    $responseData = array('projectID' => $row['project_id'], 
+                                          'virtualSampleID' => $row['virtualSample_id'],
+                                          'userID' => $row['user_id'], 
+                                          'pNombre' => $row['pNombre'], 
+                                          'pDescripcion' => $row['pDescripcion'], 
+                                          'pArea' => $row['pArea'], 
+                                          'deleted' => $row['Deleted'], 
+                                          'pFechaRegistro' => $row['pFechaRegistro'],  
+                                          'pImagen1' => $row['pImagen1'], 
+                                          'pImagen2' => $row['pImagen2'], 
+                                          'pVideo' => $row['pVideo']);
+			    }
+			    $connection -> close();
+				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
+			}
+			else {	
+				$connection -> close();
+				$responseStatus = array("status" => "500");
+				return array("responseStatus"=>$responseStatus);;
+			}	
+		}
+		else {
+			$responseStatus = array("status" => "500");
+			return array("responseStatus"=>$responseStatus);;
+		}
+    $responseStatus = array("status" => "500");
+    return array("responseStatus"=>$responseStatus);;
+}
 
 ?>

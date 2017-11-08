@@ -1,19 +1,29 @@
 <?php
-
-header('Content-type: application/json');
-require_once __DIR__ . '/dataLayer.php';
+    header('Accept: application/json');
+    header('Content-type: application/json');
+    require_once __DIR__ . '/dataLayer.php';
 
 $action = $_POST["action"];
 
 switch($action){
-	case "LOADPROFILE" : ProfileSerivce();
+	case "LOADPROFILE" : 
+        ProfileSerivce();
 					break;
-	case "EDITPROFILE" : EditProfileSerivce();
+	case "EDITPROFILE" : 
+        EditProfileSerivce();
 					break;
-	case "LOADPROJECT" : ProjectSerivce();
+	case "LOADPROJECT" : 
+        ProjectSerivce();
 					break;
-	case "EDITPROJECT" : EditProjectSerivce();
+	case "EDITPROJECT" : 
+        EditProjectSerivce();
 					break;
+    case 'GETPROJECT':
+            getProject();
+                    break;
+        case 'VIEWPROJECT':
+            viewProject();
+                    break;
 
 }
 
@@ -91,10 +101,33 @@ function EditProjectSerivce(){
 		die($result["status"]);
 	}
 }
+function getProject() {
+        $response = attemptLoadProjects();
+		$responseStatus = $response["responseStatus"];
 
+		if ($responseStatus["status"] == "EXITO") {	
+			$responseData = $response["responseData"];
+			echo json_encode($responseData);
+		}
+		else {
+			header('HTTP/1.1 500 Bad connection to Database');
+            die("The server is down, we couldn't establish the DB connection");
+		}
+        
+    }
+    function viewProject() {
+        $id = $_POST['id'];
+        $response = attemptViewProject($id);
+		$responseStatus = $response["responseStatus"];
 
-
-
-
-
+		if ($responseStatus["status"] == "EXITO") {	
+			$responseData = $response["responseData"];
+			echo json_encode($responseData);
+		}
+		else {
+			header('HTTP/1.1 500 Bad connection to Database');
+            die("The server is down, we couldn't establish the DB connection");
+		}
+        
+    }
 ?>
