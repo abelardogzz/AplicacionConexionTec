@@ -18,7 +18,7 @@ $(document).ready(function(){
                 	alert(jsonResponse.message)
                 },
                 error : function(errorMessage){
-                	alert("ERROR Boton Guardar Calif");
+                	alert("ERROR Boton Guardar Califificacion");
                     alert(errorMessage.statusText);  
                 }
             });
