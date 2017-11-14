@@ -211,9 +211,10 @@
 			//	}
 			//	else
 			//{//Realiza el update de datos
-				$sqlUpdate = "UPDATE virtualsample SET vsCurrent = false";
+				$sqlUpdate = "UPDATE virtualsample SET vsCurrent = false,Calificacion = false ,Registro = false";
 				//$result = $conn->query($sqlVerifica); 
-		        $sqlInsert = "INSERT INTO VirtualSample(vsStart_Date,vsEnd_Date,vsCurrent) VALUES ('$dInicio','$dFin',$Current) ";
+		        $sqlInsert = "INSERT INTO VirtualSample(vsStart_Date,vsEnd_Date,vsCurrent,Calificacion,Registro) VALUES ('$dInicio','$dFin',$Current,TRUE,TRUE) ";
+		        //INSERT INTO VirtualSample(vsStart_Date,vsEnd_Date,vsCurrent,Calificacion,Registro) VALUES ('2017-10-8','2017-10-8',True,TRUE,TRUE)
 
 		        if (mysqli_query($conn,$sqlUpdate) && mysqli_query($conn,$sqlInsert)){//True si se ejectua correcto
 				    $conn-> close();
@@ -231,5 +232,54 @@
 				return array("status" => "Problema de conexion con la Base de datos, al crear VS");
 		}
 	}
+
+	function attemptUpdateCalificacion($valor){
+		$conn = connectionToDataBase();
+
+		if ($conn != null){
+			$conn ->set_charset('utf8mb4');
+			$sqlUpdate = "UPDATE virtualsample SET Calificacion = '$valor' WHERE vsCurrent = TRUE ";
+
+	        if (mysqli_query($conn,$sqlUpdate)){//True si se ejectua correcto
+			    $conn-> close();
+			    return array("status" => "SUCCESS");
+			}
+			else{//Error al hacer UPDATE en la BD
+				$conn -> close();
+				return array("status" => "ERROR al Actualizar Calificacion VS");
+			}
+
+			    
+			//}
+		}else{//Error de conexion con BD
+				$conn -> close();
+				return array("status" => "Problema de conexion con la Base de datos, al Actualizar Calificacion VS");
+		}
+	}
+
+	function attemptUpdateRegistro($valor){
+		$conn = connectionToDataBase();
+
+		if ($conn != null){
+			$conn ->set_charset('utf8mb4');
+			$sqlUpdate = "UPDATE virtualsample SET Registro = '$valor' WHERE vsCurrent = TRUE ";
+
+	        if (mysqli_query($conn,$sqlUpdate)){//True si se ejectua correcto
+			    $conn-> close();
+			    return array("status" => "SUCCESS");
+			}
+			else{//Error al hacer UPDATE en la BD
+				$conn -> close();
+				return array("status" => "ERROR al Actualizar Calificacion VS");
+			}
+
+			    
+			//}
+		}else{//Error de conexion con BD
+				$conn -> close();
+				return array("status" => "Problema de conexion con la Base de datos, al Actualizar Calificacion VS");
+		}
+	}
+
 
 ?>

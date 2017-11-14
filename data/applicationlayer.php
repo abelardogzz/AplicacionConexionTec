@@ -15,7 +15,15 @@ switch($action){
 	case "EDITPROJECT" : EditProjectSerivce();
 		break;
 	case "CREAVIRTUALSAMPLE" : CrearVirtualSample();
-		break;				
+		break;
+	case "DETIENECALIFICACIONES" : UpdateCalificacion();
+		break;
+	case "REANUDACALIFICACIONES" : UpdateCalificacion();
+		break;
+	case "DETIENEREGISTRO" : UpdateRegistro();
+		break;
+	case "REANUDAREGISTRO" : UpdateRegistro();
+		break;
 
 }
 
@@ -110,7 +118,34 @@ function CrearVirtualSample(){
 	}
 }
 
+function UpdateCalificacion(){
+	$valor = $_POST["valor"];
 
+	$result = attemptUpdateCalificacion($valor);
+
+	if ($result["status"] == "SUCCESS"){
+		echo json_encode($result);
+	}
+	else{
+		header('HTTP/1.1 500'.$result["status"]);
+		die($result["status"]);
+	}
+
+}
+
+function UpdateRegistro(){
+	$valor = $_POST["valor"];
+
+	$result = attemptUpdateRegistro($valor);
+
+	if ($result["status"] == "SUCCESS"){
+		echo json_encode($result);
+	}
+	else{
+		header('HTTP/1.1 500'.$result["status"]);
+		die($result["status"]);
+	}
+}
 
 
 ?>
