@@ -97,10 +97,9 @@ function EditProjectSerivce(){
 function CrearVirtualSample(){
 	$dInicio = $_POST["fehcaInicio"];
 	$dFin = $_POST["fechaFin"];
-	$Nombre = $_POST["nombre"];
 	$Current = True ;
 
-	$result = attemptCreaVirtualSample($dInicio,$dFin,$Nombre,$Current);
+	$result = attemptCreaVirtualSample($dInicio,$dFin,$Current);
 
 	if ($result["status"] == "SUCCESS"){
 		echo json_encode($result);

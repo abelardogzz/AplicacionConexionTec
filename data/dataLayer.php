@@ -194,26 +194,26 @@
 		}
 	}
 
-	function attemptCreaVirtualSample($dInicio,$dFin,$Nombre,$Current){
+	function attemptCreaVirtualSample($dInicio,$dFin,$Current){
 		$conn = connectionToDataBase();
 
 		if ($conn != null){
 			$conn ->set_charset('utf8mb4');
 
-			$sqlVerifica = "SELECT * FROM virtualsample WHERE vsName = '$Nombre'";
-			$result = $conn->query($sqlVerifica); 
+			//$sqlVerifica = "SELECT * FROM virtualsample WHERE vsName = '$Nombre'";
+			//$result = $conn->query($sqlVerifica); 
 
 			//Verifica si no esta registrado ese correo antes
-			if ($result->num_rows > 0)//Double check
-			{
-				$conn -> close();
-				return array("status" => "Ese nombre ya esta registrado!");
-			}
-			else
-			{//Realiza el update de datos
+			//if ($result->num_rows > 0)//Double check
+			//{
+			//		$conn -> close();
+			//		return array("status" => "Ese nombre ya esta registrado!");
+			//	}
+			//	else
+			//{//Realiza el update de datos
 				$sqlUpdate = "UPDATE virtualsample SET vsCurrent = false";
 				//$result = $conn->query($sqlVerifica); 
-		        $sqlInsert = "INSERT INTO VirtualSample(vsName,vsStart_Date,vsEnd_Date,vsCurrent) VALUES ('$Nombre','$dInicio','$dFin',$Current) ";
+		        $sqlInsert = "INSERT INTO VirtualSample(vsStart_Date,vsEnd_Date,vsCurrent) VALUES ('$dInicio','$dFin',$Current) ";
 
 		        if (mysqli_query($conn,$sqlUpdate) && mysqli_query($conn,$sqlInsert)){//True si se ejectua correcto
 				    $conn-> close();
@@ -225,7 +225,7 @@
 				}
 
 			    
-			}
+			//}
 		}else{//Error de conexion con BD
 				$conn -> close();
 				return array("status" => "Problema de conexion con la Base de datos, al crear VS");
