@@ -8,7 +8,7 @@ $(document).ready(function(){
                 "fechaFin": $("#fechaFinCal").val()
             };
         $.ajax({
-                url : "data/applicationLayer.php",
+                url : "../data/applicationLayer.php",
                 type: "POST",
                 data: jsonToSend, //Data to send to the service
                 datatype : "json",
@@ -60,18 +60,21 @@ $(document).ready(function(){
                 "nombre" : $("#NombreVS").val()
             };
         $.ajax({
-                url : "data/applicationLayer.php",
+                url : "../data/applicationLayer.php",
                 type: "POST",
                 data: jsonToSend, //Data to send to the service
                 datatype : "json",
                 contentType : "application/x-www-form-urlencoded", //Forces the content type to json
 
                 success : function(jsonResponse){
-                	alert(jsonResponse.message)
+                    alert("Se creo correctamente");
+                	//alert(jsonResponse.message);
+                    console.log(jsonResponse);
                 },
                 error : function(errorMessage){
                 	alert("ERROR Boton Crea VirtualSample");
-                    alert(errorMessage.statusText);  
+                    alert(errorMessage.responseText);  
+                    console.log(errorMessage);
                 }
             });
 	});
