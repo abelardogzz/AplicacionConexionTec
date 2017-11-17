@@ -1,5 +1,78 @@
 $(document).ready(function(){
 
+    jsonToSend = { 
+        "action": "LOADVIRTUALSAMPLES"
+    }
+    $.ajax({
+        url : "../data/applicationLayer.php",
+        type: "POST",
+        data: jsonToSend, //Data to send to the service
+        datatype : "json",
+        contentType : "application/x-www-form-urlencoded", //Forces the content type to json
+
+        success : function(jsonResponse){
+            //alert("Se cargaron los VS bien");
+            //alert(jsonResponse.message);
+            console.log(jsonResponse);
+            var newhtml = "";
+            data = jsonResponse.virtualsample;
+            console.log(data);
+            for ( var x in data) {    
+               newhtml += "<label><input type=\"radio\" name=\"vs\" value=\"" + data[x].ID+ "\" ";
+                if (data[x].Current == 1){ 
+                    newhtml += " checked = \" checked \" >";
+                    console.log(data[x]);
+                }
+                else{
+                    newhtml += "  >"; 
+                }
+
+                newhtml += data[x].FechaInicio+" "+ data[x].FechaFin +" </label></br>" ;
+           }
+           console.log(newhtml);
+           $("#sVirtualSamples").append(newhtml);
+        },
+        error : function(errorMessage){
+            alert("ERROR Cargaa VirtualSample");
+            alert(errorMessage.responseText);  
+            console.log(errorMessage);
+        }
+    });
+
+
+    //$("input[type='radio']").on("click",function(){
+    $("#sVirtualSamples").change("click",function(){
+        var radioValue = $("input[name='vs']:checked").val();
+        if(radioValue){
+            //alert("Your are a - " + radioValue);
+        }
+
+        jsonToSend = { 
+            "action": "UPDATECURRENTVS",
+            "id" : radioValue
+        }
+
+        $.ajax({
+            url : "../data/applicationLayer.php",
+            type: "POST",
+            data: jsonToSend, //Data to send to the service
+            datatype : "json",
+            contentType : "application/x-www-form-urlencoded", //Forces the content type to json
+
+            success : function(jsonResponse){
+                console.log(jsonResponse);
+                
+            },
+            error : function(errorMessage){
+                alert("ERROR cambiar VirtualSample");
+                alert(errorMessage.responseText);  
+                console.log(errorMessage);
+            }
+
+        });
+
+    });
+
 	//Boton para crear una Muestra Virtual (Virtual Sample)
 	$("#BtnCreaVS").on("click",function(){
 		var jsonToSend ={
@@ -45,6 +118,7 @@ $(document).ready(function(){
                 success : function(jsonResponse){
                 	//alert(jsonResponse.message);
                     alert("Detiene de Calificaciones con exito!");
+                    console.log(jsonResponse);
                 },
                 error : function(errorMessage){
                 	alert("ERROR Boton DEtiene Calificaciones");
@@ -70,6 +144,7 @@ $(document).ready(function(){
                 success : function(jsonResponse){
                     //alert(jsonResponse.message);
                     alert("Reanudacion de Calificaciones con exito!");
+                    console.log(jsonResponse);
                 },
                 error : function(errorMessage){
                     alert("ERROR Boton reanuda Calificaciones");

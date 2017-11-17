@@ -24,6 +24,10 @@ switch($action){
 		break;
 	case "REANUDAREGISTRO" : UpdateRegistro();
 		break;
+	case "LOADVIRTUALSAMPLES" : LoadSamples();
+		break;
+	case "UPDATECURRENTVS" : UpdateVS();
+		break;
 
 }
 
@@ -147,5 +151,30 @@ function UpdateRegistro(){
 	}
 }
 
+function LoadSamples(){
+
+	$result = attemptLoadSamples();
+
+	if ($result["status"] == "SUCCESS"){
+		echo json_encode($result);
+	}
+	else{
+		header('HTTP/1.1 500'.$result["status"]);
+		die($result["status"]);
+	}
+}
+
+function UpdateVS(){
+	$Id = $_POST["id"];
+
+	$result = attemptUpdateVS($Id);
+	if ($result["status"] == "SUCCESS"){
+		echo json_encode($result);
+	}
+	else{
+		header('HTTP/1.1 500'.$result["status"]);
+		die($result["status"]);
+	}
+}
 
 ?>
