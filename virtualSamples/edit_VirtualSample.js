@@ -33,8 +33,8 @@ $(document).ready(function(){
            $("#sVirtualSamples").append(newhtml);
         },
         error : function(errorMessage){
-            alert("ERROR Cargaa VirtualSample");
-            alert(errorMessage.responseText);  
+            alert("ERROR Carga VirtualSample");
+            //alert(errorMessage.responseText);  
             console.log(errorMessage);
         }
     });
@@ -75,13 +75,20 @@ $(document).ready(function(){
 
 	//Boton para crear una Muestra Virtual (Virtual Sample)
 	$("#BtnCreaVS").on("click",function(){
-		var jsonToSend ={
-				"action" : "CREAVIRTUALSAMPLE",
-                "fehcaInicio" : $("#fechaInicioCrea").val(),
-                "fechaFin": $("#fechaFinCrea").val(),
-                "nombre" : $("#NombreVS").val()
-            };
-        $.ajax({
+        fInicio = new Date($("#fechaInicioCrea").val());
+        fFin = new Date($("#fechaFinCrea").val());
+
+        if (fInicio == "Invalid Date" || fFin == "Invalid Date" || (fFin-fInicio)<0 ){
+            alert("La fecha no valida");
+        }
+        else{
+            /*var jsonToSend ={
+                    "action" : "CREAVIRTUALSAMPLE",
+                    "fehcaInicio" : $("#fechaInicioCrea").val(),
+                    "fechaFin": $("#fechaFinCrea").val(),
+                    "nombre" : $("#NombreVS").val()
+                };
+            $.ajax({
                 url : "../data/applicationLayer.php",
                 type: "POST",
                 data: jsonToSend, //Data to send to the service
@@ -90,17 +97,17 @@ $(document).ready(function(){
 
                 success : function(jsonResponse){
                     alert("Se creo correctamente");
-                	//alert(jsonResponse.message);
+                    //alert(jsonResponse.message);
                     console.log(jsonResponse);
                 },
                 error : function(errorMessage){
-                	alert("ERROR Boton Crea VirtualSample");
+                    alert("ERROR Boton Crea VirtualSample");
                     alert(errorMessage.responseText);  
                     console.log(errorMessage);
                 }
-            });
+            });*/
+        }	
 	});
-
 
 	//Boton para Modificar las fechas de calificacion
 	$("#BtnDetenerCal").on("click",function(){
