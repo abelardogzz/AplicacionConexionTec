@@ -15,7 +15,9 @@ CREATE TABLE VirtualSample(
 	virtualSample_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	vsStart_Date Date NOT NULL,
 	vsEnd_Date Date NOT NULL,
-	vsCurrent BOOLEAN NOT NULL
+	vsCurrent BOOLEAN NOT NULL,
+	Calificacion BOOLEAN NOT NULL,
+	Registro BOOLEAN NOT NULL
 );
 
 CREATE TABLE Projecto (
@@ -58,9 +60,9 @@ VALUES 	(1,'Regina','Gallardo','Gallardo','567','reg@mail.com','AdminProyecto',F
 		(2,'Abelardo','Gonzalez','Gonzalez','1234','abe@mail.com','AdminProyecto',FALSE),
 		(3,'Javier','Sierra','Sierra','891','jav@mail.com','Publico',FALSE);
 
-INSERT INTO VirtualSample(virtualSample_id,vsStart_Date,vsEnd_Date,vsCurrent)
-VALUES	(1,'2017-01-17','2017-05-05',FALSE),
-		(2,'2017-08-17','2017-12-05',TRUE);
+INSERT INTO VirtualSample(virtualSample_id,vsStart_Date,vsEnd_Date,vsCurrent,Calificacion,Registro)
+VALUES	(1,'2017-01-17','2017-05-05',FALSE,FALSE,FALSE),
+		(2,'2017-08-17','2017-12-05',TRUE,TRUE,TRUE);
 
 INSERT INTO Projecto(project_id,virtualSample_id,user_id,pNombre, pDescripcion,pArea,Deleted,pImagen,pImagen2,pVideo)
 VALUES 	(1,2,2,'PrepaNet Matematicas','Videojuego para enseñar matematicas',FALSE, 'https://previews.123rf.com/images/fer737ng/fer737ng1004/fer737ng100400018/6929700-Cerca-de-un-antiguo-libro-de-texto-con-las-f-rmulas-de-lgebra-Fondo-de-n-meros-y-letras--Foto-de-archivo.jpg','Tecnologica', NULL, NULL),
