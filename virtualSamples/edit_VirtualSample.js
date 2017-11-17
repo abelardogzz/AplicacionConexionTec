@@ -82,7 +82,7 @@ $(document).ready(function(){
             alert("La fecha no valida");
         }
         else{
-            /*var jsonToSend ={
+            var jsonToSend ={
                     "action" : "CREAVIRTUALSAMPLE",
                     "fehcaInicio" : $("#fechaInicioCrea").val(),
                     "fechaFin": $("#fechaFinCrea").val(),
@@ -105,7 +105,7 @@ $(document).ready(function(){
                     alert(errorMessage.responseText);  
                     console.log(errorMessage);
                 }
-            });*/
+            });
         }	
 	});
 
