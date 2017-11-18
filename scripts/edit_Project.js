@@ -2,7 +2,6 @@ $(document).ready(function(){
     //AgregarScripts de sesiones
     //Carga el perfil para ponerlo en los campos 
     //Modifica los campos y al darle "save" se actualiza
-    
     var loadProjects = { "action" : "GETPROJECT"};
     $.ajax({
         url : "../data/applicationLayer.php",
@@ -31,37 +30,6 @@ $(document).ready(function(){
             alert(errorMessage.responseText);
         }
     });
-    $(".viewProject").on("click", verProyecto);
-
-   /* var jsonToSend = {
-                "action" : "LOADPROJECT",
-                "projectID" : 1 
-        };
-    $.ajax({
-        url:"../data/applicationLayer.php",
-        type: "POST", <!--GET|POST|PUT-->
-        data: jsonToSend,
-        dataType: "json",
-        contentType : "application/x-www-form-urlencoded", 
-        success: function(jsonData){
-            //On success, it returns an array of objects
-            
-            $("#ieditNombre").val(jsonData.Nombre);
-            $("#ieditDescripcion").val(jsonData.Descripcion);
-            $("#ieditImagen").val(jsonData.Imagen);
-            $("#ieditProjectID").val(jsonData.ID); //Este tiene que estar hidden en el HTML
-            $("#ieditArea").val(jsonData.Area); 
-
-                      
-
-        },
-        error: function(errMessage){
-            alert("ERROR al Cargar Proyecto");
-                //alert(errorMessage.responseText);
-            alert(errMessage.responseText);
-            console.log(errMessage);
-        }
-    });*/
   
     $("#BtnEdit").on("click",function(){
         alert("Editando proyecto!");
@@ -105,7 +73,7 @@ $(document).ready(function(){
             }
         });
     });
-    
+    $(document).on('click', '.viewProject', verProyecto);
 });
 function verProyecto(){
     var getId = $(this).val();

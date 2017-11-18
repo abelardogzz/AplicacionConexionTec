@@ -3,12 +3,42 @@
     <title>Show Project Details</title>
     <meta charset="UTF-8" />
     <script type="text/javascript" src="jquery.js"></script>
+    <style type="text/css">
+        /*
+        Ratings Stars
+        */
+        .stars {
+          unicode-bidi: bidi-override;
+          direction: rtl;
+          text-align: left;
+        }
+        .stars > span {
+          display: inline-block;
+          position: relative;
+          width: 1.1em;
+        }
+        .stars > span:hover,
+        .stars > span:hover ~ span {
+          color: transparent;
+        }
+        .stars > span:hover:before,
+        .stars > span:hover ~ span:before {
+           content: "\2605";
+           position: absolute;
+           left: 0; 
+           color: gold;
+        }
+    </style>
 </head>
 <body>
     <div>
     </div>
     <div>
-        <h1>Show Project</h1>    
+        <h1>Show Project</h1>
+        <p>Your rating: <span id="rating"></span></p>
+        <div>
+            <p class="stars"><span class="star" id="star-5">☆</span><span class="star" id="star-4">☆</span><span class="star" id="star-3">☆</span><span class="star" id="star-2">☆</span><span class="star" id="star-1">☆</span></p>
+        </div>
     </div>
     <span id="slogan">Show Project info</span></br>
         <div id="getProject" class="hiddenSection">
@@ -22,12 +52,36 @@
                             <th>projectID</th>
                             <th>VirtualSample</th>
                             <th>userID</th>
-                            <th>PNombre</th>
-                            <th>Boton</th>
+                            <th>pNombre</th>
+                            <th>pDescripcion</th>
+                            <th>pArea</th>
+                            <th>deleted</th>
+                            <th>pFechaRegistro</th>
+                            <th>pImagen1</th>
+                            <th>Pimagen2</th>
+                            <th>pVideo</th>
                         </tr>
                     </table>
                 </div>    
             </fieldset>
+            <fieldset>
+                <legend>Project Comments</legend>
+                <table id="commentsTable">
+                        <tr>
+                            <th>commentID</th>
+                            <th>userID</th>
+                            <th>projectID</th>
+                            <th>Date</th>
+                            <th>Comment</th>
+                        </tr>
+                    </table>
+            </fieldset>
+            <div>
+                <p>Add your comment:</p>
+                <textarea id="textComment"></textarea>
+                <br>
+                <button id="addComment">Add Me!</button>
+            </div>
         </div>
 </body>
 	<script type="text/javascript">
@@ -39,6 +93,14 @@
             "action" : "VIEWPROJECT",
             "id" :   idRetrieved                
                            };
+        var verComentarios = {
+            "action" : "VIEWCOMMENTS",
+            "id" :   idRetrieved
+                           };
+        var verRating = {
+            "action" : "VIEWRATING",
+            "project_id" : idRetrieved
+        };
         $.ajax({
             url : "../data/applicationLayer.php",
             type : "POST",
@@ -55,13 +117,14 @@
                             '<td>' + projects[i].projectID + '</td>' +
                             '<td>' + projects[i].virtualSampleID + '</td>' +
                             '<td>' + projects[i].userID + '</td>' +
-                            '<td>' + projects[i].contactInfo + '</td>' +
-                            '<td>' + projects[i].imageURL + '</td>' +
-                            '<td>' + projects[i].imageURL2 + '</td>' +
-                            '<td>' + projects[i].imageURL3 + '</td>' +
-                            '<td>' + projects[i].videoURL + '</td>' +
+                            '<td>' + projects[i].pNombre + '</td>' +
+                            '<td>' + projects[i].pDescripcion + '</td>' +
+                            '<td>' + projects[i].pArea + '</td>' +
                             '<td>' + projects[i].deleted + '</td>' +
-                            '<td>' + projects[i].area + '</td>' +
+                            '<td>' + projects[i].pFechaRegistro + '</td>' +
+                            '<td>' + projects[i].pImagen1 + '</td>' +
+                            '<td>' + projects[i].pImagen2 + '</td>' +
+                            '<td>' + projects[i].pVideo + '</td>' +
                             '</tr>'   
                 }
                 $("#projectTable").append(listaProjects);
@@ -69,6 +132,92 @@
             error : function(errorMessage){
                 alert(errorMessage.responseText);
             }
+        });
+        $.ajax({
+            url : "../data/applicationLayer.php",
+            type : "POST",
+            data: verRating,
+            dataType : "json",
+            contentType : "application/x-www-form-urlencoded",
+            success : function(jsonReceived){  
+                var ratings = jsonReceived;
+                var listaRatings = "";
+                for(var i = 0; i < ratings.length; i++){
+                    listaRatings += ratings[i].rating;
+                }
+                $("#rating").append(listaRatings);
+                if (listaRatings !== "You haven't rated this yet") {
+                    var rating = parseInt(listaRatings);
+                    for (var i = 1; i <= listaRatings && i <= 5 ; i++) {
+                        $(".stars > #star-" +  i).css("color", "gold");
+                    }
+                }
+
+            },
+            error : function(errorMessage){
+                alert(errorMessage.responseText);
+            }
+        });
+        $.ajax({
+            url : "../data/applicationLayer.php",
+            type : "POST",
+            data: verComentarios,
+            dataType : "json",
+            contentType : "application/x-www-form-urlencoded",
+            success : function(jsonReceived){  
+                var comments = jsonReceived;
+                var listaComments = "";
+                var commentsID = [];
+                for(var i = 0; i < comments.length; i++){
+                    listaComments += 
+                            '<tr>' +
+                            '<td>' + comments[i].commentID + '</td>' +
+                            '<td>' + comments[i].userID + '</td>' +
+                            '<td>' + comments[i].projectID + '</td>' +
+                            '<td>' + comments[i].date + '</td>' +
+                            '<td>' + comments[i].comment + '</td>' +
+                            '</tr>'   
+                }
+                $("#commentsTable").append(listaComments);
+            },
+            error : function(errorMessage){
+                alert(errorMessage.responseText);
+            }
+        });
+        $('.stars').on('click', '.star', function() {
+            var stars = parseInt($(this).attr('id').slice(-1));
+            var actualizarRating = {
+                "action" : "UPDATERATING",
+                "project_id" : idRetrieved,
+                "rating" : stars
+            };
+            console.log(stars);
+            $.ajax({ 
+                url: "applicationLayer.php",
+                type: "POST",
+                data: actualizarRating,
+                success: function(data){
+                    // Reload page after adding comment
+                    location.reload();
+                }
+            });
+        });
+        $('#addComment').on('click', function() {
+            var comment = $('#textComment').val();
+            var insertarCommentario = {
+                "action" : "INSERTCOMMENT",
+                "project_id" : idRetrieved,
+                "text" : comment
+            };
+            $.ajax({ 
+                url: "applicationLayer.php",
+                type: "POST",
+                data: insertarCommentario,
+                success: function(data){
+                    // Reload page after adding comment
+                    location.reload();
+                }
+            });
         });
     });
 
