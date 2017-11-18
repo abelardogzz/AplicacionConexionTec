@@ -26,7 +26,7 @@
 		//echo $userName;
 		//echo $userPassword;
 		
-		$sql = "SELECT * FROM Users WHERE email = '$email' AND uPassword = '$hash'";
+		$sql = "SELECT * FROM Users WHERE uEmail = '$email' AND uPassword = '$hash'";
 		$result = $conn->query($sql);
 		//echo $result;
 
@@ -50,7 +50,7 @@
 		else
 		{
 	    	header('HTTP/1.1 406 User not found');
-	        die("the username or password you have provided are incorrect");
+	        die("the email or password you have provided are incorrect");
 		}
 	} 
 

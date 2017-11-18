@@ -20,13 +20,13 @@
 
 		$email = $_POST['email'];
 		
-		$sql = "SELECT username FROM Users WHERE email = '$email'";
+		$sql = "SELECT * FROM Users WHERE uEmail = '$email'";
 		$result = $conn->query($sql);
 
 		if($result->num_rows > 0)
 		{
 			header('HTTP/1.1 409 Conflict, Username already in use');
-			die('Username already in use');
+			die('email already in use');
 		}
 		else
 		{

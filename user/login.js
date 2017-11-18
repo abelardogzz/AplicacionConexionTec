@@ -23,16 +23,16 @@ $(document).ready(function(){
 	$("#login").on("click", function(){
 		//check all fields have been filled
 
-		var $username = $("#username");
+		var $email = $("#email");
 		var $password = $("#password");
 		var $full = true;
 		
-		if ($username.val() == ""){
-			$("#checkUserName").text("Please provide your username");
+		if ($email.val() == ""){
+			$("#checkEmail").text("Please provide your username");
 			$full = false;
 		}
 		else{
-			$("#checkUserName").text("");
+			$("#checkEmail").text("");
 		}
 
 		if ($password.val() == ""){
