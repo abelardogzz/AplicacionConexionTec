@@ -60,7 +60,7 @@ $(document).ready(function(){
 		                contentType : "application/x-www-form-urlencoded",
 		                success: function(jsonResponse){
 		                	//if correct go to profile
-		                    window.location.replace("../profile.html");
+		                    window.location.replace("../projects.html");
 		                },
 		                error : function(errorMessage){
 		                    alert(errorMessage.responseText);
