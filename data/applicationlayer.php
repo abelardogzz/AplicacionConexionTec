@@ -1,20 +1,45 @@
 <?php
-
-header('Content-type: application/json');
-require_once __DIR__ . '/dataLayer.php';
+    header('Accept: application/json');
+    header('Content-type: application/json');
+    require_once __DIR__ . '/dataLayer.php';
+    //ini_set("display_errors",1);
+    //ini_set("log_errors",1);
+session_start();
+$_SESSION["current_user"] = 1;
 
 $action = $_POST["action"];
 
 switch($action){
-	case "LOADPROFILE" : ProfileSerivce();
+	case "LOADPROFILE" : 
+        ProfileSerivce();
 					break;
-	case "EDITPROFILE" : EditProfileSerivce();
+	case "EDITPROFILE" : 
+        EditProfileSerivce();
 					break;
-	case "LOADPROJECT" : ProjectSerivce();
+	case "LOADPROJECT" : 
+        ProjectSerivce();
 					break;
-	case "EDITPROJECT" : EditProjectSerivce();
+	case "EDITPROJECT" : 
+        EditProjectSerivce();
 					break;
-
+    case 'GETPROJECT':
+            getProject();
+                    break;
+    case 'VIEWPROJECT':
+            viewProject();
+                    break;
+    case 'VIEWCOMMENTS':
+            viewComments();
+            break;
+    case 'VIEWRATING':
+            viewRating();
+            break;
+    case 'INSERTCOMMENT':
+            insertComment();
+            break;
+    case 'UPDATERATING':
+            updateRating();
+            break;
 }
 
 /**
@@ -91,10 +116,93 @@ function EditProjectSerivce(){
 		die($result["status"]);
 	}
 }
+function getProject() {
+        $response = attemptLoadProjects();
+		$responseStatus = $response["responseStatus"];
 
+		if ($responseStatus == "EXITO") {
+			$responseData = $response["responseData"];
+         
+			echo json_encode($responseData);
+		}
+		else {
+			header('HTTP/1.1 500 Bad connection to Database');
+            die("The server is down, we couldn't establish the DB connection");
+		}
+        
+    }
+    function viewProject() {
+        $id = $_POST['id'];
+        $response = attemptViewProject($id);
+		$responseStatus = $response["responseStatus"];
 
+		if ($responseStatus["status"] == "EXITO") {	
+			$responseData = $response["responseData"];
+			echo json_encode($responseData);
+		}
+		else {
+			header('HTTP/1.1 500 Bad connection to Database');
+            die("The server is down, we couldn't establish the DB connection");
+		}
+        
+    }
+function viewComments() {
+        $id = $_POST['id'];
+        $response = attemptViewComments($id);
+        $responseStatus = $response["responseStatus"];
 
+        if ($responseStatus["status"] == "EXITO") { 
+            $responseData = $response["responseData"];
+            echo json_encode($responseData);
+        }
+        else {
+            header('HTTP/1.1 500 Bad connection to Database');
+            die("The server is down, we couldn't establish the DB connection");
+        }
+        
+    }
 
+    function viewRating() {
+        $project_id = $_POST['project_id'];
+        $user_id = $_SESSION["current_user"];
+        $response = attemptViewRating($project_id, $user_id);
+        $responseStatus = $response["responseStatus"];
 
+        if ($responseStatus["status"] == "EXITO") { 
+            $responseData = $response["responseData"];
+            echo json_encode($responseData);
+        }
+        else {
+            header('HTTP/1.1 500 Bad connection to Database');
+            die("The server is down, we couldn't establish the DB connection");
+        }
+    }
 
+    function updateRating() {
+        $project_id = $_POST['project_id'];
+        $user_id = $_SESSION["current_user"];
+        $rating = $_POST['rating'];
+        $response = attemptUpdateRating($project_id, $user_id, $rating);
+        $responseStatus = $response["responseStatus"];
+
+        if ($responseStatus["status"] == "EXITO") { 
+            $responseData = $response["responseData"];
+            echo json_encode($responseData);
+        }
+        else {
+            header('HTTP/1.1 500 Bad connection to Database');
+            die("The server is down, we couldn't establish the DB connection");
+        }
+    }
+
+    function insertComment() {
+        $user_id = $_SESSION["current_user"];
+        $project_id = $_POST['project_id'];
+        $text = $_POST['text'];
+        $responseStatus = attemptInsertComment($user_id, $project_id, $text);
+        if ($responseStatus["status"] != "EXITO") { 
+            $responseData = $response["responseData"];
+            echo json_encode($responseData);
+        }
+    }
 ?>

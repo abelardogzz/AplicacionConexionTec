@@ -1,37 +1,33 @@
 $(document).ready(function(){
-
     //AgregarScripts de sesiones
     //Carga el perfil para ponerlo en los campos 
     //Modifica los campos y al darle "save" se actualiza
-
-    var jsonToSend = {
-                "action" : "LOADPROJECT",
-                "projectID" : 1 
-        };
+    var loadProjects = { "action" : "GETPROJECT"};
     $.ajax({
-        url:"../data/applicationLayer.php",
-        type: "POST", <!--GET|POST|PUT-->
-        data: jsonToSend,
-        dataType: "json",
-        contentType : "application/x-www-form-urlencoded", 
-        success: function(jsonData){
-            //On success, it returns an array of objects
-            console.log(jsonData);
-            
-            $("#ieditNombre").val(jsonData.Nombre);
-            $("#ieditDescripcion").val(jsonData.Descripcion);
-            $("#ieditImagen").val(jsonData.Imagen);
-            $("#ieditProjectID").val(jsonData.ID); //Este tiene que estar hidden en el HTML
-            $("#ieditArea").val(jsonData.Area); 
-
-                      
-
+        url : "../data/applicationLayer.php",
+        type : "POST",
+        data: loadProjects,
+        dataType : "json",
+        contentType : "application/x-www-form-urlencoded",
+        success : function(jsonReceived){
+            var projects = jsonReceived;
+            console.log(projects);
+            var listaProjects = "";
+            var projectsID = [];
+            for(var i = 0; i < projects.length; i++){
+                listaProjects += 
+                        '<tr>' +
+                        '<td>' + projects[i].projectID + '</td>' +
+                        '<td>' + projects[i].virtualSampleID + '</td>' +
+                        '<td>' + projects[i].userID + '</td>' +
+                        '<td>' + projects[i].pNombre + '</td>' +
+                        '<td> <button class="viewProject" id="'+ projects[i].projectID +'" type="submit" value="'+ projects[i].projectID +'">Ver Proyecto</button> </td>' + 
+                        '</tr>'   
+            }
+            $("#projectTable").append(listaProjects);
         },
-        error: function(errMessage){
-            alert("ERROR al Cargar Proyecto");
-                //alert(errorMessage.responseText);
-            alert(errMessage.responseText);
-            console.log(errMessage);
+        error : function(errorMessage){
+            alert(errorMessage.responseText);
         }
     });
   
@@ -77,5 +73,31 @@ $(document).ready(function(){
             }
         });
     });
-    
+    $(document).on('click', '.viewProject', verProyecto);
 });
+function verProyecto(){
+    var getId = $(this).val();
+    $(location).attr('href', 'show.html?id='+ getId);
+}
+
+function verProyecto2() {
+    var verProyectoJson = {
+        "action" : "VIEWPROJECT",
+        "id" : $(".viewProject").val()
+    };
+    console.log(verProyectoJson);
+    $.ajax({
+        url: "../data/applicationLayer.php",
+        type: "POST",
+        data: verProyectoJson,
+        dataType: "json",
+        contentType: "application/x-www-form-urlencoded",
+        success: function(jsonReceived){
+            window.location.href = "show_project.html?id='jsonReceived.'";
+            
+        },
+        error: function(errorMessage){
+            alert(errorMessage.responseText);
+        }
+    });
+}

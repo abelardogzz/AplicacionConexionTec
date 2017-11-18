@@ -1,12 +1,10 @@
-
-
 <?php
 	
 	function connectionToDataBase(){
 		$servername = "localhost";
 		$username = "root";
-		$password = "root";
-		$dbname = "conexionTec2";
+		$password = "";
+		$dbname = "conexiontec";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
 		
@@ -117,7 +115,7 @@
 			//$userName = $_POST['username'];
 			//$userPassword = $_POST['userPassword'];
 			//PROFILE EXAMPLE 
-			$sql = " SELECT * FROM Projecto WHERE project_id = '$pID' ";
+			$sql = " SELECT * FROM project WHERE project_id = '$pID' ";
 			$result = $conn->query($sql); 
 
 			//echo $result->num_rows;
@@ -130,7 +128,7 @@
 			    	$response = array('ID' => $row['project_id'],
 		    	 					'Nombre' => $row['pNombre'], 
 		    	 					'Descripcion' => $row['pDescripcion'],
-		    	 					'Imagen' => $row["pImage"],
+		    	 					'Imagen' => $row["pImagen1"],
 		    	 					'Area' => $row['pArea']);   
 			    	//array_push($comments, $response);
 			    	
@@ -142,7 +140,7 @@
 			else
 			{
 				$conn -> close();
-				return array("status" => "Projecto NOT FOUND");
+				return array("status" => "project NOT FOUND");
 			}
 		}else{
 				$conn -> close();
@@ -156,7 +154,7 @@
 		if ($conn != null){
 			$conn ->set_charset('utf8mb4');
 
-			$sqlVerifica = "SELECT * FROM Projecto WHERE project_id = '$pID'";
+			$sqlVerifica = "SELECT * FROM project WHERE project_id = '$pID'";
 			$result = $conn->query($sqlVerifica); 
 
 			//Verifica si no esta registrado ese correo antes
@@ -171,7 +169,7 @@
 			{//Realiza el update de datos
 			//Queda pendiente el campo que hace referencia al registro
 			//Eso lo puedo obtener de las sesiones pero no se cual vamos a usar
-		        $sql = "UPDATE Projecto SET pNombre = '$Nombre',pDescripcion = '$Descripcion',pImage = '$Imagen',pArea = '$Area' WHERE project_id = '$pID' ";
+		        $sql = "UPDATE project SET pNombre = '$Nombre',pDescripcion = '$Descripcion',pImage = '$Imagen',pArea = '$Area' WHERE project_id = '$pID' ";
 
 		        if (mysqli_query($conn,$sql)){//True si se ejectua correcto
 				    $conn-> close();
@@ -179,7 +177,7 @@
 		    	 					'email' => $Descripcion,
 		    	 					'Imagen' => $Imagen,
 		    	 					'Area' => $Area);  
-				    return array("status" => "SUCCESS","projecto" => $datos);
+				    return array("status" => "SUCCESS","project" => $datos);
 				}
 				else{//Error al hacer UPDATE en la BD
 					$conn -> close();
@@ -193,7 +191,261 @@
 				return array("status" => "Problema de conexion con la Base de datos");
 		}
 	}
+/*function attemptViewProject($id){
+    $connection = connectionToDataBase();
+		if ($connection != null) {
+			$sql = "SELECT * FROM project WHERE project_id = '$id'";
+			$result = $connection ->query($sql);
 
+			if($result ->num_rows > 1) {
+                $connection -> close();
+				return array("status" => "409");
+			    }else{
+                $responseStatus = array("status" =>"EXITO");
+	  			$responseData = array();
+	  			while ($row = $result->fetch_assoc()) {	
+			    	array_push($responseData, array('projectID' => $row['project_id'], 
+                                          'virtualSampleID' => $row['virtualSample_id'],
+                                          'userID' => $row['user_id'], 
+                                          'pNombre' => $row['pNombre'], 
+                                          'pDescripcion' => $row['pDescripcion'], 
+                                          'pArea' => $row['pArea'], 
+                                          'deleted' => $row['Deleted'], 
+                                          'pFechaRegistro' => $row['pFechaRegistro'],  
+                                          'pImagen1' => $row['pImagen1'], 
+                                          'pImagen2' => $row['pImagen2'], 
+                                          'pVideo' => $row['pVideo']));
+			    }
+			    $connection -> close();
+				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
+			}	
+		}
+		else {
+			$responseStatus = array("status" => "500");
+			return array("responseStatus"=>$responseStatus);;
+		}
+    $responseStatus = array("status" => "500");
+    return array("responseStatus"=>$responseStatus);;
+}*/
+function attemptViewProject($id){
+    $connection = connectionToDataBase();
+		if ($connection != null) {
+			$sql = "SELECT * FROM project WHERE project_id = '$id'";
+			$result = $connection ->query($sql);
 
+			if($result ->num_rows > 1) {
+                $connection -> close();
+				return array("status" => "409");
+			    }else{
+                $responseStatus = array("status" =>"EXITO");
+                $responseData = array();
+	  			while ($row = $result->fetch_assoc()) {	
+			    	array_push($responseData, array('projectID' => $row['project_id'], 
+                                          'virtualSampleID' => $row['virtualSample_id'],
+                                          'userID' => $row['user_id'], 
+                                          'pNombre' => utf8_encode($row['pNombre']), 
+                                          'pDescripcion' => utf8_encode($row['pDescripcion']), 
+                                          'pArea' => $row['pArea'], 
+                                          'deleted' => $row['Deleted'], 
+                                          'pFechaRegistro' => $row['pFechaRegistro'],  
+                                          'pImagen1' => $row['pImagen1'], 
+                                          'pImagen2' => $row['pImagen2'], 
+                                          'pVideo' => $row['pVideo']));
+			    }
+			    $connection -> close();
+				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
+			}	
+		}
+		else {
+			$responseStatus = array("status" => "500");
+			return array("responseStatus"=>$responseStatus);;
+		}
+    $responseStatus = array("status" => "500");
+    return array("responseStatus"=>$responseStatus);;
+}
+function attemptLoadProjects(){
+    $connection = connectionToDataBase();
+		if ($connection != null) {
+			$sql = "SELECT * FROM project";
+			$result = $connection ->query($sql);
 
+			if($result ->num_rows > 0) {
+                $responseData = array();
+
+	  			while ($row = $result->fetch_assoc()) {	
+                    array_push($responseData, array('projectID' => $row['project_id'], 
+                                          'virtualSampleID' => $row['virtualSample_id'],
+                                          'userID' => $row['user_id'], 
+                                          'pNombre' => utf8_encode($row['pNombre']), 
+                                          'pDescripcion' => utf8_encode($row['pDescripcion']), 
+                                          'pArea' => $row['pArea'], 
+                                          'deleted' => $row['Deleted'], 
+                                          'pFechaRegistro' => $row['pFechaRegistro'],  
+                                          'pImagen1' => $row['pImagen1'], 
+                                          'pImagen2' => $row['pImagen2'], 
+                                          'pVideo' => $row['pVideo']));
+                   /* $responseData = array('projectID' => $row['project_id'], 
+                                          'virtualSampleID' => $row['virtualSample_id'],
+                                          'userID' => $row['user_id'], 
+                                          'pNombre' => $row['pNombre'], 
+                                          'pDescripcion' => $row['pDescripcion'], 
+                                          'pArea' => $row['pArea'], 
+                                          'deleted' => $row['Deleted'], 
+                                          'pFechaRegistro' => $row['pFechaRegistro'],  
+                                          'pImagen1' => $row['pImagen1'], 
+                                          'pImagen2' => $row['pImagen2'], 
+                                          'pVideo' => $row['pVideo']);*/
+			    }
+			    $connection -> close();
+				return array("responseStatus"=>"EXITO","responseData"=>$responseData);
+			}
+			else {	
+				$connection -> close();
+				$responseStatus = array("status" => "500");
+				return array("responseStatus"=>$responseStatus);;
+			}	
+		}
+		else {
+			$responseStatus = array("status" => "500");
+			return array("responseStatus"=>$responseStatus);;
+		}
+    $responseStatus = array("status" => "500");
+    return array("responseStatus"=>$responseStatus);;
+}
+function attemptViewRating($project_id, $user_id) {
+	$connection = connectionToDataBase();
+
+		if ($connection != null) {
+			$sql = "SELECT grade FROM Grade WHERE project_id = '$project_id' AND user_id = '$user_id'";
+			$result = $connection ->query($sql);
+			$responseData = array();
+
+			if($result ->num_rows != 0) {
+	  			$responseStatus = array("status" =>"EXITO");
+
+	  			while ($row = $result->fetch_assoc()) {
+			    	array_push($responseData,array("rating" => $row["grade"]));
+			    }
+			    $connection -> close();
+				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
+			}
+			else {	
+				$connection -> close();
+				$responseStatus = array("status" => "EXITO");
+				array_push($responseData,array("rating" => "You haven't rated this yet"));
+				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);;
+			}	
+		}
+		else {
+			$responseStatus = array("status" => "500");
+			return array("responseStatus"=>$responseStatus);;
+		}
+    $responseStatus = array("status" => "500");
+    return array("responseStatus"=>$responseStatus);;
+}
+function attemptViewComments($id){
+    $connection = connectionToDataBase();
+
+		if ($connection != null) {
+			$sql = "SELECT * FROM Comments WHERE project_id = '$id'";
+			$result = $connection ->query($sql);
+
+			if($result ->num_rows > 0) {
+	  			$responseStatus = array("status" =>"EXITO");
+	  			$responseData = array();
+
+	  			while ($row = $result->fetch_assoc()) {	
+			    	array_push($responseData,array("commentID" => $row["comment_id"], "userID" => $row["user_id"], "projectID" => $row["project_id"], "date" => $row["cDate"], "comment" => utf8_encode($row["comment"])));
+			    }
+			    $connection -> close();
+				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
+			}else if($result ->num_rows == 0){
+                $responseStatus = array("status" => "EXITO");
+                $responseData = array();
+                
+                array_push($responseData, array("commentID" => "No Comments", "userID" => "No Comments", "projectID" => "No Comments", "date" => "No Comments", "comment" => "No Comments" ));
+                $connection -> close();
+				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
+            }
+			else {	
+				$connection -> close();
+				$responseStatus = array("status" => "500");
+				return array("responseStatus"=>$responseStatus);;
+			}	
+		}
+		else {
+			$responseStatus = array("status" => "500");
+			return array("responseStatus"=>$responseStatus);;
+		}
+    $responseStatus = array("status" => "500");
+    return array("responseStatus"=>$responseStatus);;
+}
+
+function attemptUpdateRating($project_id, $user_id, $rating) {
+	$connection = connectionToDataBase();
+
+		if ($connection != null) {
+			$sql = "SELECT * FROM Grade WHERE project_id = '$project_id' AND user_id = '$user_id'";
+			$result = $connection ->query($sql);
+
+			if($result ->num_rows != 0) {
+	  			$sql = "UPDATE Grade SET grade='$rating' WHERE project_id = '$project_id' AND user_id = '$user_id'";
+	  			$result = $connection ->query($sql);
+	  			if ($result === TRUE) {
+	  				$responseStatus = array("status" =>"EXITO");
+	  				$connection -> close();
+					return array("responseStatus"=>$responseStatus);
+	  			}
+	  			else {
+	  				$responseStatus = array("status" =>"500");
+	  				$connection -> close();
+					return array("responseStatus"=>$responseStatus);
+	  			}
+			}
+			else {	
+				$sql = "INSERT INTO Grade (project_id, user_id, grade) VALUES ('$project_id', '$user_id', '$rating')";
+	  			$result = $connection ->query($sql);
+	  			if ($result === TRUE) {
+	  				$responseStatus = array("status" =>"EXITO");
+	  				$connection -> close();
+					return array("responseStatus"=>$responseStatus);
+	  			}
+	  			else {
+	  				$responseStatus = array("status" =>"500");
+	  				$connection -> close();
+					return array("responseStatus"=>$responseStatus);
+	  			}
+			}	
+		}
+		else {
+			$responseStatus = array("status" => "500");
+			return array("responseStatus"=>$responseStatus);;
+		}
+    $responseStatus = array("status" => "500");
+    return array("responseStatus"=>$responseStatus);;
+}
+
+function attemptInsertComment($user_id, $project_id, $text){
+	$connection = connectionToDataBase();
+		if ($connection != null) {
+			$sql = "INSERT INTO Comments (user_id, project_id, cDate, comment) VALUES ('$user_id', '$project_id', CURDATE(), '$text')";
+			$result = $connection ->query($sql);
+			if ($result === TRUE) {
+				$responseStatus = array("status" =>"EXITO");
+				$connection -> close();
+				return array("responseStatus"=>$responseStatus);
+			}
+			else {
+				$connection -> close();
+				$responseStatus = array("status" => "500");
+				return array("responseStatus"=>$responseStatus);;
+			}
+		}
+		else {
+			$responseStatus = array("status" => "500");
+			return array("responseStatus"=>$responseStatus);;
+		}
+	$responseStatus = array("status" => "500");
+    return array("responseStatus"=>$responseStatus);;
+}
 ?>
