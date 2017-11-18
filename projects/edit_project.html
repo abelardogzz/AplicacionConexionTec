@@ -1,0 +1,58 @@
+<!--
+  File name: ~/projects/edit.html
+  Page name: Edit Project
+  Description:
+    Here is where the user type 'Project Owner' will edit owned projects. It will only consist of a
+    single form section.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- UTF-8 charset -->
+    <meta charset="utf-8">
+
+    <!-- Metadata -->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="../style/master/master.css">
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../scripts/edit_Project.js" ></script>
+
+    <!-- Title -->
+    <title>Editar Proyecto - ConexiónTec</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav id="navbar">
+    </nav>
+
+    <!-- Section 1 - Edit project form -->
+    <section id="sEditProject">
+    <div id="dEditProject">
+      <p>Nombre</p></br>
+      <input id="ieditNombre" type="text" ></input></br>
+      <p>Descripcion</p></br>
+      <input id="ieditDescripcion" type="text" ></input></br>
+      <p>Imagen</p></br>
+      <input id="ieditImagen" type="text" ></input>
+      <p>Area</p></br>
+      <input id="ieditArea" type="text" ></input>
+      <input id="ieditProjectID" hidden="true" ></input>
+      <input id="BtnEdit" type="submit" value="Save Changes"></input>
+    </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+    </footer>
+  </body>
+</html>
