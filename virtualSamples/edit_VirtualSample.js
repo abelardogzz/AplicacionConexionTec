@@ -78,7 +78,14 @@ $(document).ready(function(){
         fInicio = new Date($("#fechaInicioCrea").val());
         fFin = new Date($("#fechaFinCrea").val());
 
-        if (fInicio == "Invalid Date" || fFin == "Invalid Date" || (fFin-fInicio)<0 ){
+        if  {
+
+        }
+
+        if (fInicio == "Invalid Date" || fFin == "Invalid Date" || (fFin-fInicio)<0 || 
+            (fInicio.getDate()> 0 && fInicio.getDate()<31 ||
+            (fInicio.getMonth() -1)>= 0 && (fInicio.getMonth() -1)<= 11 ||
+            fInicio.getFullYear() >= 0 && fInicio.getFullYear()<= 275760 )){
             alert("La fecha no valida");
         }
         else{
