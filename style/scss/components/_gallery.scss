@@ -7,6 +7,8 @@ $size_mobile: 240px;
 .gallery{
   padding: 1rem;
   background-color: $platinum-xl;
+  width: 100vw;
+  min-height: 100vh;
 
   div.element{
     margin: 1rem 0.5rem;

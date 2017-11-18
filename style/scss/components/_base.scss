@@ -5,7 +5,7 @@ main{
   width: 100vw;
 }
 
-footer{
+footer.footer{
   width: 100vw;
   height: 25vh;
   background-color: $cucumber-xd;
@@ -18,7 +18,7 @@ div.card{
   background-color: $snow;
 }
 
-a.button{
+.button{
   padding: 0.5rem 1rem;
   border-radius: 100px;
   background-color: $indigo;
@@ -82,4 +82,6 @@ a.button{
 
 .background{
   background-color: $cucumber-d;
+  width: 100vw;
+  min-height: 100vh;
 }
