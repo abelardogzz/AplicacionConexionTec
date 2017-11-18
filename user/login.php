@@ -26,7 +26,7 @@
 		//echo $userName;
 		//echo $userPassword;
 		
-		$sql = "SELECT username, uPNombre, uApellidoP FROM Users WHERE username = '$username' AND uPassword = '$hash'";
+		$sql = "SELECT * FROM Users WHERE username = '$username' AND uPassword = '$hash'";
 		$result = $conn->query($sql);
 		//echo $result;
 
@@ -36,10 +36,11 @@
 
 			session_start();
 
-			$_SESSION["username"] = $username;
+			
 			// output data of each row
 		    while($row = $result->fetch_assoc()) 
 		    {
+		    	$_SESSION["current_user"] =$row['user_id'];
 		    	$response = array('fName' => $row['uPNombre'], 'lName' => $row['uApellidoP']);   
 			}
 
