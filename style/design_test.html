@@ -4,6 +4,9 @@
     <!-- UTF-8 charset -->
     <meta charset="utf-8">
 
+    <!-- Title -->
+    <title>Test</title>
+
     <!-- Metadata -->
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -15,13 +18,209 @@
     <!-- Style -->
     <link rel="stylesheet" href="master/master.css">
 
-    <!-- Title -->
-    <title>Test</title>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+    <script src="design_js/_adder.js"></script>
   </head>
-  <body class="flRow-aiCen-jcCen">
-    <div class="card">
-      <p>Contraseña</p>
-      <div class="form">
+  <body class="flCol-aiCen-jcCen">
+
+    <!-- Navbar -->
+    <nav class="flRow-jcBet-aiCen-fwWra">
+      <div class="nav_section flRow-jcAro">
+        <a class="home">Conexión Tec</a>
+      </div>
+      <div class="nav_section flRow-jcAro-aiCen">
+        <a class="page">%LINK%</a>
+        <a class="button">%BOTÓN%</a>
+      </div>
+    </nav>
+
+    <!-- Show Project -->
+    <div class="profile">
+      <!-- Project information -->
+      <div class="profile_details">
+        <h1>%PROJECT NAME%</h1>
+        <div class="flRow-jcBet-aiSta">
+          <div class="details">
+            <h4>%PROJECT OWNER%</h4>
+            <p>%PROJECT AREA%</p>
+            <i class="material-icons">star</i>
+            <i class="material-icons">star</i>
+            <i class="material-icons">star</i>
+            <i class="material-icons">star_half</i>
+            <i class="material-icons">star_border</i>
+          </div>
+          <a class="button">Contact</a>
+        </div>
+      </div>
+      <div class="flRow-jcCen">
+        <div class="media_image flRow-jcBet-aiCen" id="image_carousel">
+          <a class="carouse_navigation" id="carousel_left"><</a>
+          <a class="carouse_navigation" id="carousel_right">></a>
+        </div>
+      </div>
+      <h2>Project description</h2>
+      <p>%PROJECT DESCRIPTION%</p>
+      <div class="flRow-jcCen">
+        <div class="media_video">
+          <div class="video_container">
+            <iframe width="560"
+              height="349"
+              src="https://www.youtube.com/embed/cKxRvEZd3Mw" 
+              frameborder="0"
+              gesture="media"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Contact -->
+      <div class="profile_details">
+        <div class="flRow-jcBet-aiCen-fwWra">
+          <div class="details flCol-aiCen">
+            <h4>Califíca el proyecto</h4>
+            <div>
+              <a class="material-icons">star_border</a>
+              <a class="material-icons">star_border</a>
+              <a class="material-icons">star_border</a>
+              <a class="material-icons">star_border</a>
+              <a class="material-icons">star_border</a>
+            </div>
+          </div>
+          <div class="details flRow-jcCen">
+            <a class="button">Detalles</a>
+          </div>
+        </div>
+      </div>
+      <div class="flCol-aiCen-jcCen">
+        <div class="contact flCol-aiCen">
+          <h4>Comments</h4>
+          <textarea placeholder="Leave a comment"></textarea>
+          <div class="featured">
+            <h4>Featured comments</h4>
+            <div class="flRow-aiSta-jcAro-fwWra">
+              <div class="comment card">
+                <strong>Oscar Alfonso Guerrero</strong>
+                <p>
+                  Interactively build enabled data via client-centric leadership.
+                  Dramatically exploit exceptional materials before go forward strategic theme areas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- List of proyects -->
+    <!-- <nav class="flRow-jcAro-aiCen-fwWra">
+      <div class="search">
+        <input type="text" placeholder="Search">
+      </div>
+      <div class="filter flCol-aiCen">
+        <p>Muestra virtual</p>
+        <select>
+          <option value="">A</option>
+          <option value="">B</option>
+          <option value="">C</option>
+        </select>
+      </div>
+      <div class="filter flCol-aiCen">
+        <p>Calificación</p>
+        <select>
+          <option value="">A</option>
+          <option value="">B</option>
+          <option value="">C</option>
+        </select>
+      </div>
+      <div class="filter flCol-aiCen">
+        <p>Área</p>
+        <select>
+          <option value="">A</option>
+          <option value="">B</option>
+          <option value="">C</option>
+        </select>
+      </div>
+    </nav>
+
+    <main class="flR-aiCen-jcCen">
+      <div class="gallery flRow-fwWra-jcAro-aiSta">
+        <div class="element">
+          <header class="image_header">
+            <div class="gradient_curtain flCol-aiBas-jcBet">
+              <a href="#" class="details_link">Ver Detalles</a>
+              <div class="text_container">
+                <h5>Title</h5>
+                <p>Subtitle</p>
+              </div>
+            </div>
+          </header>
+          <footer class="flRow-jcBet">
+            <div class="text_container">
+              <h5>Project owner</h5>
+              <p>Area</p>
+            </div>
+          </footer>
+        </div>
+        <div class="element">
+          <header class="image_header">
+            <div class="gradient_curtain flCol-aiBas-jcBet">
+              <a href="#" class="details_link">Ver Detalles</a>
+              <div class="text_container">
+                <h5>Title</h5>
+                <p>Subtitle</p>
+              </div>
+            </div>
+          </header>
+          <footer class="flRow-jcBet">
+            <div class="text_container">
+              <h5>Project owner</h5>
+              <p>Area</p>
+            </div>
+          </footer>
+        </div>
+        <div class="element">
+          <header class="image_header">
+            <div class="gradient_curtain flCol-aiBas-jcBet">
+              <a href="#" class="details_link">Ver Detalles</a>
+              <div class="text_container">
+                <h5>Title</h5>
+                <p>Subtitle</p>
+              </div>
+            </div>
+          </header>
+          <footer class="flRow-jcBet">
+            <div class="text_container">
+              <h5>Project owner</h5>
+              <p>Area</p>
+            </div>
+          </footer>
+        </div>
+        <div class="element">
+          <header class="image_header">
+            <div class="gradient_curtain flCol-aiBas-jcBet">
+              <a href="#" class="details_link">Ver Detalles</a>
+              <div class="text_container">
+                <h5>Title</h5>
+                <p>Subtitle</p>
+              </div>
+            </div>
+          </header>
+          <footer class="flRow-jcBet">
+            <div class="text_container">
+              <h5>Project owner</h5>
+              <p>Area</p>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </main> -->
+
+    <!-- Card form -->
+    <!-- <div class="background flRow-jcCen-aiCen">
+      <div class="card form">
         <div class="title flCol-aiCen-jcCen">
           <h1>Crear cuenta</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
@@ -29,11 +228,90 @@
         <div class="flCol-jcCen-aiCen">
           <p>Correo electrónico</p>
           <input type="text" placeholder="john.doe@email.com" class="input">
-          <input type="password" class="input">
-          <p>Confirmar contraseña</p>
-          <input type="password" class="input">
+          <input type="password" placeholder="Password" class="input">
         </div>
       </div>
-    </div>
+    </div> -->
+
+    <!--
+    <div class="dashboard flCol-aiCen">
+      <div class="dash_row flRow-jcBet-aiCen">
+        <div class="dash_element card form flCol-aiCen">
+          <div class="title flCol-aiCen-jcCen">
+            <h1>Nueva muestra virtual</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+          </div>
+          <div class="flCol-jcCen-aiCen">
+            <p>Fecha de inicio:</p>
+            <input type="text" placeholder="dd/mm/aaaa" class="input">
+            <p>Fecha de fin:</p>
+            <input type="text" placeholder="dd/mm/aaaa" class="input">
+          </div>
+          <div>
+            <a class="button">Crear</a>
+          </div>
+        </div>
+        <div class="dash_element card">
+          <h2>Periodos</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+          <div class="flRow-jcBet-aiCen">
+            <h3>Registro</h3>
+            <a class="toggle button positive">Detener</a>
+          </div>
+          <div class="flRow-jcBet-aiCen">
+            <h3>Calificación</h3>
+            <a class="toggle button positive">Detener</a>
+          </div>
+        </div>
+      </div>
+      <div class="dash_row flRow-jcCen">
+        <div class="dash_element card flCol-jcCen-aiCen">
+          <h2>Muestras virtuales</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+          <table>
+            <tr>
+              <th>Fecha de inicio</th>
+              <th>Fecha de fin</th>
+              <th>Proyectos</th>
+              <th>Current</th>
+            </tr>
+            <tr>
+              <td>23/01/2016</td>
+              <td>12/10/2016</td>
+              <td>56</td>
+              <td><a class="button white clicked">Current</a></td>
+            </tr>
+            <tr>
+              <td>13/08/2017</td>
+              <td>12/10/2017</td>
+              <td>86</td>
+              <td><a class="button white">New</a></td>
+            </tr>
+            <tr>
+              <td>23/04/2018</td>
+              <td>12/10/2018</td>
+              <td>56</td>
+              <td><a class="button white">New</a></td>
+            </tr>
+            <tr>
+              <td>23/05/2016</td>
+              <td>12/10/2016</td>
+              <td>56</td>
+              <td><a class="button white">New</a></td>
+            </tr>
+            <tr>
+              <td>23/05/2016</td>
+              <td>12/10/2016</td>
+              <td>56</td>
+              <td><a class="button white">New</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <footer>
+
+    </footer> -->
   </body>
 </html>

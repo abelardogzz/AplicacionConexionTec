@@ -1,24 +1,3 @@
-// Flex
-[class*="flRow"]  { display: flex; flex-direction: row;             }
-[class*="flCol"]  { display: flex; flex-direction: column;          }
-[class*="flRowR"] { display: flex; flex-direction: row-reverse;     }
-[class*="flColR"] { display: flex; flex-direction: column-reverse;  }
-[class*="aiBas"]  { align-items: baseline;    }
-[class*="aiCen"]  { align-items: center;      }
-[class*="aiEnd"]  { align-items: flex-end;    }
-[class*="aiSta"]  { align-items: flex-start;  }
-[class*="aiStr"]  { align-items: stretch;     }
-[class*="jcCen"]  { justify-content: center;        }
-[class*="jcEnd"]  { justify-content: flex-end;      }
-[class*="jcSta"]  { justify-content: flex-start;    }
-[class*="jcAro"]  { justify-content: space-around;  }
-[class*="jcBet"]  { justify-content: space-between; }
-
-// Margin center
-.margin-center{
-  margin: 0 auto;
-}
-
 // Breakpoints
 // Variable boundries
 $phone-only-size:           599px;
@@ -41,4 +20,28 @@ $big-desktop-up-size:       1600px;
 }
 @mixin for-big-desktop-up {
   @media (min-width: 1800px) { @content; }
+}
+
+// Flex
+[class*="flRow"]  { display: flex; flex-direction: row;             }
+[class*="flCol"]  { display: flex; flex-direction: column;          }
+[class*="flRowR"] { display: flex; flex-direction: row-reverse;     }
+[class*="flColR"] { display: flex; flex-direction: column-reverse;  }
+[class*="aiBas"]  { align-items: baseline;    }
+[class*="aiCen"]  { align-items: center;      }
+[class*="aiEnd"]  { align-items: flex-end;    }
+[class*="aiSta"]  { align-items: flex-start;  }
+[class*="aiStr"]  { align-items: stretch;     }
+[class*="jcCen"]  { justify-content: center;        }
+[class*="jcEnd"]  { justify-content: flex-end;      }
+[class*="jcSta"]  { justify-content: flex-start;    }
+[class*="jcAro"]  { justify-content: space-around;  }
+[class*="jcBet"]  { justify-content: space-between; }
+[class*="fwNow"]  { flex-wrap: nowrap;       }
+[class*="fwWra"]  { flex-wrap: wrap;         }
+[class*="fwRev"]  { flex-wrap: wrap-reverse; }
+
+// Margin center
+.margin-center{
+  margin: 0 auto;
 }
