@@ -18,7 +18,7 @@
 	else
 	{
 
-		$username = $_POST['username'];
+		$email = $_POST['email'];
 		$password = $_POST['password'];
 
 		//$hash = md5($password);
@@ -26,7 +26,7 @@
 		//echo $userName;
 		//echo $userPassword;
 		
-		$sql = "SELECT * FROM Users WHERE username = '$username' AND uPassword = '$hash'";
+		$sql = "SELECT * FROM Users WHERE email = '$email' AND uPassword = '$hash'";
 		$result = $conn->query($sql);
 		//echo $result;
 

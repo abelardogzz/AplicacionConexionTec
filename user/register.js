@@ -26,7 +26,6 @@ $(document).ready(function(){
 
 		var $name = $('#name');
 		var $lastName = $('#lastName');
-		var $username = $("#username");
 		var $password = $("#password");
 		var $passwordConfirmation = $("#passwordConfirmation");
 		var $email = $("#email");
@@ -47,14 +46,6 @@ $(document).ready(function(){
 		}
 		else{
 			$("#checkLastName").text("");
-		}
-
-		if ($username.val() == ""){
-			$("#checkUsername").text("Please provide your username");
-			$full = false;
-		}
-		else{
-			$("#checkUsername").text("");
 		}
 
 		if ($password.val() == ""){
@@ -92,7 +83,6 @@ $(document).ready(function(){
 			var jsonToSend = {
 							"name" : $("#name").val(),
 							"lastName" : $("#lastName").val(),
-		                    "username" : $("#username").val(),
 		                    "password" : $("#password").val(),
 		                    "email" : $("#email").val(), 
 		                };

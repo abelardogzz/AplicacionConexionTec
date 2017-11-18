@@ -47,7 +47,7 @@ $(document).ready(function(){
 
 		if($full){
 			var jsonToSend = {
-		                "username" : $("#username").val(),
+		                "email" : $("#email").val(),
 		                "password" : $("#password").val()
 		            };
 

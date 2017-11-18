@@ -18,9 +18,9 @@
 	else
 	{
 
-		$username = $_POST['username'];
+		$email = $_POST['email'];
 		
-		$sql = "SELECT username FROM Users WHERE username = '$username'";
+		$sql = "SELECT username FROM Users WHERE email = '$email'";
 		$result = $conn->query($sql);
 
 		if($result->num_rows > 0)
@@ -33,7 +33,6 @@
 			$name = $_POST['name'];
 			$lastName = $_POST['lastName'];
 			$password = $_POST['password'];
-			$email = $_POST['email'];
 
 			//$hash = md5($password);
 			$hash = $password;
@@ -41,12 +40,12 @@
 
 
 			
-			$sql = "INSERT INTO Users (username, uPNombre, uApellidoP, uPassword, uEmail, TipoDeUsuario, Deleted) VALUES ('$username','name','lastName', '$hash', '$email', 'Publico',FALSE)";
+			$sql = "INSERT INTO Users (uPNombre, uApellidoP, uPassword, uEmail, TipoDeUsuario, Deleted) VALUES ('name','lastName', '$hash', '$email', 'Publico',FALSE)";
 	    	
 	    	if (mysqli_query($conn, $sql)) 
 	    	{
 	    		session_start();
-				$_SESSION["username"] = $username;
+				$_SESSION["email"] = $email;
 			    echo json_encode("New record created successfully");
 			} 
 			else 

@@ -118,34 +118,5 @@ $(document).ready(function(){
       
     });
 
-/* VIEW OTHER USER PROFILE
-
-		$('#sProjectList').delegate(".view", "click", function(){
-
-
-			var jsonToSend = {
-		                    "projectID" : $(this).attr('id'),
-		                };
-
-		                $.ajax({
-		                    url : "projects/profile.php", // tu php
-		                    type : "POST",
-		                    data : jsonToSend,
-		                    dataType : "json",
-		                    contentType : "application/x-www-form-urlencoded",
-		                    success: function(jsonResponse){
-		                    	window.location.replace("view.html");
-
-		                    },
-		                    error : function(errorMessage){
-		                        alert(errorMessage.responseText);
-		                    }
-
-		                });
-
-
-		});
-    */
-
 
 });
