@@ -102,7 +102,7 @@ $(document).ready(function(){
                    newHtml += "<p> description: " + jsonResp[i].projectDescription + "</p>";
                    newHtml += "<p> Area: " + jsonResp[i].area + "</p>";
                    newHtml += "<p> created by: " + jsonResp[i].creatorN + " " + jsonResp[i].creatorLN + "</p> </div>" ;
-                   newHtml += "<input id= '" + jsonResp[i].projectID + "' class='view' type='Submit' value='view project'></div> ";
+                   newHtml += "<input id= '" + jsonResp[i].projectID + "' class='viewProject' type='Submit' value='Ver Proyecto'></div> ";
 
                           }
 
@@ -117,35 +117,34 @@ $(document).ready(function(){
                     });
       
     });
-
-/* VIEW OTHER USER PROFILE
-
-		$('#sProjectList').delegate(".view", "click", function(){
-
-
-			var jsonToSend = {
-		                    "projectID" : $(this).attr('id'),
-		                };
-
-		                $.ajax({
-		                    url : "projects/profile.php", // tu php
-		                    type : "POST",
-		                    data : jsonToSend,
-		                    dataType : "json",
-		                    contentType : "application/x-www-form-urlencoded",
-		                    success: function(jsonResponse){
-		                    	window.location.replace("view.html");
-
-		                    },
-		                    error : function(errorMessage){
-		                        alert(errorMessage.responseText);
-		                    }
-
-		                });
-
-
-		});
-    */
+    $(document).on('click', '.viewProject', verProyecto);
 
 
 });
+
+function verProyecto(){
+    var getId = $(this).attr('id');
+    $(location).attr('href', 'projects/show.html?id='+ getId);
+}
+
+function verProyecto2() {
+    var verProyectoJson = {
+        "action" : "VIEWPROJECT",
+        "id" : $(".viewProject").val()
+    };
+    console.log(verProyectoJson);
+    $.ajax({
+        url: "../data/applicationLayer.php",
+        type: "POST",
+        data: verProyectoJson,
+        dataType: "json",
+        contentType: "application/x-www-form-urlencoded",
+        success: function(jsonReceived){
+            window.location.href = "show_project.html?id='jsonReceived.'";
+            
+        },
+        error: function(errorMessage){
+            alert(errorMessage.responseText);
+        }
+    });
+  }

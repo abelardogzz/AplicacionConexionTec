@@ -3,8 +3,8 @@
 	function connectionToDataBase(){
 		$servername = "localhost";
 		$username = "root";
-		$password = "";
-		$dbname = "conexiontec";
+		$password = "root";
+		$dbname = "conexionTec";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
 		

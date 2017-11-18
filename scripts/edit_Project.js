@@ -75,6 +75,8 @@ $(document).ready(function(){
     });
     $(document).on('click', '.viewProject', verProyecto);
 });
+
+
 function verProyecto(){
     var getId = $(this).val();
     $(location).attr('href', 'show.html?id='+ getId);
