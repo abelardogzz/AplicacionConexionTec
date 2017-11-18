@@ -10,6 +10,10 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 /* line 26, ../scss/external/_classes.scss */
 [class*="flRow"] {
   display: -webkit-box;
@@ -141,7 +145,8 @@ body {
 
 /* line 12, ../scss/external/_global.scss */
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
 
 /* line 26, ../scss/external/_classes.scss */
 [class*="flRow"] {
@@ -274,7 +279,8 @@ body {
 
 /* line 12, ../scss/external/_global.scss */
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
 
 /* line 3, ../scss/components/_text.scss */
 * {
@@ -416,14 +422,21 @@ body {
 
 /* line 12, ../scss/external/_global.scss */
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
 
 /* line 3, ../scss/components/_base.scss */
 main {
   min-height: 100vh;
   width: 100vw; }
 
-/* line 9, ../scss/components/_base.scss */
+/* line 8, ../scss/components/_base.scss */
+footer {
+  width: 100vw;
+  height: 25vh;
+  background-color: #118046; }
+
+/* line 14, ../scss/components/_base.scss */
 div.card {
   -webkit-box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
           box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
@@ -431,6 +444,42 @@ div.card {
   max-width: 90%;
   background-color: #FFFFFF; }
 
+/* line 21, ../scss/components/_base.scss */
+a.button {
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  background-color: #504A94;
+  color: #FFFFFF;
+  cursor: pointer; }
+  /* line 28, ../scss/components/_base.scss */
+  a.button.positive {
+    background-color: #1DDA78; }
+  /* line 32, ../scss/components/_base.scss */
+  a.button.negative {
+    background-color: #BC1919; }
+  /* line 36, ../scss/components/_base.scss */
+  a.button.white {
+    background-color: #FFFFFF; }
+    /* line 39, ../scss/components/_base.scss */
+    a.button.white:hover {
+      background-color: #8883C1; }
+    /* line 43, ../scss/components/_base.scss */
+    a.button.white.clicked {
+      background-color: #5D56AA; }
+  /* line 48, ../scss/components/_base.scss */
+  a.button:hover {
+    background-color: #443F7D; }
+    /* line 51, ../scss/components/_base.scss */
+    a.button:hover.positive {
+      background-color: #19BC67; }
+    /* line 55, ../scss/components/_base.scss */
+    a.button:hover.negative {
+      background-color: #801111; }
+
+/* line 83, ../scss/components/_base.scss */
+.background {
+  background-color: #19BC67; }
+
 /* line 26, ../scss/external/_classes.scss */
 [class*="flRow"] {
   display: -webkit-box;
@@ -562,30 +611,226 @@ body {
 
 /* line 12, ../scss/external/_global.scss */
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
+
+/* line 3, ../scss/components/_dashboard.scss */
+div.dashboard {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #35C7E4;
+  padding-bottom: 3rem; }
+  /* line 9, ../scss/components/_dashboard.scss */
+  div.dashboard div.dash_row {
+    width: 70%; }
+    /* line 12, ../scss/components/_dashboard.scss */
+    div.dashboard div.dash_row div.dash_element {
+      padding: 2rem; }
+      /* line 15, ../scss/components/_dashboard.scss */
+      div.dashboard div.dash_row div.dash_element p, div.dashboard div.dash_row div.dash_element h2 {
+        margin-bottom: 0.5rem;
+        text-align: center; }
+      /* line 20, ../scss/components/_dashboard.scss */
+      div.dashboard div.dash_row div.dash_element p {
+        margin-bottom: 1rem; }
+      /* line 24, ../scss/components/_dashboard.scss */
+      div.dashboard div.dash_row div.dash_element h3 {
+        margin: 1rem 3rem 0.5rem 0.5rem; }
+  /* line 30, ../scss/components/_dashboard.scss */
+  div.dashboard table, div.dashboard td, div.dashboard th {
+    border: 1px solid #161519; }
+  /* line 34, ../scss/components/_dashboard.scss */
+  div.dashboard table {
+    border-collapse: collapse;
+    cursor: default;
+    margin: 1rem 1rem 0.5rem 1rem; }
+    /* line 39, ../scss/components/_dashboard.scss */
+    div.dashboard table th, div.dashboard table td {
+      min-width: 5rem;
+      text-align: center;
+      line-height: 0.8rem;
+      padding: 1rem;
+      font-size: 0.8rem; }
+    /* line 47, ../scss/components/_dashboard.scss */
+    div.dashboard table th {
+      background-color: #D3D2DE; }
+
+/* line 26, ../scss/external/_classes.scss */
+[class*="flRow"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row; }
+
+/* line 27, ../scss/external/_classes.scss */
+[class*="flCol"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+/* line 28, ../scss/external/_classes.scss */
+[class*="flRowR"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse; }
+
+/* line 29, ../scss/external/_classes.scss */
+[class*="flColR"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse; }
+
+/* line 30, ../scss/external/_classes.scss */
+[class*="aiBas"] {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline; }
+
+/* line 31, ../scss/external/_classes.scss */
+[class*="aiCen"] {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+/* line 32, ../scss/external/_classes.scss */
+[class*="aiEnd"] {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end; }
+
+/* line 33, ../scss/external/_classes.scss */
+[class*="aiSta"] {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
+
+/* line 34, ../scss/external/_classes.scss */
+[class*="aiStr"] {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch; }
+
+/* line 35, ../scss/external/_classes.scss */
+[class*="jcCen"] {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+/* line 36, ../scss/external/_classes.scss */
+[class*="jcEnd"] {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+
+/* line 37, ../scss/external/_classes.scss */
+[class*="jcSta"] {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
+
+/* line 38, ../scss/external/_classes.scss */
+[class*="jcAro"] {
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+
+/* line 39, ../scss/external/_classes.scss */
+[class*="jcBet"] {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+/* line 40, ../scss/external/_classes.scss */
+[class*="fwNow"] {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; }
+
+/* line 41, ../scss/external/_classes.scss */
+[class*="fwWra"] {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+/* line 42, ../scss/external/_classes.scss */
+[class*="fwRev"] {
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse; }
+
+/* line 45, ../scss/external/_classes.scss */
+.margin-center {
+  margin: 0 auto; }
+
+/* line 1, ../scss/external/_global.scss */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+/* line 7, ../scss/external/_global.scss */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+/* line 12, ../scss/external/_global.scss */
+a {
+  text-decoration: none;
+  cursor: pointer; }
 
 /* line 3, ../scss/components/_form.scss */
 .form {
+  padding: 3rem;
   margin: 3rem; }
-  /* line 6, ../scss/components/_form.scss */
+  @media (max-width: 599px) {
+    /* line 3, ../scss/components/_form.scss */
+    .form {
+      margin: 1rem;
+      padding: 1rem;
+      width: 80vw; } }
+  /* line 13, ../scss/components/_form.scss */
   .form div.title {
     margin-bottom: 3rem; }
-    /* line 9, ../scss/components/_form.scss */
+    @media (max-width: 599px) {
+      /* line 13, ../scss/components/_form.scss */
+      .form div.title {
+        margin-bottom: 1rem; } }
+    /* line 20, ../scss/components/_form.scss */
     .form div.title h1 {
       text-align: center;
       margin-bottom: 1rem;
       font-size: 3rem; }
-    /* line 14, ../scss/components/_form.scss */
+    /* line 25, ../scss/components/_form.scss */
     .form div.title p {
       max-width: 26rem; }
-  /* line 19, ../scss/components/_form.scss */
+      @media (max-width: 599px) {
+        /* line 25, ../scss/components/_form.scss */
+        .form div.title p {
+          width: 80vw;
+          margin: 0; } }
+  /* line 35, ../scss/components/_form.scss */
   .form input.input {
     padding: 0.5rem;
     font-size: 16px;
     line-height: 24px;
     border-bottom: 1px solid #161519;
-    width: 25rem;
+    width: 35vw;
     margin-bottom: 2rem; }
+    @media (max-width: 599px) {
+      /* line 35, ../scss/components/_form.scss */
+      .form input.input {
+        width: 80%; } }
 
 /* line 26, ../scss/external/_classes.scss */
 [class*="flRow"] {
@@ -718,7 +963,8 @@ body {
 
 /* line 12, ../scss/external/_global.scss */
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
 
 /* line 7, ../scss/components/_gallery.scss */
 .gallery {
@@ -899,7 +1145,8 @@ body {
 
 /* line 12, ../scss/external/_global.scss */
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
 
 /* line 6, ../scss/components/_navbar.scss */
 nav {
@@ -945,3 +1192,312 @@ nav {
         /* line 47, ../scss/components/_navbar.scss */
         nav div.filter select {
           width: 70%; } }
+  @media (max-width: 599px) {
+    /* line 57, ../scss/components/_navbar.scss */
+    nav div.search {
+      margin: 20px 0; } }
+  /* line 63, ../scss/components/_navbar.scss */
+  nav div.search input {
+    background: #F0EFF7;
+    width: 180px;
+    line-height: 28px;
+    font-size: 14px;
+    padding-left: 5px;
+    border-radius: 5px; }
+
+/* line 26, ../scss/external/_classes.scss */
+[class*="flRow"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row; }
+
+/* line 27, ../scss/external/_classes.scss */
+[class*="flCol"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+/* line 28, ../scss/external/_classes.scss */
+[class*="flRowR"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse; }
+
+/* line 29, ../scss/external/_classes.scss */
+[class*="flColR"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse; }
+
+/* line 30, ../scss/external/_classes.scss */
+[class*="aiBas"] {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline; }
+
+/* line 31, ../scss/external/_classes.scss */
+[class*="aiCen"] {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+/* line 32, ../scss/external/_classes.scss */
+[class*="aiEnd"] {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end; }
+
+/* line 33, ../scss/external/_classes.scss */
+[class*="aiSta"] {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
+
+/* line 34, ../scss/external/_classes.scss */
+[class*="aiStr"] {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch; }
+
+/* line 35, ../scss/external/_classes.scss */
+[class*="jcCen"] {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+/* line 36, ../scss/external/_classes.scss */
+[class*="jcEnd"] {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+
+/* line 37, ../scss/external/_classes.scss */
+[class*="jcSta"] {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
+
+/* line 38, ../scss/external/_classes.scss */
+[class*="jcAro"] {
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+
+/* line 39, ../scss/external/_classes.scss */
+[class*="jcBet"] {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+/* line 40, ../scss/external/_classes.scss */
+[class*="fwNow"] {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; }
+
+/* line 41, ../scss/external/_classes.scss */
+[class*="fwWra"] {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+/* line 42, ../scss/external/_classes.scss */
+[class*="fwRev"] {
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse; }
+
+/* line 45, ../scss/external/_classes.scss */
+.margin-center {
+  margin: 0 auto; }
+
+/* line 1, ../scss/external/_global.scss */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+/* line 7, ../scss/external/_global.scss */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+/* line 12, ../scss/external/_global.scss */
+a {
+  text-decoration: none;
+  cursor: pointer; }
+
+/* line 3, ../scss/components/_profile.scss */
+div.profile {
+  width: 100%; }
+  /* line 6, ../scss/components/_profile.scss */
+  div.profile h2 {
+    margin: 2rem 5rem 0 5rem; }
+    @media (max-width: 599px) {
+      /* line 6, ../scss/components/_profile.scss */
+      div.profile h2 {
+        margin: 2rem 1rem 0rem 1rem;
+        text-align: center; } }
+  /* line 15, ../scss/components/_profile.scss */
+  div.profile p {
+    margin: 1rem 3rem 0 5rem; }
+    @media (max-width: 599px) {
+      /* line 15, ../scss/components/_profile.scss */
+      div.profile p {
+        margin: 1rem 1rem 0 1rem;
+        text-align: center; } }
+  /* line 24, ../scss/components/_profile.scss */
+  div.profile div.media_video {
+    width: 80vw;
+    height: 80vw / 0.5625;
+    margin: 2rem 0 3rem 0; }
+    /* line 29, ../scss/components/_profile.scss */
+    div.profile div.media_video div.video_container {
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 30px;
+      overflow: hidden;
+      height: 0; }
+      /* line 36, ../scss/components/_profile.scss */
+      div.profile div.media_video div.video_container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; }
+  /* line 46, ../scss/components/_profile.scss */
+  div.profile div.media_image {
+    width: 80vw;
+    height: 50vh;
+    margin: 0 2rem;
+    background-position: center;
+    background-size: cover;
+    padding: 1rem; }
+    /* line 54, ../scss/components/_profile.scss */
+    div.profile div.media_image a.carouse_navigation {
+      -webkit-box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+              box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      background-color: #FFFFFF;
+      padding: 0.3rem 0.8rem;
+      background-color: #FFFFFF;
+      cursor: pointer; }
+  /* line 63, ../scss/components/_profile.scss */
+  div.profile div.profile_details {
+    padding: 1rem 3rem 0 3rem;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #D3D2DE;
+    background-color: #F0EFF7; }
+    /* line 70, ../scss/components/_profile.scss */
+    div.profile div.profile_details h1 {
+      -webkit-box-align: left;
+          -ms-flex-align: left;
+              align-items: left;
+      margin: 0rem 3rem 1rem 0rem; }
+      @media (max-width: 599px) {
+        /* line 70, ../scss/components/_profile.scss */
+        div.profile div.profile_details h1 {
+          margin: 1rem 1rem 2rem 1rem;
+          text-align: center; } }
+    @media (max-width: 599px) {
+      /* line 80, ../scss/components/_profile.scss */
+      div.profile div.profile_details div.details {
+        width: 100%; } }
+    @media (max-width: 599px) {
+      /* line 86, ../scss/components/_profile.scss */
+      div.profile div.profile_details div.details h4 {
+        text-align: left; } }
+    /* line 92, ../scss/components/_profile.scss */
+    div.profile div.profile_details div.details p {
+      margin: 0; }
+      @media (max-width: 599px) {
+        /* line 92, ../scss/components/_profile.scss */
+        div.profile div.profile_details div.details p {
+          text-align: left; } }
+    /* line 100, ../scss/components/_profile.scss */
+    div.profile div.profile_details div.details a.material-icons {
+      font-size: 50px;
+      cursor: pointer; }
+    /* line 106, ../scss/components/_profile.scss */
+    div.profile div.profile_details a.button {
+      font-weight: bold;
+      background-color: #71ECAC;
+      padding: 1rem;
+      cursor: pointer;
+      -webkit-box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+              box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+      border-radius: 5px; }
+      @media (max-width: 599px) {
+        /* line 106, ../scss/components/_profile.scss */
+        div.profile div.profile_details a.button {
+          margin: 1rem 0; } }
+      /* line 115, ../scss/components/_profile.scss */
+      div.profile div.profile_details a.button:hover {
+        -webkit-box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.2); }
+  /* line 122, ../scss/components/_profile.scss */
+  div.profile div.contact {
+    width: 40vw;
+    height: auto;
+    margin-bottom: 2rem; }
+    @media (max-width: 599px) {
+      /* line 122, ../scss/components/_profile.scss */
+      div.profile div.contact {
+        width: 80vw; } }
+    /* line 132, ../scss/components/_profile.scss */
+    div.profile div.contact h4 {
+      font-size: 42px;
+      text-align: center;
+      margin-bottom: 1rem; }
+    /* line 138, ../scss/components/_profile.scss */
+    div.profile div.contact textarea {
+      width: 100%;
+      height: 100px;
+      border: 1px solid #D3D2DE;
+      resize: none;
+      font-size: 18px;
+      padding: 0.5rem;
+      margin-bottom: 2rem; }
+    /* line 148, ../scss/components/_profile.scss */
+    div.profile div.contact div.featured {
+      width: 100vw;
+      background-color: #F0EFF7;
+      border-top: 1px solid #C6C5D0;
+      border-bottom: 1px solid #C6C5D0; }
+      /* line 154, ../scss/components/_profile.scss */
+      div.profile div.contact div.featured h4 {
+        font-size: 28px;
+        margin: 1rem 0 1rem 0; }
+      /* line 159, ../scss/components/_profile.scss */
+      div.profile div.contact div.featured div.comment {
+        -webkit-box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        background-color: #FFFFFF;
+        width: 25vw;
+        padding: 1rem;
+        margin-bottom: 2rem; }
+        @media (max-width: 599px) {
+          /* line 159, ../scss/components/_profile.scss */
+          div.profile div.contact div.featured div.comment {
+            width: 80vw; } }
+        /* line 169, ../scss/components/_profile.scss */
+        div.profile div.contact div.featured div.comment p {
+          margin: 0; }
+          @media (max-width: 599px) {
+            /* line 169, ../scss/components/_profile.scss */
+            div.profile div.contact div.featured div.comment p {
+              text-align: left; } }

@@ -3,7 +3,12 @@
 main{
   min-height: 100vh;
   width: 100vw;
-  // background-image: linear-gradient(-135deg, #61ABFA 0%, #1C70F7 100%);
+}
+
+footer{
+  width: 100vw;
+  height: 25vh;
+  background-color: $cucumber-xd;
 }
 
 div.card{
@@ -11,6 +16,47 @@ div.card{
   border-radius: 5px;
   max-width: 90%;
   background-color: $snow;
+}
+
+a.button{
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  background-color: $indigo;
+  color: $snow;
+  cursor: pointer;
+
+  &.positive{
+    background-color: $cucumber;
+  }
+
+  &.negative{
+    background-color: $apple-d;
+  }
+
+  &.white{
+    background-color: $snow;
+
+    &:hover{
+      background-color: $indigo-xl;
+    }
+
+    &.clicked{
+      background-color: $indigo-l;
+    }
+  }
+
+  &:hover{
+    background-color: $indigo-d;
+
+    &.positive{
+      background-color: $cucumber-d;
+    }
+
+    &.negative{
+      background-color: $apple-xd;
+    }
+  }
+
 }
 
 @mixin card($shadow: "y", $border-radius: "y", $max-width: "y", $background: "y") {
@@ -26,4 +72,14 @@ div.card{
   @if $background == "y" {
     background-color: $snow;
   }
+}
+
+@mixin button($color: $platinum) {
+  background-color: $color;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.background{
+  background-color: $cucumber-d;
 }

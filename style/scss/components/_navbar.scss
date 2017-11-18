@@ -52,9 +52,21 @@ nav{
         width: 70%;
       }
     }
+  }
+
+  div.search{
+
+    @include for-phone-only{
+      margin: 20px 0;
+    }
 
     input{
-      
+      background: $platinum-xl;
+      width: $filter_width;
+      line-height: 28px;
+      font-size: 14px;
+      padding-left: 5px;
+      border-radius: 5px;
     }
   }
 }

@@ -23,5 +23,5 @@ $(document).ready(function(){
   }
 
   loadJsFilesSequentially(js_files, 0);
-  
+
 });
