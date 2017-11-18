@@ -11,7 +11,7 @@
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
-	
+
 	// Check connection
 	if ($conn->connect_error) 
 	{
@@ -20,8 +20,9 @@
 	}
 	else
 	{
-		session_start();
-		$username = $_SESSION['username'];
+		$conn ->set_charset('utf8mb4');
+		//session_start();
+		//$username = $_SESSION['username'];
 		//echo $userName;
 		//echo $userPassword;
 		$sortMethod = $_POST['sort'];
@@ -40,8 +41,7 @@
 
 		switch ($sortMethod) {
 			case '0':
-		        $sql = "
-		        SELECT * FROM(
+		        $sql = " SELECT * FROM(
 				select t3.*, t1.ratings, coalesce(t2.com, 0) as com, t4.uPNombre,t4.uApellidoP
 				from 
 				    (SELECT * FROM project) t3
@@ -72,8 +72,7 @@
 		        break;
 
 		    case '1':
-		        $sql = "
-		        SELECT * FROM(
+		        $sql = "SELECT * FROM(
 				select t3.*, t1.ratings, coalesce(t2.com, 0) as com, t4.uPNombre,t4.uApellidoP
 				from 
 				    (SELECT * FROM project) t3
@@ -104,8 +103,7 @@
 		        ";
 		        break;
 		    case '2':
-		        $sql = "
-		        SELECT * FROM(
+		        $sql = "SELECT * FROM(
 				select t3.*, t1.ratings, coalesce(t2.com, 0) as com, t4.uPNombre,t4.uApellidoP
 				from 
 				    (SELECT * FROM project) t3
@@ -136,8 +134,7 @@
 			    ";
 		        break;
 		    case '3':
-		        $sql = "
-		        SELECT * FROM(
+		        $sql = "SELECT * FROM(
 				select t3.*, t1.ratings, coalesce(t2.com, 0) as com, t4.uPNombre,t4.uApellidoP
 				from 
 				    (SELECT * FROM project) t3
