@@ -105,7 +105,7 @@ $(document).ready(function(){
 		                    contentType : "application/x-www-form-urlencoded",
 		                    success: function(jsonResponse){
 		                        alert("Registration succesfull");
-		                        window.location.replace("../profile.html");
+		                        window.location.replace("../projdcts.html");
 		                    },
 		                    error : function(errorMessage){
 		                        alert(errorMessage.responseText);
