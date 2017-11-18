@@ -78,22 +78,15 @@ $(document).ready(function(){
         fInicio = new Date($("#fechaInicioCrea").val());
         fFin = new Date($("#fechaFinCrea").val());
 
-        if  {
-
-        }
-
-        if (fInicio == "Invalid Date" || fFin == "Invalid Date" || (fFin-fInicio)<0 || 
-            (fInicio.getDate()> 0 && fInicio.getDate()<31 ||
-            (fInicio.getMonth() -1)>= 0 && (fInicio.getMonth() -1)<= 11 ||
-            fInicio.getFullYear() >= 0 && fInicio.getFullYear()<= 275760 )){
+        if (fInicio == "Invalid Date" || fFin == "Invalid Date" || (fFin-fInicio)<0  ){
             alert("La fecha no valida");
+            //alert(fInicio);
         }
         else{
             var jsonToSend ={
                     "action" : "CREAVIRTUALSAMPLE",
                     "fehcaInicio" : $("#fechaInicioCrea").val(),
-                    "fechaFin": $("#fechaFinCrea").val(),
-                    "nombre" : $("#NombreVS").val()
+                    "fechaFin": $("#fechaFinCrea").val()
                 };
             $.ajax({
                 url : "../data/applicationLayer.php",
