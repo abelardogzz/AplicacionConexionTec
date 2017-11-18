@@ -2,6 +2,8 @@
     header('Accept: application/json');
     header('Content-type: application/json');
     require_once __DIR__ . '/dataLayer.php';
+    ini_set("display_errors",1);
+    ini_set("log_errors",1);
 
 $action = $_POST["action"];
 
@@ -105,8 +107,9 @@ function getProject() {
         $response = attemptLoadProjects();
 		$responseStatus = $response["responseStatus"];
 
-		if ($responseStatus["status"] == "EXITO") {	
+		if ($responseStatus == "EXITO") {
 			$responseData = $response["responseData"];
+         
 			echo json_encode($responseData);
 		}
 		else {

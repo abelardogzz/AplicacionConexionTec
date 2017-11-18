@@ -15,7 +15,6 @@ $(document).ready(function(){
             console.log(projects);
             var listaProjects = "";
             var projectsID = [];
-            console.log(projects.length);
             for(var i = 0; i < projects.length; i++){
                 listaProjects += 
                         '<tr>' +
@@ -34,7 +33,7 @@ $(document).ready(function(){
     });
     $(".viewProject").on("click", verProyecto);
 
-    var jsonToSend = {
+   /* var jsonToSend = {
                 "action" : "LOADPROJECT",
                 "projectID" : 1 
         };
@@ -62,7 +61,7 @@ $(document).ready(function(){
             alert(errMessage.responseText);
             console.log(errMessage);
         }
-    });
+    });*/
   
     $("#BtnEdit").on("click",function(){
         alert("Editando proyecto!");

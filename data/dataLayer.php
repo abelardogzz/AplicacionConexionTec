@@ -233,10 +233,21 @@ function attemptLoadProjects(){
 			$result = $connection ->query($sql);
 
 			if($result ->num_rows > 0) {
-	  			$responseStatus = array("status" =>"EXITO");
+                $responseData = array();
 
 	  			while ($row = $result->fetch_assoc()) {	
-                    $responseData = array('projectID' => $row['project_id'], 
+                    array_push($responseData, array('projectID' => $row['project_id'], 
+                                          'virtualSampleID' => $row['virtualSample_id'],
+                                          'userID' => $row['user_id'], 
+                                          'pNombre' => utf8_encode($row['pNombre']), 
+                                          'pDescripcion' => utf8_encode($row['pDescripcion']), 
+                                          'pArea' => $row['pArea'], 
+                                          'deleted' => $row['Deleted'], 
+                                          'pFechaRegistro' => $row['pFechaRegistro'],  
+                                          'pImagen1' => $row['pImagen1'], 
+                                          'pImagen2' => $row['pImagen2'], 
+                                          'pVideo' => $row['pVideo']));
+                   /* $responseData = array('projectID' => $row['project_id'], 
                                           'virtualSampleID' => $row['virtualSample_id'],
                                           'userID' => $row['user_id'], 
                                           'pNombre' => $row['pNombre'], 
@@ -246,10 +257,10 @@ function attemptLoadProjects(){
                                           'pFechaRegistro' => $row['pFechaRegistro'],  
                                           'pImagen1' => $row['pImagen1'], 
                                           'pImagen2' => $row['pImagen2'], 
-                                          'pVideo' => $row['pVideo']);
+                                          'pVideo' => $row['pVideo']);*/
 			    }
 			    $connection -> close();
-				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
+				return array("responseStatus"=>"EXITO","responseData"=>$responseData);
 			}
 			else {	
 				$connection -> close();
