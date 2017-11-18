@@ -1,8 +1,12 @@
 $(document).ready(function(){
+	     $(document).bind('keypress', function(e) {
+            if(e.keyCode==13){
+                 $('#register').trigger('click');
+             }
+        });
+
 
 // CHECK SESSION
-alert("got the file")
-
 			$.ajax({
 
 		                url : "../sessions/checksession.php",
@@ -20,12 +24,30 @@ alert("got the file")
 
 	$("#register").on("click", function(){
 
+		var $name = $('#name');
+		var $lastName = $('#lastName');
 		var $username = $("#username");
 		var $password = $("#password");
 		var $passwordConfirmation = $("#passwordConfirmation");
 		var $email = $("#email");
 
 		var $full = true;
+
+		if ($name.val() == ""){
+			$("#checkName").text("Please provide your Name");
+			$full = false;
+		}
+		else{
+			$("#checkName").text("");
+		}
+
+		if ($lastName.val() == ""){
+			$("#checkLastName").text("Please provide your last name");
+			$full = false;
+		}
+		else{
+			$("#checkLastName").text("");
+		}
 
 		if ($username.val() == ""){
 			$("#checkUsername").text("Please provide your username");
@@ -68,6 +90,8 @@ alert("got the file")
 
 		if($full){
 			var jsonToSend = {
+							"name" : $("#name").val(),
+							"lastName" : $("#lastName").val(),
 		                    "username" : $("#username").val(),
 		                    "password" : $("#password").val(),
 		                    "email" : $("#email").val(), 

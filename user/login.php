@@ -4,7 +4,7 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "root";
-	$dbname = "ReginaGallardo11";
+	$dbname = "ConexionTec";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -21,11 +21,12 @@
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 
-		$hash = md5($password);
+		//$hash = md5($password);
+		$hash = $password;
 		//echo $userName;
 		//echo $userPassword;
 		
-		$sql = "SELECT username, fName, lName FROM Users WHERE username = '$username' AND passwrd = '$hash'";
+		$sql = "SELECT username, uPNombre, uApellidoP FROM Users WHERE username = '$username' AND uPassword = '$hash'";
 		$result = $conn->query($sql);
 		//echo $result;
 
@@ -39,7 +40,7 @@
 			// output data of each row
 		    while($row = $result->fetch_assoc()) 
 		    {
-		    	$response = array('fName' => $row['fName'], 'lName' => $row['lName']);   
+		    	$response = array('fName' => $row['uPNombre'], 'lName' => $row['uApellidoP']);   
 			}
 
 		    echo json_encode($response);

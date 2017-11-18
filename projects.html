@@ -39,16 +39,37 @@
     <section id="search">
     <input id="searchbox" type="text"/>
     <input id="doSearch" type="submit" value="search" />
-    <select id='sort'>
+    <select id='sort' >
+    <option name='sort' value='0' > sort by... </option>
     <option name='sort' value='1'> newest </option>
     <option name='sort' value='2'> oldest </option>
-    <option name='sort' value='3'> highest ratings </option>
-    <option name='sort' value='4'> most comments </option>
+    <option name='sort' value='3'> most comments </option>
     </select>
     </section>
 
     <!-- Section 1 - Project Filters -->
     <section id="sProjectFilter">
+    <p> by Ratings:
+    <select id='grade'>
+    <option name='grade' value='0' default>all ratings </option>
+    <option name='grade' value='5'>graded 5 </option>
+    <option name='grade' value='4'>graded 4 or higher</option>
+    <option name='grade' value='3'>graded 3 or higher</option>
+    <option name='grade' value='2'>graded 2 or higher</option>
+    <option name='grade' value='1'>graded 1</option>
+    
+    </select> </p>
+    <p> by Area:
+    <select id='area' >
+    <option name='area' value='0' default>all areas </option>
+    </select> </p>
+    <p> by Period:
+    <select id='virtualSample'>
+    <option name='virtualSample' value='0' default>all periods </option>
+    </select> </p>
+
+
+
     </section>
 
     <!-- Section 2 - Project List -->

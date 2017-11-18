@@ -4,7 +4,7 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "root";
-	$dbname = "ReginaGallardo11";
+	$dbname = "conexionTec";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -30,16 +30,18 @@
 		}
 		else
 		{
-			
+			$name = $_POST['name'];
+			$lastName = $_POST['lastName'];
 			$password = $_POST['password'];
 			$email = $_POST['email'];
 
-			$hash = md5($password);
+			//$hash = md5($password);
+			$hash = $password;
 
 
 
 			
-			$sql = "INSERT INTO Users (username, passwrd, email) VALUES ('$username', '$hash', '$email')";
+			$sql = "INSERT INTO Users (username, uPNombre, uApellidoP, uPassword, uEmail, TipoDeUsuario, Deleted) VALUES ('$username','name','lastName', '$hash', '$email', 'Publico',FALSE)";
 	    	
 	    	if (mysqli_query($conn, $sql)) 
 	    	{

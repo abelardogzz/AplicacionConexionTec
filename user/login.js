@@ -1,6 +1,12 @@
 $(document).ready(function(){
+	//link enter to submit
+		$(document).bind('keypress', function(e) {
+            if(e.keyCode==13){
+                 $('#login').trigger('click');
+             }
+        });
 
-
+		//check session
 			$.ajax({
 
 		                url : "../sessions/checksession.php",
@@ -12,9 +18,10 @@ $(document).ready(function(){
 		                }
 
 		            });
-
+//when submit clicked
 
 	$("#login").on("click", function(){
+		//check all fields have been filled
 
 		var $username = $("#username");
 		var $password = $("#password");
@@ -36,6 +43,8 @@ $(document).ready(function(){
 			$("#checkPassword").text("");
 		}
 
+		//check if username and password exist and are correct
+
 		if($full){
 			var jsonToSend = {
 		                "username" : $("#username").val(),
@@ -50,6 +59,7 @@ $(document).ready(function(){
 		                dataType : "json",
 		                contentType : "application/x-www-form-urlencoded",
 		                success: function(jsonResponse){
+		                	//if correct go to profile
 		                    window.location.replace("../profile.html");
 		                },
 		                error : function(errorMessage){
