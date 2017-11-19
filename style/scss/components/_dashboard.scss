@@ -1,0 +1,51 @@
+@import "../external/external.scss";
+
+div.dashboard{
+  width: 100vw;
+  min-height: 100vh;
+  background-color: $water-l;
+  padding-bottom: 3rem;
+
+  div.dash_row{
+    width: 70%;
+
+    div.dash_element{
+      padding: 2rem;
+
+      p, h2{
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+
+      p{
+        margin-bottom: 1rem;
+      }
+
+      h3{
+        margin: 1rem 3rem 0.5rem 0.5rem;
+      }
+    }
+  }
+
+  table, td, th{
+    border: 1px solid $carbon;
+  }
+
+  table{
+    border-collapse: collapse;
+    cursor: default;
+    margin: 1rem 1rem 0.5rem 1rem;
+
+    th, td{
+      min-width: 5rem;
+      text-align: center;
+      line-height: 0.8rem;
+      padding: 1rem;
+      font-size: 0.8rem;
+    }
+
+    th{
+      background-color: $platinum;
+    }
+  }
+}
