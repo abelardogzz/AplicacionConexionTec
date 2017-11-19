@@ -214,8 +214,8 @@ function insertComment() {
     $project_id = $_POST['project_id'];
     $text = $_POST['text'];
     $responseStatus = attemptInsertComment($user_id, $project_id, $text);
-    if ($responseStatus["status"] != "EXITO") { 
-        $responseData = $response["responseData"];
+    if ($responseStatus["status"] == "EXITO") { 
+        $responseData = $user_id;
         echo json_encode($responseData);
     }
 }
