@@ -1,6 +1,11 @@
 $(document).ready(function(){
 	//link enter to submit
-		$(document).bind('keypress', function(e) {
+		$('#email').bind('keypress', function(e) {
+            if(e.keyCode==13){
+                 $('#login').trigger('click');
+             }
+        });
+        $('#password').bind('keypress', function(e) {
             if(e.keyCode==13){
                  $('#login').trigger('click');
              }
@@ -21,33 +26,9 @@ $(document).ready(function(){
 //when submit clicked
 
 	$("#login").on("click", function(){
-		//check all fields have been filled
 
-		var $username = $("#username");
-		var $password = $("#password");
-		var $full = true;
-		
-		if ($username.val() == ""){
-			$("#checkUserName").text("Please provide your username");
-			$full = false;
-		}
-		else{
-			$("#checkUserName").text("");
-		}
-
-		if ($password.val() == ""){
-			$("#checkPassword").text("Please provide your password");
-			$full = false;
-		}
-		else{
-			$("#checkPassword").text("");
-		}
-
-		//check if username and password exist and are correct
-
-		if($full){
 			var jsonToSend = {
-		                "username" : $("#username").val(),
+		                "email" : $("#email").val(),
 		                "password" : $("#password").val()
 		            };
 
@@ -67,7 +48,6 @@ $(document).ready(function(){
 		                }
 
 		            });
-		}
 
 
 	});

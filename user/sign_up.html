@@ -19,62 +19,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Style -->
-    <link rel="stylesheet" href="../style/master.css">
+    <link rel="stylesheet" href="../style/master/master.css">
 
     <!-- JS -->
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="register.js"></script>
+    <script src="../style/design_js/_adder.js"></script>
 
     <!-- Title -->
     <title>Crea Cuenta - ConexiónTec</title>
   </head>
   <body>
     <!-- Navbar -->
-    <nav id="navbar">
+     <nav class="flRow-jcBet-aiCen-fwWra">
+      <div class="nav_section flRow-jcAro">
+        <a class="home">Conexión Tec</a>
+      </div>
+      <div class="nav_section flRow-jcAro-aiCen">
+        <a class="page">%LINK%</a>
+        <a class="button">%BOTÓN%</a>
+      </div>
     </nav>
 
+    
+
     <!-- Section 1 - Sign Up Form -->
-    <section id="sSignUp">
-        <p>
-        name:<br/>
-        <input id="name" type="text" />
-        <span id="checkName" class="check"> </span><br/>
-        </p>
-        <p>
-        lastName:<br/>
-        <input id="lastName" type="text" />
-        <span id="checkLastName" class="check"> </span><br/>
-        </p>
-
-        <p>
-        username:<br/>
-        <input id="username" type="text" />
-        <span id="checkUsername" class="check"> </span><br/>
-        </p>
-
-        <p>
-        email:<br/>
-        <input id="email" type="text" />
-        <span id="checkEmail" class="check"> </span><br/>
-        </p>
-
-        <p>
-        Password:<br/>
-        <input id="password" type="password"/>
-        <span id="checkPassword" class="check"> </span><br/>
-        </p>
-
-        <p>
-        password confirmation:<br/>
-        <input id="passwordConfirmation" type="password"/>
-        <span id="checkPasswordConfirmation" class="check"> </span><br/>
-        </p>
-
-        <input id="register" type="submit" value= "Sign up" />
-
-      <p> Already have an account? <a href="sign_in.html"> Login </a></p>
-    </section>
-
+    <div class="background flRow-jcCen-aiCen">
+      <div class="card form flCol-aiCen-jcCen">
+        <div class="title">
+          <h1>iniciar session</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        </div>
+        <p>Correo electrónico</p>
+        <input type="text" id = "email" placeholder="john.doe@email.com" class="input">
+        <p>Nombre</p>
+        <input type="text" id = "name" placeholder="john" class="input">
+        <p>Apellido</p>
+        <input type="text" id = "lastName" placeholder="doe" class="input">
+        <input type="password" id = "password" placeholder="Contraseña" class="input">
+        <a id = "register" class="button">Enviar</a> </br>
+        <p> ¿Ya tienes cuenta? <a href="sign_in.html"> iniciar session </a></p>
+      </div>
+    </div>
     <!-- Footer -->
     <footer id="footer">
     </footer>
