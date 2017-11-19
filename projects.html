@@ -25,57 +25,66 @@
     
 
     <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+     <script src="style/design_js/_adder.js"></script>
     <script type="text/javascript" src="user/jquery.js"></script>
     <script type="text/javascript" src="projects/projectList.js"></script>
 
     <!-- Title -->
     <title>Perfil - ConexiónTec</title>
   </head>
-  <body>
+  <body class="flCol-aiCen-jcCen">
+
     <!-- Navbar -->
-    <nav id="navbar">
+    <nav class="flRow-jcBet-aiCen-fwWra">
+      <div class="nav_section flRow-jcAro">
+        <a class="home">Conexión Tec</a>
+      </div>
+      <div class="nav_section flRow-jcAro-aiCen">
+        <a class="page">%LINK%</a>
+        <a class="button">%BOTÓN%</a>
+      </div>
     </nav>
 
-    <!-- Section 0 - Search Bar -->
-    <section id="search">
-    <input id="searchbox" type="text"/>
-    <input id="doSearch" type="submit" value="search" />
-    <select id='sort' >
-    <option name='sort' value='0' > sort by... </option>
-    <option name='sort' value='1'> newest </option>
-    <option name='sort' value='2'> oldest </option>
-    <option name='sort' value='3'> most comments </option>
-    </select>
-    </section>
 
     <!-- Section 1 - Project Filters -->
-    <section id="sProjectFilter">
-    <p> by Ratings:
-    <select id='grade'>
-    <option name='grade' value='0' default>all ratings </option>
-    <option name='grade' value='5'>graded 5 </option>
-    <option name='grade' value='4'>graded 4 or higher</option>
-    <option name='grade' value='3'>graded 3 or higher</option>
-    <option name='grade' value='2'>graded 2 or higher</option>
-    <option name='grade' value='1'>graded 1</option>
+    <nav class="flRow-jcAro-aiCen-fwWra">
+      <div class="search">
+        <input id="searchbox" type="text" placeholder="Search">
+        <input id="doSearch" type="submit" value="search" hidden>
+      </div>
+      <div class="filter flCol-aiCen">
+        <p>Muestra virtual</p>
+        <select id='virtualSample'>
+        <option name='virtualSample' value='0' default>todos las muestras</option>
+        </select> </p>
+      </div>
+      <div class="filter flCol-aiCen">
+        <p>Calificación</p>
+        <select id='grade'>
+    <option name='grade' value='0' default>todas las calificaciones </option>
+    <option name='grade' value='5'> 5 </option>
+    <option name='grade' value='4'>4 o mas</option>
+    <option name='grade' value='3'>3 o mas</option>
+    <option name='grade' value='2'>2 o mas</option>    
+        </select>
+      </div>
+      <div class="filter flCol-aiCen">
+        <p>Área</p>
+        <select id='area' >
+    <option name='area' value='0' default>todas las áreas </option>
+    </select>
+      </div>
+    </nav>
     
-    </select> </p>
-    <p> by Area:
-    <select id='area' >
-    <option name='area' value='0' default>all areas </option>
-    </select> </p>
-    <p> by Period:
-    <select id='virtualSample'>
-    <option name='virtualSample' value='0' default>all periods </option>
-    </select> </p>
-
-
-
-    </section>
 
     <!-- Section 2 - Project List -->
-    <section id="sProjectList">
-    </section>
+    <main class="flRow-aiCen-jcCen">
+      <div class="gallery flRow-fwWra-jcAro-aiSta">
+            <div id="element">
+            </div>
+        </div>
+      </main>
 
     <!-- Footer -->
     <footer id="footer">

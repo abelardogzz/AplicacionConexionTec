@@ -76,7 +76,6 @@ $(document).ready(function(){
   
         var jsonToSend = {
                     "word" : $("#searchbox").val(),
-                    "sort" : $("[name=sort]:selected").val(),
                     "rating" : $("[name=grade]:selected").val(),
                     "area" : $("[name=area]:selected").val(),
                     "sample" : $("[name=virtualSample]:selected").val(),
@@ -92,32 +91,31 @@ $(document).ready(function(){
                           var newHtml = "";
                 idPost = jsonResp.length;
                 for(i = 0; i < jsonResp.length; i++){
-
-                   newHtml += "<div>" + "<img name='pPicture' src='" + jsonResp[i].image + "''>";
-                   newHtml += "<h4>" + jsonResp[i].projectName + "</h4>";
-                   newHtml += "<p> Rating: " + jsonResp[i].rating;
-                   //for(i = 0; i < parseInt(jsonResp.projectRating); i++)
-                    //newHtml += "*";
-                   newHtml += "</p>";
-                   newHtml += "<p> description: " + jsonResp[i].projectDescription + "</p>";
+                  newHtml+= "<div class='element'><header class='image_header'><div class='gradient_curtain flCol-aiBas-jcBet'>";
+                   //newHtml += "<div>" + "<img name='pPicture' src='" + jsonResp[i].image + "''>";
+                   newHtml += "<a id= '" + jsonResp[i].projectID + "href='#'' class='details_link'>Ver Detalles</a>";
+                   newHtml += "<div class='text_container'>";
+                   newHtml += "<h5>" + jsonResp[i].projectName + "</h5>";
+                   newHtml +="<p>Subtitle</p></div></div> </header><footer class='flRow-jcBet'><div class='text_container'>";
+                   newHtml += "<h5> Project owner: " + jsonResp[i].creatorN + " " + jsonResp[i].creatorLN + "</h5>";
                    newHtml += "<p> Area: " + jsonResp[i].area + "</p>";
-                   newHtml += "<p> created by: " + jsonResp[i].creatorN + " " + jsonResp[i].creatorLN + "</p> </div>" ;
-                   newHtml += "<input id= '" + jsonResp[i].projectID + "' class='viewProject' type='Submit' value='Ver Proyecto'></div> ";
+                   newHtml += "</div> </footer></div>";
+
 
                           }
 
-                          $("#sProjectList").html(newHtml);
+                          $("#element").replaceWith(newHtml);
                         },
                         error : function(errorMessage){
                             var newHtml = "";
                             newHtml += "<div> NO RESULTS WERE FOUND </div> ";
-                            $("#sProjectList").html(newHtml);
+                            $(".element").replaceWith(newHtml);
                         }
 
                     });
       
     });
-    $(document).on('click', '.viewProject', verProyecto);
+    $(document).on('click', '.details_link', verProyecto);
 
 
 });
@@ -126,25 +124,3 @@ function verProyecto(){
     var getId = $(this).attr('id');
     $(location).attr('href', 'projects/show.html?id='+ getId);
 }
-
-function verProyecto2() {
-    var verProyectoJson = {
-        "action" : "VIEWPROJECT",
-        "id" : $(".viewProject").val()
-    };
-    console.log(verProyectoJson);
-    $.ajax({
-        url: "../data/applicationLayer.php",
-        type: "POST",
-        data: verProyectoJson,
-        dataType: "json",
-        contentType: "application/x-www-form-urlencoded",
-        success: function(jsonReceived){
-            window.location.href = "show_project.html?id='jsonReceived.'";
-            
-        },
-        error: function(errorMessage){
-            alert(errorMessage.responseText);
-        }
-    });
-  }

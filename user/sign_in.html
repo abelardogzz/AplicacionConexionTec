@@ -18,12 +18,13 @@
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Style 
-    <link rel="stylesheet" href="../style/master.css">-->
+ 
+    <link rel="stylesheet" href="../style/master/master.css">
 
     <!-- JS -->
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="login.js"></script>
+    <script src="../style/design_js/_adder.js"></script>
 
     <!-- Title -->
     <!-- Title -->
@@ -31,29 +32,32 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav id="navbar">
+     <nav class="flRow-jcBet-aiCen-fwWra">
+      <div class="nav_section flRow-jcAro">
+        <a class="home">Conexión Tec</a>
+      </div>
+      <div class="nav_section flRow-jcAro-aiCen">
+        <a class="page">%LINK%</a>
+        <a class="button">%BOTÓN%</a>
+      </div>
     </nav>
 
+    
+
     <!-- Section 1 - Sign In Form -->
-    <section id="sSignIn">
-        <p>
-        Username:<br/>
-        <input id="username" type="text"/>
-        <span id="checkUserName" class="check" ></span> <br/>
-        </p> 
-
-        <p>
-        Password:<br/>
-        <input id="password" type="password"/>
-        <span id="checkPassword" class="check"></span><br/>
-        </p> 
-
-        <input id="login" type="submit" value= Login />
-
-        <br/>
-        <p> Dont have an account yet? <a href="sign_up.html"> Register </a></p>
-    </section>
-
+<div class="background flRow-jcCen-aiCen">
+      <div class="card form flCol-aiCen-jcCen">
+        <div class="title">
+          <h1>iniciar session</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        </div>
+        <p>Correo electrónico</p>
+        <input type="text" id = "email" placeholder="john.doe@email.com" class="input">
+        <input type="password" id = "password" placeholder="Contraseña" class="input">
+        <a id = "login" class="button">Enviar</a> </br>
+        <p> ¿no tienes cuent? <a href="sign_up.html"> Registrate </a></p>
+      </div>
+    </div>
     <!-- Footer -->
     <footer id="footer">
     </footer>
