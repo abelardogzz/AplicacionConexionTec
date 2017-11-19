@@ -431,7 +431,7 @@ main {
   width: 100vw; }
 
 /* line 8, ../scss/components/_base.scss */
-footer {
+footer.footer {
   width: 100vw;
   height: 25vh;
   background-color: #118046; }
@@ -445,40 +445,42 @@ div.card {
   background-color: #FFFFFF; }
 
 /* line 21, ../scss/components/_base.scss */
-a.button {
+.button {
   padding: 0.5rem 1rem;
   border-radius: 100px;
   background-color: #504A94;
   color: #FFFFFF;
   cursor: pointer; }
   /* line 28, ../scss/components/_base.scss */
-  a.button.positive {
+  .button.positive {
     background-color: #1DDA78; }
   /* line 32, ../scss/components/_base.scss */
-  a.button.negative {
+  .button.negative {
     background-color: #BC1919; }
   /* line 36, ../scss/components/_base.scss */
-  a.button.white {
+  .button.white {
     background-color: #FFFFFF; }
     /* line 39, ../scss/components/_base.scss */
-    a.button.white:hover {
+    .button.white:hover {
       background-color: #8883C1; }
     /* line 43, ../scss/components/_base.scss */
-    a.button.white.clicked {
+    .button.white.clicked {
       background-color: #5D56AA; }
   /* line 48, ../scss/components/_base.scss */
-  a.button:hover {
+  .button:hover {
     background-color: #443F7D; }
     /* line 51, ../scss/components/_base.scss */
-    a.button:hover.positive {
+    .button:hover.positive {
       background-color: #19BC67; }
     /* line 55, ../scss/components/_base.scss */
-    a.button:hover.negative {
+    .button:hover.negative {
       background-color: #801111; }
 
 /* line 83, ../scss/components/_base.scss */
 .background {
-  background-color: #19BC67; }
+  background-color: #19BC67;
+  width: 100vw;
+  min-height: 100vh; }
 
 /* line 26, ../scss/external/_classes.scss */
 [class*="flRow"] {
@@ -969,18 +971,20 @@ a {
 /* line 7, ../scss/components/_gallery.scss */
 .gallery {
   padding: 1rem;
-  background-color: #F0EFF7; }
-  /* line 11, ../scss/components/_gallery.scss */
+  background-color: #F0EFF7;
+  width: 100vw;
+  min-height: 100vh; }
+  /* line 13, ../scss/components/_gallery.scss */
   .gallery div.element {
     margin: 1rem 0.5rem;
     border-radius: 5px;
     background-color: #FFFFFF;
     border: 1px solid #D3D2DE; }
-    /* line 16, ../scss/components/_gallery.scss */
+    /* line 18, ../scss/components/_gallery.scss */
     .gallery div.element header {
       width: 100%;
       border-radius: 4px 4px 0 0; }
-      /* line 20, ../scss/components/_gallery.scss */
+      /* line 22, ../scss/components/_gallery.scss */
       .gallery div.element header.image_header {
         background: url("https://www.what-dog.net/Images/faces2/scroll0015.jpg");
         background-position: center;
@@ -988,20 +992,20 @@ a {
         width: 300px;
         height: 300px; }
         @media (max-width: 599px) {
-          /* line 20, ../scss/components/_gallery.scss */
+          /* line 22, ../scss/components/_gallery.scss */
           .gallery div.element header.image_header {
             width: 240px;
             height: 240px; } }
-        /* line 32, ../scss/components/_gallery.scss */
+        /* line 34, ../scss/components/_gallery.scss */
         .gallery div.element header.image_header .gradient_curtain {
           height: 100%;
           width: 100%;
           background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, transparent), to(rgba(22, 21, 25, 0.8)));
           background-image: linear-gradient(180deg, transparent 20%, rgba(22, 21, 25, 0.8) 100%); }
-          /* line 37, ../scss/components/_gallery.scss */
+          /* line 39, ../scss/components/_gallery.scss */
           .gallery div.element header.image_header .gradient_curtain h5, .gallery div.element header.image_header .gradient_curtain p {
             color: #FFFFFF; }
-          /* line 41, ../scss/components/_gallery.scss */
+          /* line 43, ../scss/components/_gallery.scss */
           .gallery div.element header.image_header .gradient_curtain a.details_link {
             -webkit-box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
                     box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
@@ -1010,7 +1014,7 @@ a {
             padding: 8px;
             line-height: 30px;
             margin-left: 30px; }
-            /* line 48, ../scss/components/_gallery.scss */
+            /* line 50, ../scss/components/_gallery.scss */
             .gallery div.element header.image_header .gradient_curtain a.details_link:hover {
               margin-top: -5px; }
 
