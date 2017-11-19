@@ -18,16 +18,29 @@ $(document).ready(function(){
             data = jsonResponse.virtualsample;
             console.log(data);
             for ( var x in data) {    
-               newhtml += "<label><input type=\"radio\" name=\"vs\" value=\"" + data[x].ID+ "\" ";
+                //<tr><td>23/01/2016</td><td>12/10/2016</td><td>56</td><td><a class="button white clicked">Current</a></td></tr>
+                //newhtml += "<label><input type=\"radio\" name=\"vs\" value=\"" + data[x].ID+ "\" ";
+                newhtml+="<tr><td>"+ data[x].FechaInicio +"</td>";
+                newhtml+=   "<td>"+data[x].FechaFin+"</td>";
+                newhtml+=   "<td>56</td> ";
+                newhtml+=   "<td><label><input type=\" radio \" name=\"vs\" value=\""+ data[x].ID+ " \" ";
+
+               // newhtml += " > </label></br> </td> ";
+                
+
+
+
                 if (data[x].Current == 1){ 
-                    newhtml += " checked = \" checked \" >";
+                    //newhtml += " checked = \" checked \" >";
+                    newhtml += " checked = \" checked \" > </label></br> </td> ";
                     console.log(data[x]);
                 }
                 else{
-                    newhtml += "  >"; 
+                    //newhtml += "  >"; 
+                    newhtml += " > </label></br> </td> ";
                 }
-
-                newhtml += data[x].FechaInicio+" "+ data[x].FechaFin +" </label></br>" ;
+                newhtml+= "</tr>  ";
+                //newhtml += data[x].FechaInicio+" "+ data[x].FechaFin +" </label></br>" ;
            }
            console.log(newhtml);
            $("#sVirtualSamples").append(newhtml);
@@ -42,6 +55,7 @@ $(document).ready(function(){
 
     //$("input[type='radio']").on("click",function(){
     $("#sVirtualSamples").change("click",function(){
+        
         var radioValue = $("input[name='vs']:checked").val();
         if(radioValue){
             //alert("Your are a - " + radioValue);
@@ -111,6 +125,8 @@ $(document).ready(function(){
 
 	//Boton para Modificar las fechas de calificacion
 	$("#BtnDetenerCal").on("click",function(){
+
+
 		var jsonToSend ={
 				"action" : "DETIENECALIFICACIONES",
                 "valor" : false
@@ -125,6 +141,7 @@ $(document).ready(function(){
                 success : function(jsonResponse){
                 	//alert(jsonResponse.message);
                     alert("Detiene de Calificaciones con exito!");
+
                     console.log(jsonResponse);
                 },
                 error : function(errorMessage){
