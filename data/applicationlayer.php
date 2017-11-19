@@ -40,6 +40,20 @@ switch($action){
     case 'UPDATERATING':
             updateRating();
             break;
+    case "CREAVIRTUALSAMPLE" : CrearVirtualSample();
+        break;
+    case "DETIENECALIFICACIONES" : UpdateCalificacion();
+        break;
+    case "REANUDACALIFICACIONES" : UpdateCalificacion();
+        break;
+    case "DETIENEREGISTRO" : UpdateRegistro();
+        break;
+    case "REANUDAREGISTRO" : UpdateRegistro();
+        break;
+    case "LOADVIRTUALSAMPLES" : LoadSamples();
+        break;
+    case "UPDATECURRENTVS" : UpdateVS();
+        break;
 }
 
 /**
@@ -130,22 +144,22 @@ function getProject() {
             die("The server is down, we couldn't establish the DB connection");
 		}
         
-    }
-    function viewProject() {
-        $id = $_POST['id'];
-        $response = attemptViewProject($id);
-		$responseStatus = $response["responseStatus"];
+}
+function viewProject() {
+    $id = $_POST['id'];
+    $response = attemptViewProject($id);
+	$responseStatus = $response["responseStatus"];
 
-		if ($responseStatus["status"] == "EXITO") {	
-			$responseData = $response["responseData"];
-			echo json_encode($responseData);
-		}
-		else {
-			header('HTTP/1.1 500 Bad connection to Database');
-            die("The server is down, we couldn't establish the DB connection");
-		}
-        
-    }
+	if ($responseStatus["status"] == "EXITO") {	
+		$responseData = $response["responseData"];
+		echo json_encode($responseData);
+	}
+	else {
+		header('HTTP/1.1 500 Bad connection to Database');
+        die("The server is down, we couldn't establish the DB connection");
+	}
+    
+}
 function viewComments() {
         $id = $_POST['id'];
         $response = attemptViewComments($id);
@@ -160,49 +174,122 @@ function viewComments() {
             die("The server is down, we couldn't establish the DB connection");
         }
         
+}
+
+function viewRating() {
+    $project_id = $_POST['project_id'];
+    $user_id = $_SESSION["current_user"];
+    $response = attemptViewRating($project_id, $user_id);
+    $responseStatus = $response["responseStatus"];
+
+    if ($responseStatus["status"] == "EXITO") { 
+        $responseData = $response["responseData"];
+        echo json_encode($responseData);
+    }
+    else {
+        header('HTTP/1.1 500 Bad connection to Database');
+        die("The server is down, we couldn't establish the DB connection");
+    }
+}
+
+function updateRating() {
+    $project_id = $_POST['project_id'];
+    $user_id = $_SESSION["current_user"];
+    $rating = $_POST['rating'];
+    $response = attemptUpdateRating($project_id, $user_id, $rating);
+    $responseStatus = $response["responseStatus"];
+
+    if ($responseStatus["status"] == "EXITO") { 
+        $responseData = $response["responseData"];
+        echo json_encode($responseData);
+    }
+    else {
+        header('HTTP/1.1 500 Bad connection to Database');
+        die("The server is down, we couldn't establish the DB connection");
+    }
+}
+
+function insertComment() {
+    $user_id = $_SESSION["current_user"];
+    $project_id = $_POST['project_id'];
+    $text = $_POST['text'];
+    $responseStatus = attemptInsertComment($user_id, $project_id, $text);
+    if ($responseStatus["status"] == "EXITO") { 
+        $responseData = $user_id;
+        echo json_encode($responseData);
+    }
+}
+
+    
+function CrearVirtualSample(){
+    $dInicio = $_POST["fehcaInicio"];
+    $dFin = $_POST["fechaFin"];
+    $Current = True ;
+
+    $result = attemptCreaVirtualSample($dInicio,$dFin,$Current);
+
+    if ($result["status"] == "SUCCESS"){
+        echo json_encode($result);
+    }
+    else{
+        header('HTTP/1.1 500'.$result["status"]);
+        die($result["status"]);
+    }
+}
+
+function UpdateCalificacion(){
+    $valor = $_POST["valor"];
+
+    $result = attemptUpdateCalificacion($valor);
+
+    if ($result["status"] == "SUCCESS"){
+        echo json_encode($result);
+    }
+    else{
+        header('HTTP/1.1 500'.$result["status"]);
+        die($result["status"]);
     }
 
-    function viewRating() {
-        $project_id = $_POST['project_id'];
-        $user_id = $_SESSION["current_user"];
-        $response = attemptViewRating($project_id, $user_id);
-        $responseStatus = $response["responseStatus"];
+}
 
-        if ($responseStatus["status"] == "EXITO") { 
-            $responseData = $response["responseData"];
-            echo json_encode($responseData);
-        }
-        else {
-            header('HTTP/1.1 500 Bad connection to Database');
-            die("The server is down, we couldn't establish the DB connection");
-        }
+function UpdateRegistro(){
+    $valor = $_POST["valor"];
+
+    $result = attemptUpdateRegistro($valor);
+
+    if ($result["status"] == "SUCCESS"){
+        echo json_encode($result);
     }
-
-    function updateRating() {
-        $project_id = $_POST['project_id'];
-        $user_id = $_SESSION["current_user"];
-        $rating = $_POST['rating'];
-        $response = attemptUpdateRating($project_id, $user_id, $rating);
-        $responseStatus = $response["responseStatus"];
-
-        if ($responseStatus["status"] == "EXITO") { 
-            $responseData = $response["responseData"];
-            echo json_encode($responseData);
-        }
-        else {
-            header('HTTP/1.1 500 Bad connection to Database');
-            die("The server is down, we couldn't establish the DB connection");
-        }
+    else{
+        header('HTTP/1.1 500'.$result["status"]);
+        die($result["status"]);
     }
+}
 
-    function insertComment() {
-        $user_id = $_SESSION["current_user"];
-        $project_id = $_POST['project_id'];
-        $text = $_POST['text'];
-        $responseStatus = attemptInsertComment($user_id, $project_id, $text);
-        if ($responseStatus["status"] != "EXITO") { 
-            $responseData = $response["responseData"];
-            echo json_encode($responseData);
-        }
+function LoadSamples(){
+
+    $result = attemptLoadSamples();
+
+    if ($result["status"] == "SUCCESS"){
+        echo json_encode($result);
     }
+    else{
+        header('HTTP/1.1 500'.$result["status"]);
+        die($result["status"]);
+    }
+}
+
+function UpdateVS(){
+    $Id = $_POST["id"];
+
+    $result = attemptUpdateVS($Id);
+    if ($result["status"] == "SUCCESS"){
+        echo json_encode($result);
+    }
+    else{
+        header('HTTP/1.1 500'.$result["status"]);
+        die($result["status"]);
+    }
+}
+
 ?>

@@ -1,93 +1,124 @@
 <html>
-<head>
-    <title>Show Project Details</title>
-    <meta charset="UTF-8" />
-    <script type="text/javascript" src="jquery.js"></script>
-    <style type="text/css">
-        /*
-        Ratings Stars
-        */
-        .stars {
-          unicode-bidi: bidi-override;
-          direction: rtl;
-          text-align: left;
-        }
-        .stars > span {
-          display: inline-block;
-          position: relative;
-          width: 1.1em;
-        }
-        .stars > span:hover,
-        .stars > span:hover ~ span {
-          color: transparent;
-        }
-        .stars > span:hover:before,
-        .stars > span:hover ~ span:before {
-           content: "\2605";
-           position: absolute;
-           left: 0; 
-           color: gold;
-        }
-    </style>
-</head>
-<body>
-    <div>
-    </div>
-    <div>
-        <h1>Show Project</h1>
-        <p>Your rating: <span id="rating"></span></p>
-        <div>
-            <p class="stars"><span class="star" id="star-5">☆</span><span class="star" id="star-4">☆</span><span class="star" id="star-3">☆</span><span class="star" id="star-2">☆</span><span class="star" id="star-1">☆</span></p>
+  <head>
+    <!-- UTF-8 charset -->
+    <meta charset="utf-8">
+
+    <!-- Title -->
+    <title>Ver Proyecto Conexión Tec</title>
+
+    <!-- Metadata -->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="../style/master/master.css">
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="jquery.js"></script>  
+    <!--script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script-->
+    <script src="design_js/_adder.js"></script>
+  </head>
+    <body class="flCol-aiCen-jcCen">
+
+    <!-- Navbar -->
+    <nav class="flRow-jcBet-aiCen-fwWra">
+      <div class="nav_section flRow-jcAro">
+        <a class="home">Conexión Tec</a>
+      </div>
+      <div class="nav_section flRow-jcAro-aiCen">
+        <a class="page">%LINK%</a>
+        <a class="button">%BOTÓN%</a>
+      </div>
+    </nav>
+
+    <!-- Show Project -->
+    <div class="profile">
+      <!-- Project information -->
+      <div class="profile_details" id="nombreProyecto">
+      </div>
+      <div class="flRow-jcCen">
+        <div class="media_image flRow-jcBet-aiCen" id="image_carousel">
+          <a class="carouse_navigation" id="carousel_left"><</a>
+          <a class="carouse_navigation" id="carousel_right">></a>
         </div>
-    </div>
-    <span id="slogan">Show Project info</span></br>
-        <div id="getProject" class="hiddenSection">
-            <fieldset id="getProject">
-                <legend>Project Info</legend>
-                <div id="projectContainer">
-                    <div id="readIdOfProject">
-                    </div>
-                    <table id="projectTable">
-                        <tr>
-                            <th>projectID</th>
-                            <th>VirtualSample</th>
-                            <th>userID</th>
-                            <th>pNombre</th>
-                            <th>pDescripcion</th>
-                            <th>pArea</th>
-                            <th>deleted</th>
-                            <th>pFechaRegistro</th>
-                            <th>pImagen1</th>
-                            <th>Pimagen2</th>
-                            <th>pVideo</th>
-                        </tr>
-                    </table>
-                </div>    
-            </fieldset>
-            <fieldset>
-                <legend>Project Comments</legend>
-                <table id="commentsTable">
-                        <tr>
-                            <th>commentID</th>
-                            <th>userID</th>
-                            <th>projectID</th>
-                            <th>Date</th>
-                            <th>Comment</th>
-                        </tr>
-                    </table>
-            </fieldset>
+      </div>
+      <div class="projectDescription">
+          <h2>Project description</h2>
+      </div>
+      <div class="flRow-jcCen">
+        <div class="media_video">
+          <div class="video_container">
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Contact -->
+      <div class="profile_details">
+        <div class="flRow-jcBet-aiCen-fwWra">
+          <div class="details flCol-aiCen">
+            <h4>Califíca el proyecto</h4>
             <div>
-                <p>Add your comment:</p>
-                <textarea id="textComment"></textarea>
-                <br>
-                <button id="addComment">Add Me!</button>
+              <a class="material-icons stars" id="star-1">star_border</a>
+              <a class="material-icons stars" id="star-2">star_border</a>
+              <a class="material-icons stars" id="star-3">star_border</a>
+              <a class="material-icons stars" id="star-4">star_border</a>
+              <a class="material-icons stars" id="star-5">star_border</a>
             </div>
+          </div>
         </div>
+      </div>
+      <div class="flCol-aiCen-jcCen">
+        <div class="contact flCol-aiCen">
+          <h4>Comments</h4>
+          <textarea id="textComment" placeholder="Leave a comment"></textarea>
+          <a class="button" id="addComment">Comment</a>
+            <p></p>
+          <div class="featured">
+            <h4>Featured comments</h4>
+            <div class="flRow-aiSta-jcAro-fwWra" id="commentSection">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
-	<script type="text/javascript">
+<script type="text/javascript">
 		$(document).ready(function(){
-            var idRetrieved = getUrlParameter("id");
-			$("#readIdOfProject").text(getUrlParameter("id"));	
+            
+        //MANEJO DE CARRUSEL DE IMAGENES
+        var array_index = 0;
+        $("#carousel_right").click(function(){
+          if (array_index === image_array.length - 1) {
+            array_index = 0;
+          }
+          else {
+            array_index = array_index + 1;
+          }
+          $("#image_carousel").css("background-image", "url("+ image_array[array_index] +")");
+        });
+
+        $("#carousel_left").click(function(){
+          if (array_index === 0) {
+            array_index = image_array.length - 1;
+          }
+          else {
+            array_index = array_index - 1;
+          }
+          $("#image_carousel").css("background-image", "url("+ image_array[array_index] +")");
+        });   
+        //LOGICA PARA EL HOVER DE ESTRELLAS    
+        $("a.material-icons").mouseenter(function(){
+          $(this).text("star").prevAll().text("star");
+        }).mouseleave(function(){
+          $(this).text("star_border").prevAll().text("star_border");
+        });
+            
+        var idRetrieved = getUrlParameter("id");
+        $("#readIdOfProject").text(getUrlParameter("id"));	
     
         var verProyecto = { 
             "action" : "VIEWPROJECT",
@@ -111,23 +142,43 @@
                 var projects = jsonReceived;
                 var listaProjects = "";
                 var projectsID = [];
-                for(var i = 0; i < projects.length; i++){
-                    listaProjects += 
-                            '<tr>' +
-                            '<td>' + projects[i].projectID + '</td>' +
-                            '<td>' + projects[i].virtualSampleID + '</td>' +
-                            '<td>' + projects[i].userID + '</td>' +
-                            '<td>' + projects[i].pNombre + '</td>' +
-                            '<td>' + projects[i].pDescripcion + '</td>' +
-                            '<td>' + projects[i].pArea + '</td>' +
-                            '<td>' + projects[i].deleted + '</td>' +
-                            '<td>' + projects[i].pFechaRegistro + '</td>' +
-                            '<td>' + projects[i].pImagen1 + '</td>' +
-                            '<td>' + projects[i].pImagen2 + '</td>' +
-                            '<td>' + projects[i].pVideo + '</td>' +
-                            '</tr>'   
-                }
-                $("#projectTable").append(listaProjects);
+                var pName = "";
+                pName += '<h1>' + projects[0].pNombre +'</h1>' +
+                          '<div class="flRow-jcBet-aiSta">' +
+                              '<div class="details">' +
+                                '<h4>' + projects[0].primerNombre + ' '+ projects[0].segNombre + '</h4>' +
+                                    '<p>' + projects[0].pArea +'</p>' +  
+                                '<i class="material-icons">star</i>' +
+                                '<i class="material-icons">star</i>' +
+                                '<i class="material-icons">star</i>' +
+                                '<i class="material-icons">star_half</i>' +
+                                '<i class="material-icons">star_border</i>' +
+                              '</div>' +
+                        '</div>';
+                $("#nombreProyecto").append(pName);
+                image_array=[projects[0].pImagen1,
+                            projects[0].pImagen2];
+                var array_index = 0;
+                $("#image_carousel").css("background-image", "url(" + image_array[array_index] + ")");
+                /*var img = "";
+                
+                img += '<div class="media_image flRow-jcBet-aiCen" id="image_carousel">' +
+                        '<a class="carouse_navigation" id="carousel_left"><</a>' +
+                        '<a class="carouse_navigation" id="carousel_right">></a>' +
+                        '</div>';
+                $().append(img);*/
+                
+                var pDescripcion = "";
+                pDescripcion += '<p>' + projects[0].pDescripcion +'</p>';
+                $(".projectDescription").append(pDescripcion);
+                
+                var videoURL = projects[0].pVideo;
+                var videoId = getId(videoURL);
+                var videoAppend = "";
+                videoAppend += '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe>';
+                $(".video_container").append(videoAppend);
+                
+                
             },
             error : function(errorMessage){
                 alert(errorMessage.responseText);
@@ -169,40 +220,43 @@
                 var listaComments = "";
                 var commentsID = [];
                 for(var i = 0; i < comments.length; i++){
-                    listaComments += 
-                            '<tr>' +
-                            '<td>' + comments[i].commentID + '</td>' +
-                            '<td>' + comments[i].userID + '</td>' +
-                            '<td>' + comments[i].projectID + '</td>' +
-                            '<td>' + comments[i].date + '</td>' +
-                            '<td>' + comments[i].comment + '</td>' +
-                            '</tr>'   
+                    listaComments +='<div class="comment card">' +
+                                       '<strong>' + comments[i].primerNombre + ' ' + comments[i].segNombre + '</strong>'+
+                                       '<p>' + comments[i].date + '</p>'+ 
+                                       '<p>' + comments[i].comment + '</p>'+
+                                    '</div>'; 
                 }
-                $("#commentsTable").append(listaComments);
+                $("#commentSection").append(listaComments);
             },
             error : function(errorMessage){
                 alert(errorMessage.responseText);
             }
         });
-        $('.stars').on('click', '.star', function() {
+        $('.stars').on('click', function() {
             var stars = parseInt($(this).attr('id').slice(-1));
             var actualizarRating = {
                 "action" : "UPDATERATING",
                 "project_id" : idRetrieved,
                 "rating" : stars
             };
-            console.log(stars);
             $.ajax({ 
-                url: "applicationLayer.php",
+                url: "../data/applicationLayer.php",
                 type: "POST",
                 data: actualizarRating,
                 success: function(data){
                     // Reload page after adding comment
-                    location.reload();
+                    alert("Calificación Registrada");
                 }
             });
         });
         $('#addComment').on('click', function() {
+           var $this = $(this);
+           var alreadyClicked = $this.data('clicked');
+           if (alreadyClicked) {
+              return false;
+           }
+           $this.data('clicked', true);
+            
             var comment = $('#textComment').val();
             var insertarCommentario = {
                 "action" : "INSERTCOMMENT",
@@ -210,12 +264,19 @@
                 "text" : comment
             };
             $.ajax({ 
-                url: "applicationLayer.php",
+                url: "../data/applicationLayer.php",
                 type: "POST",
                 data: insertarCommentario,
                 success: function(data){
                     // Reload page after adding comment
-                    location.reload();
+                    var listaComments = "";
+                    var user = data;
+                    listaComments +='<div class="comment card">' +
+                                       '<strong>' + user + '</strong>'+
+                                       '<p>' + comment + '</p>'+
+                                    '</div>';
+                    $("#commentSection").append(listaComments);
+                    alert("Comentario registrado");
                 }
             });
         });
@@ -225,5 +286,15 @@
 				var results = new RegExp('[\?&]' + paramName + '=([^&#]*)').exec(window.location.href);
 				return results[1] || 0;
 			}
+        function getId(url) {
+            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            var match = url.match(regExp);
+
+            if (match && match[2].length == 11) {
+                return match[2];
+            } else {
+                return 'error';
+            }
+        }
 	</script>
 </html>
