@@ -4,7 +4,7 @@
 		$servername = "localhost";
 		$username = "root";
 		$password = "root";
-		$dbname = "conexionTec";
+		$dbname = "conexiontec";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
 		
@@ -230,7 +230,8 @@
 function attemptViewProject($id){
     $connection = connectionToDataBase();
 		if ($connection != null) {
-			$sql = "SELECT * FROM project WHERE project_id = '$id'";
+            $sql = "SELECT project_id, virtualSample_id, project.user_id, pNombre, pDescripcion, pArea, project.Deleted, pFechaRegistro, pImagen1, pImagen2, pVideo, users.user_id, uPNombre, uApellidoP, uEmail From project JOIN users ON project.user_id = users.user_id WHERE project.project_id = '$id'";
+			//$sql = "SELECT * FROM project WHERE project_id = '$id'";
 			$result = $connection ->query($sql);
 
 			if($result ->num_rows > 1) {
@@ -250,7 +251,12 @@ function attemptViewProject($id){
                                           'pFechaRegistro' => $row['pFechaRegistro'],  
                                           'pImagen1' => $row['pImagen1'], 
                                           'pImagen2' => $row['pImagen2'], 
-                                          'pVideo' => $row['pVideo']));
+                                          'pVideo' => $row['pVideo'],
+                                          'userID2' => $row['user_id'],
+                                          'primerNombre' => $row['uPNombre'],
+                                          'segNombre' => $row['uApellidoP'],
+                                          'email' => $row['uEmail'],
+                                                   ));
 			    }
 			    $connection -> close();
 				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
@@ -347,7 +353,8 @@ function attemptViewComments($id){
     $connection = connectionToDataBase();
 
 		if ($connection != null) {
-			$sql = "SELECT * FROM Comments WHERE project_id = '$id'";
+            $sql = "SELECT users.uPNombre, users.uApellidoP, comments.cDate, comments.comment From users JOIN comments ON users.user_id = comments.user_id WHERE comments.project_id = '$id' ORDER BY comments.cDate"; 
+			//$sql = "SELECT * FROM Comments WHERE project_id = '$id'";
 			$result = $connection ->query($sql);
 
 			if($result ->num_rows > 0) {
@@ -355,7 +362,7 @@ function attemptViewComments($id){
 	  			$responseData = array();
 
 	  			while ($row = $result->fetch_assoc()) {	
-			    	array_push($responseData,array("commentID" => $row["comment_id"], "userID" => $row["user_id"], "projectID" => $row["project_id"], "date" => $row["cDate"], "comment" => utf8_encode($row["comment"])));
+			    	array_push($responseData,array("primerNombre" => $row["uPNombre"], "segNombre" => $row["uApellidoP"], "date" => $row["cDate"], "comment" => utf8_encode($row["comment"])));
 			    }
 			    $connection -> close();
 				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
@@ -363,7 +370,7 @@ function attemptViewComments($id){
                 $responseStatus = array("status" => "EXITO");
                 $responseData = array();
                 
-                array_push($responseData, array("commentID" => "No Comments", "userID" => "No Comments", "projectID" => "No Comments", "date" => "No Comments", "comment" => "No Comments" ));
+                array_push($responseData, array("primerNombre" => "No Comments", "segNombre" => "No Comments", "date" => "No Comments", "comment" => "No Comments"));
                 $connection -> close();
 				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
             }
@@ -394,7 +401,7 @@ function attemptUpdateRating($project_id, $user_id, $rating) {
 	  			if ($result === TRUE) {
 	  				$responseStatus = array("status" =>"EXITO");
 	  				$connection -> close();
-					return array("responseStatus"=>$responseStatus);
+					return array("status" => "EXITO", "responseStatus"=>$responseStatus);
 	  			}
 	  			else {
 	  				$responseStatus = array("status" =>"500");
@@ -408,7 +415,7 @@ function attemptUpdateRating($project_id, $user_id, $rating) {
 	  			if ($result === TRUE) {
 	  				$responseStatus = array("status" =>"EXITO");
 	  				$connection -> close();
-					return array("responseStatus"=>$responseStatus);
+					return array("stauts" => "EITO", "responseStatus"=>$responseStatus);
 	  			}
 	  			else {
 	  				$responseStatus = array("status" =>"500");
@@ -433,19 +440,183 @@ function attemptInsertComment($user_id, $project_id, $text){
 			if ($result === TRUE) {
 				$responseStatus = array("status" =>"EXITO");
 				$connection -> close();
-				return array("responseStatus"=>$responseStatus);
+				return array("status" => "EXITO" ,"responseStatus"=> "EXITO");
 			}
 			else {
-				$connection -> close();
 				$responseStatus = array("status" => "500");
+                $connection -> close();
 				return array("responseStatus"=>$responseStatus);;
 			}
 		}
 		else {
 			$responseStatus = array("status" => "500");
-			return array("responseStatus"=>$responseStatus);;
+			return array("status"=> "EXITO");
 		}
 	$responseStatus = array("status" => "500");
     return array("responseStatus"=>$responseStatus);;
 }
+
+	function attemptCreaVirtualSample($dInicio,$dFin,$Current){
+		$conn = connectionToDataBase();
+
+		if ($conn != null){
+			$conn ->set_charset('utf8mb4');
+
+			//$sqlVerifica = "SELECT * FROM virtualsample WHERE vsName = '$Nombre'";
+			//$result = $conn->query($sqlVerifica); 
+
+			//Verifica si no esta registrado ese correo antes
+			//if ($result->num_rows > 0)//Double check
+			//{
+			//		$conn -> close();
+			//		return array("status" => "Ese nombre ya esta registrado!");
+			//	}
+			//	else
+			//{//Realiza el update de datos
+				$sqlUpdate = "UPDATE virtualsample SET vsCurrent = false,Calificacion = false ,Registro = false";
+				//$result = $conn->query($sqlVerifica); 
+		        $sqlInsert = "INSERT INTO VirtualSample(vsStart_Date,vsEnd_Date,vsCurrent,Calificacion,Registro) VALUES ('$dInicio','$dFin',$Current,TRUE,TRUE) ";
+		        //INSERT INTO VirtualSample(vsStart_Date,vsEnd_Date,vsCurrent,Calificacion,Registro) VALUES ('2017-10-8','2017-10-8',True,TRUE,TRUE)
+
+		        if (mysqli_query($conn,$sqlUpdate) && mysqli_query($conn,$sqlInsert)){//True si se ejectua correcto
+				    $conn-> close();
+				    return array("status" => "SUCCESS");
+				}
+				else{//Error al hacer UPDATE en la BD
+					$conn -> close();
+					return array("status" => "ERROR al Crear VS");
+				}
+
+			    
+			//}
+		}else{//Error de conexion con BD
+				$conn -> close();
+				return array("status" => "Problema de conexion con la Base de datos, al crear VS");
+		}
+	}
+
+	function attemptUpdateCalificacion($valor){
+		$conn = connectionToDataBase();
+
+		if ($conn != null){
+			$conn ->set_charset('utf8mb4');
+			$sqlUpdate = "UPDATE virtualsample SET Calificacion = $valor WHERE vsCurrent = TRUE ";
+
+	        if (mysqli_query($conn,$sqlUpdate)){//True si se ejectua correcto
+			    $conn-> close();
+			    return array("status" => "SUCCESS");
+			}
+			else{//Error al hacer UPDATE en la BD
+				$conn -> close();
+				return array("status" => "ERROR al Actualizar Calificacion VS");
+			}
+
+			    
+			//}
+		}else{//Error de conexion con BD
+				$conn -> close();
+				return array("status" => "Problema de conexion con la Base de datos, al Actualizar Calificacion VS");
+		}
+	}
+
+	function attemptUpdateRegistro($valor){
+		$conn = connectionToDataBase();
+
+		if ($conn != null){
+			$conn ->set_charset('utf8mb4');
+			$sqlUpdate = "UPDATE virtualsample SET Registro = $valor WHERE vsCurrent = TRUE ";
+
+	        if (mysqli_query($conn,$sqlUpdate)){//True si se ejectua correcto
+			    $conn-> close();
+			    return array("status" => "SUCCESS");
+			}
+			else{//Error al hacer UPDATE en la BD
+				$conn -> close();
+				return array("status" => "ERROR al Actualizar Calificacion VS");
+			}
+
+			    
+			//}
+		}else{//Error de conexion con BD
+				$conn -> close();
+				return array("status" => "Problema de conexion con la Base de datos, al Actualizar Calificacion VS");
+		}
+	}
+
+
+	function attemptLoadSamples(){
+		$conn = connectionToDataBase();
+
+		if ($conn != null){
+			$conn ->set_charset('utf8mb4');
+			$sql = "SELECT * FROM virtualsample";
+			$result = $conn->query($sql); 
+
+			if ($result->num_rows <= 0){//Double check{
+				$conn -> close();
+				return array("status" => "VS no registrados!");
+		    	//header('HTTP/1.1 406 User not found'); //Pre-Prepares a json file with mssg
+		        //die("Wrong credentials provided!"); 
+			}
+
+	        if ($result->num_rows > 0)//Double check
+			{
+				$vs = array();	
+				// output data of each row
+			    while($row = $result->fetch_assoc()) 
+			    {
+			    	$response = array('ID' => $row['virtualSample_id'],
+		    	 					'FechaInicio' => $row['vsStart_Date'], 
+		    	 					'FechaFin' => $row['vsEnd_Date'], 
+		    	 					'calif' => $row['Calificacion'], 
+		    	 					'reg' => $row['Registro'], 
+		    	 					'Current' => $row['vsCurrent']);   
+			    	array_push($vs, $response);
+			    	
+
+				}
+			    $conn-> close();
+			    return array("status" => "SUCCESS","virtualsample" => $vs);
+			}
+			else
+			{
+				$conn -> close();
+				return array("status" => "VirtualSample NOT FOUND");
+			}
+
+			    
+			//}
+		}else{//Error de conexion con BD
+				$conn -> close();
+				return array("status" => "Problema de conexion con la Base de datos, al Actualizar Calificacion VS");
+		}
+	}
+
+	function attemptUpdateVS($Id){
+			$conn = connectionToDataBase();
+
+		if ($conn != null){
+			$conn ->set_charset('utf8mb4');
+
+				$sqlUpdate = "UPDATE virtualsample SET vsCurrent = false,Calificacion = false ,Registro = false";
+				//$result = $conn->query($sqlVerifica); 
+		        $sqlUpdate2 = "UPDATE virtualsample SET vsCurrent = true WHERE virtualSample_id = '$Id' ";
+		        //INSERT INTO VirtualSample(vsStart_Date,vsEnd_Date,vsCurrent,Calificacion,Registro) VALUES ('2017-10-8','2017-10-8',True,TRUE,TRUE)
+
+		        if (mysqli_query($conn,$sqlUpdate) && mysqli_query($conn,$sqlUpdate2)){//True si se ejectua correcto
+				    $conn-> close();
+				    return array("status" => "SUCCESS");
+				}
+				else{//Error al hacer UPDATE en la BD
+					$conn -> close();
+					return array("status" => "ERROR al cambiar Virtual Sample");
+				}
+
+			    
+			//}
+		}else{//Error de conexion con BD
+				$conn -> close();
+				return array("status" => "Problema de conexion con la Base de datos, al cambiar VS");
+		}
+	}
 ?>
