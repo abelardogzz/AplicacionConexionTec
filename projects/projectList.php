@@ -25,7 +25,6 @@
 		//$username = $_SESSION['username'];
 		//echo $userName;
 		//echo $userPassword;
-		$sortMethod = $_POST['sort'];
 		$rate = $_POST['rating'];
 		$rating = (int)$rate;
 		$virts = $_POST['sample'];
@@ -38,9 +37,6 @@
 		if ($vs == 0)
 			$vs = '';
 
-
-		switch ($sortMethod) {
-			case '0':
 		        $sql = " SELECT * FROM(
 				select t3.*, t1.ratings, coalesce(t2.com, 0) as com, t4.uPNombre,t4.uApellidoP
 				from 
@@ -69,101 +65,7 @@
 				    )
 				group by project_id
 		        ";
-		        break;
-
-		    case '1':
-		        $sql = "SELECT * FROM(
-				select t3.*, t1.ratings, coalesce(t2.com, 0) as com, t4.uPNombre,t4.uApellidoP
-				from 
-				    (SELECT * FROM project) t3
-				left join
-				    (SELECT users.user_id, users.uPNombre,users.uApellidoP FROM users)t4
-				ON
-				    t3.user_id = t4.user_id
-				LEFT JOIN
-				    (SELECT comments.project_id, COUNT(*) AS com FROM comments GROUP BY project_id) t2
-				ON
-				    t3.project_id = t2.project_id
-				left join
-				    (SELECT grade.project_id, AVG(grade) AS ratings FROM grade GROUP BY project_id) t1
-				on
-				    t1.project_id = t2.project_id
-				)as projects 
-				WHERE virtualSample_id LIKE '%$vs%'
-					AND ratings >= $rating
-				    AND pArea LIKE '%$area%'
-				    AND (pNombre LIKE '%$word%'
-						OR pDescripcion LIKE '%$word%'
-				        OR pArea LIKE '%$word%'
-				        OR uPNombre LIKE '%$word%'
-				        OR uApellidoP LIKE '%$word%'
-				    )
-				group by project_id
-		        ORDER BY pFechaRegistro DESC
-		        ";
-		        break;
-		    case '2':
-		        $sql = "SELECT * FROM(
-				select t3.*, t1.ratings, coalesce(t2.com, 0) as com, t4.uPNombre,t4.uApellidoP
-				from 
-				    (SELECT * FROM project) t3
-				left join
-				    (SELECT users.user_id, users.uPNombre,users.uApellidoP FROM users)t4
-				ON
-				    t3.user_id = t4.user_id
-				LEFT JOIN
-				    (SELECT comments.project_id, COUNT(*) AS com FROM comments GROUP BY project_id) t2
-				ON
-				    t3.project_id = t2.project_id
-				left join
-				    (SELECT grade.project_id, AVG(grade) AS ratings FROM grade GROUP BY project_id) t1
-				on
-				    t1.project_id = t2.project_id
-				)as projects 
-				WHERE virtualSample_id LIKE '%$vs%'
-					AND ratings >= $rating
-				    AND pArea LIKE '%$area%'
-				    AND (pNombre LIKE '%$word%'
-						OR pDescripcion LIKE '%$word%'
-				        OR pArea LIKE '%$word%'
-				        OR uPNombre LIKE '%$word%'
-				        OR uApellidoP LIKE '%$word%'
-				    )
-				group by project_id
-			    ORDER BY pFechaRegistro ASC
-			    ";
-		        break;
-		    case '3':
-		        $sql = "SELECT * FROM(
-				select t3.*, t1.ratings, coalesce(t2.com, 0) as com, t4.uPNombre,t4.uApellidoP
-				from 
-				    (SELECT * FROM project) t3
-				left join
-				    (SELECT users.user_id, users.uPNombre,users.uApellidoP FROM users)t4
-				ON
-				    t3.user_id = t4.user_id
-				LEFT JOIN
-				    (SELECT comments.project_id, COUNT(*) AS com FROM comments GROUP BY project_id) t2
-				ON
-				    t3.project_id = t2.project_id
-				left join
-				    (SELECT grade.project_id, AVG(grade) AS ratings FROM grade GROUP BY project_id) t1
-				on
-				    t1.project_id = t2.project_id
-				)as projects 
-				WHERE virtualSample_id LIKE '%$vs%'
-					AND ratings >= $rating
-				    AND pArea LIKE '%$area%'
-				    AND (pNombre LIKE '%$word%'
-						OR pDescripcion LIKE '%$word%'
-				        OR pArea LIKE '%$word%'
-				        OR uPNombre LIKE '%$word%'
-				        OR uApellidoP LIKE '%$word%'
-				    )
-				group by project_id
-			    ORDER BY com DESC";
-		        break;
-		} 
+		       
 
 
 		$result = $conn->query($sql);
