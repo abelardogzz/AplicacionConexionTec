@@ -305,6 +305,8 @@
 			    	$response = array('ID' => $row['virtualSample_id'],
 		    	 					'FechaInicio' => $row['vsStart_Date'], 
 		    	 					'FechaFin' => $row['vsEnd_Date'], 
+		    	 					'calif' => $row['Calificacion'], 
+		    	 					'reg' => $row['Registro'], 
 		    	 					'Current' => $row['vsCurrent']);   
 			    	array_push($vs, $response);
 			    	
