@@ -3,8 +3,8 @@
 	function connectionToDataBase(){
 		$servername = "localhost";
 		$username = "root";
-		$password = "root";
-		$dbname = "conexionTec";
+		$password = "";
+		$dbname = "conexiontec";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
 		
@@ -230,7 +230,8 @@
 function attemptViewProject($id){
     $connection = connectionToDataBase();
 		if ($connection != null) {
-			$sql = "SELECT * FROM project WHERE project_id = '$id'";
+            $sql = "SELECT project_id, virtualSample_id, project.user_id, pNombre, pDescripcion, pArea, project.Deleted, pFechaRegistro, pImagen1, pImagen2, pVideo, users.user_id, uPNombre, uApellidoP, uEmail From project JOIN users ON project.user_id = users.user_id WHERE project.project_id = '$id'";
+			//$sql = "SELECT * FROM project WHERE project_id = '$id'";
 			$result = $connection ->query($sql);
 
 			if($result ->num_rows > 1) {
@@ -250,7 +251,12 @@ function attemptViewProject($id){
                                           'pFechaRegistro' => $row['pFechaRegistro'],  
                                           'pImagen1' => $row['pImagen1'], 
                                           'pImagen2' => $row['pImagen2'], 
-                                          'pVideo' => $row['pVideo']));
+                                          'pVideo' => $row['pVideo'],
+                                          'userID2' => $row['user_id'],
+                                          'primerNombre' => $row['uPNombre'],
+                                          'segNombre' => $row['uApellidoP'],
+                                          'email' => $row['uEmail'],
+                                                   ));
 			    }
 			    $connection -> close();
 				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
@@ -347,7 +353,8 @@ function attemptViewComments($id){
     $connection = connectionToDataBase();
 
 		if ($connection != null) {
-			$sql = "SELECT * FROM Comments WHERE project_id = '$id'";
+            $sql = "SELECT users.uPNombre, users.uApellidoP, comments.cDate, comments.comment From users JOIN comments ON users.user_id = comments.user_id WHERE comments.project_id = '$id' ORDER BY comments.cDate"; 
+			//$sql = "SELECT * FROM Comments WHERE project_id = '$id'";
 			$result = $connection ->query($sql);
 
 			if($result ->num_rows > 0) {
@@ -355,7 +362,7 @@ function attemptViewComments($id){
 	  			$responseData = array();
 
 	  			while ($row = $result->fetch_assoc()) {	
-			    	array_push($responseData,array("commentID" => $row["comment_id"], "userID" => $row["user_id"], "projectID" => $row["project_id"], "date" => $row["cDate"], "comment" => utf8_encode($row["comment"])));
+			    	array_push($responseData,array("primerNombre" => $row["uPNombre"], "segNombre" => $row["uApellidoP"], "date" => $row["cDate"], "comment" => utf8_encode($row["comment"])));
 			    }
 			    $connection -> close();
 				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
@@ -363,7 +370,7 @@ function attemptViewComments($id){
                 $responseStatus = array("status" => "EXITO");
                 $responseData = array();
                 
-                array_push($responseData, array("commentID" => "No Comments", "userID" => "No Comments", "projectID" => "No Comments", "date" => "No Comments", "comment" => "No Comments" ));
+                array_push($responseData, array("primerNombre" => "No Comments", "segNombre" => "No Comments", "date" => "No Comments", "comment" => "No Comments"));
                 $connection -> close();
 				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
             }
@@ -394,7 +401,7 @@ function attemptUpdateRating($project_id, $user_id, $rating) {
 	  			if ($result === TRUE) {
 	  				$responseStatus = array("status" =>"EXITO");
 	  				$connection -> close();
-					return array("responseStatus"=>$responseStatus);
+					return array("status" => "EXITO", "responseStatus"=>$responseStatus);
 	  			}
 	  			else {
 	  				$responseStatus = array("status" =>"500");
@@ -408,7 +415,7 @@ function attemptUpdateRating($project_id, $user_id, $rating) {
 	  			if ($result === TRUE) {
 	  				$responseStatus = array("status" =>"EXITO");
 	  				$connection -> close();
-					return array("responseStatus"=>$responseStatus);
+					return array("stauts" => "EITO", "responseStatus"=>$responseStatus);
 	  			}
 	  			else {
 	  				$responseStatus = array("status" =>"500");
@@ -433,17 +440,17 @@ function attemptInsertComment($user_id, $project_id, $text){
 			if ($result === TRUE) {
 				$responseStatus = array("status" =>"EXITO");
 				$connection -> close();
-				return array("responseStatus"=>$responseStatus);
+				return array("status" => "EXITO" ,"responseStatus"=> "EXITO");
 			}
 			else {
-				$connection -> close();
 				$responseStatus = array("status" => "500");
+                $connection -> close();
 				return array("responseStatus"=>$responseStatus);;
 			}
 		}
 		else {
 			$responseStatus = array("status" => "500");
-			return array("responseStatus"=>$responseStatus);;
+			return array("status"=> "EXITO");
 		}
 	$responseStatus = array("status" => "500");
     return array("responseStatus"=>$responseStatus);;
