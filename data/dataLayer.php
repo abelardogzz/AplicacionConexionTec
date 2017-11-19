@@ -3,7 +3,7 @@
 	function connectionToDataBase(){
 		$servername = "localhost";
 		$username = "root";
-		$password = "";
+		$password = "root";
 		$dbname = "conexiontec";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
@@ -568,6 +568,8 @@ function attemptInsertComment($user_id, $project_id, $text){
 			    	$response = array('ID' => $row['virtualSample_id'],
 		    	 					'FechaInicio' => $row['vsStart_Date'], 
 		    	 					'FechaFin' => $row['vsEnd_Date'], 
+		    	 					'calif' => $row['Calificacion'], 
+		    	 					'reg' => $row['Registro'], 
 		    	 					'Current' => $row['vsCurrent']);   
 			    	array_push($vs, $response);
 			    	
