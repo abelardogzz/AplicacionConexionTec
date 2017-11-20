@@ -4,8 +4,7 @@ $(document).ready(function(){
 
 
 var jsonToSend = {
-                "action" : "LOADPROFILE",
-                "username" : $_SESSION["username"]
+                "action" : "LOADPROFILE"
         };
 
     $.ajax({
@@ -32,14 +31,8 @@ var jsonToSend = {
         }
     });
 
-/*
-    $("#HomePage").on("click",function(){
-        window.location.replace("home.php");
+    $("#BtnEdita").on('click',function(){
+        window.location.replace("../user/edit.html");
     });
-
-    $("#FriendsPage").on("click",function(){
-        window.location.replace("friends.php");
-    });
-*/
 
 });

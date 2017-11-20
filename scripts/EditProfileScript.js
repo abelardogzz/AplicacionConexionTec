@@ -5,8 +5,7 @@ $(document).ready(function(){
     //Modifica los campos y al darle "save" se actualiza
 
     var jsonToSend = {
-                "action" : "LOADPROFILE",
-                "email" : "abe@mail.com" 
+                "action" : "LOADPROFILE"
         };
     $.ajax({
         url:"../data/applicationLayer.php",
