@@ -8,7 +8,7 @@ var jsonToSend = {
         };
 
     $.ajax({
-        url:"data/applicationLayer.php",
+        url:"../data/applicationLayer.php",
         type: "POST", <!--GET|POST|PUT-->
         data: jsonToSend,
         dataType: "json",
@@ -32,7 +32,7 @@ var jsonToSend = {
     });
 
     $("#BtnEdita").on('click',function(){
-        window.location.replace("../user/edit.html");
+        window.location.replace("user/edit.html");
     });
 
 });
