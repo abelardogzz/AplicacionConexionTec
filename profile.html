@@ -28,19 +28,45 @@
     <!-- Title -->
     <title>Perfil - ConexiónTec</title>
 
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../scripts/ProfileScript.js" ></script>
     <script type="text/javascript" src="user/jquery.js"></script>
     <script type="text/javascript" src="sessions/destroySession.js"></script>
   </head>
   <body>
     <!-- Navbar -->
-    <nav id="navbar">
+    <nav class="flRow-jcBet-aiCen-fwWra">
+        <div class="nav_section flRow-jcAro">
+          <a class="home">Conexión Tec</a>
+        </div>
+        <div class="nav_section flRow-jcAro-aiCen">
+          <a class="page">%LINK%</a>
+          <a id="logout" class="button">Logout</a>
+        </div>
     </nav>
 
-     <!-- Section 0 - prueba signOut -->
-    <input id="logout" type="submit" value= "logout" />
+
+    <div class="background flRow-jcCen-aiCen">
+      <div class="card form flCol-aiCen-jcCen">
+        <div class="title">
+          <h1>Información Personal</h1>
+        </div>
+        <p>Información</p>
+        <div id="dshowProfile">
+            
+        </div>
+        
+
+
+
+        <a id="BtnEdit" class="button">Editar</a>
+      </div>
+    </div>
 
     <!-- Section 1 - User Information -->
     <section id="sUserInformation">
+
     </section>
 
     <!-- Section 2 - Created Projects -->
