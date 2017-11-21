@@ -24,32 +24,57 @@
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../scripts/edit_Project.js" ></script>
+    <script type="text/javascript" src="../scripts/edit_ProjectPersonales.js" ></script>
 
     <!-- Title -->
     <title>Editar Proyecto - ConexiónTec</title>
   </head>
   <body>
     <!-- Navbar -->
-    <nav id="navbar">
+    <nav class="flRow-jcBet-aiCen-fwWra">
+        <div class="nav_section flRow-jcAro">
+          <a class="home">Conexión Tec</a>
+        </div>
+        <div class="nav_section flRow-jcAro-aiCen">
+          <a id="Perfil" class="page"></a>
+          <a class="button">%BOTÓN%</a>
+        </div>
     </nav>
 
     <!-- Section 1 - Edit project form -->
     <section id="sEditProject">
-    <div id="dEditProject">
-      <p>Nombre</p></br>
-      <input id="ieditNombre" type="text" ></input></br>
-      <p>Descripcion</p></br>
-      <input id="ieditDescripcion" type="text" ></input></br>
-      <p>Imagen</p></br>
-      <input id="ieditImagen" type="text" ></input>
-      <p>Area</p></br>
-      <input id="ieditArea" type="text" ></input>
-      <input id="ieditProjectID" hidden="true" ></input>
-      <input id="BtnEdit" type="submit" value="Save Changes"></input>
+    
+    </section>
+
+    <div class="background flRow-jcCen-aiCen">
+      <div class="card form flCol-aiCen-jcCen">
+        <div class="title">
+          <h1>Editar Project</h1>
+          <p>
+            Llena el Formulario para actualizar informacion de tu proyecto
+          </p>
+        </div>
+        <div id="dEditProject">
+          <p>Nombre</p>
+          <input id="ieditNombre" type="text" class="input"></input></br>
+          <p>Descripcion</p>
+          <input id="ieditDescripcion" type="text"class="input" ></input></br>
+          <p>Imagen</p>
+          <input id="ieditImagen" type="text"class="input" ></input>
+          <p>Area</p>
+          <input id="ieditArea" type="text"class="input" ></input>
+          <input id="ieditProjectID" hidden="true" ></input>
+        </div>
+
+        <a id="BtnEdit" class="button">Guardar</a>
+      </div>
     </div>
 
-    </section>
+
+
+
+
+
 
     <!-- Footer -->
     <footer id="footer">

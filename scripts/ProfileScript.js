@@ -52,7 +52,7 @@ var jsonToSend = {
                 newhtml += "<td>"+ jsonData[x].Nombre +"</td>";
                 newhtml += "<td>"+ jsonData[x].Descripcion +"</td>";
                 newhtml += "<td>"+ jsonData[x].area +"</td>";
-                newhtml += "<td><input type=\"radio\" name=\"projectToedit\" id=\""+jsonData[x].ID+"\"/> ";
+                newhtml += "<td><input type=\"radio\" name=\"projectToedit\" id=\""+jsonData[x].ID+"\" value=\""+jsonData[x].ID+"\" /> ";
             }
 
             
@@ -77,8 +77,9 @@ var jsonToSend = {
         window.location.replace("user/edit.html");
     });
     $("#btnEditProjecto").on('click',function(){
-        
-        window.location.replace("projects/edit_project.html");
+        var radioValue = $("input[name='projectToedit']:checked").val();
+        //alert(radioValue);
+        window.location.replace("projects/edit_project.html?id="+radioValue);
     });
 
 

@@ -173,11 +173,11 @@
 			{//Realiza el update de datos
 			//Queda pendiente el campo que hace referencia al registro
 			//Eso lo puedo obtener de las sesiones pero no se cual vamos a usar
-		        $sql = "UPDATE project SET pNombre = '$Nombre',pDescripcion = '$Descripcion',pImage = '$Imagen',pArea = '$Area' WHERE project_id = '$pID' ";
+		        $sql = "UPDATE project SET pNombre = '$Nombre',pDescripcion = '$Descripcion',pImagen1 = '$Imagen',pArea = '$Area' WHERE project_id = '$pID'";
 
 		        if (mysqli_query($conn,$sql)){//True si se ejectua correcto
 				    $conn-> close();
-				    $datos = array('Pombre' => $Nombre,
+				    $datos = array('pNombre' => $Nombre,
 		    	 					'email' => $Descripcion,
 		    	 					'Imagen' => $Imagen,
 		    	 					'Area' => $Area);  
@@ -226,10 +226,10 @@
 		}
 		else {
 			$responseStatus = array("status" => "500");
-			return array("responseStatus"=>$responseStatus);;
+			return array("responseStatus"=>$responseStatus);
 		}
     $responseStatus = array("status" => "500");
-    return array("responseStatus"=>$responseStatus);;
+    return array("responseStatus"=>$responseStatus);
 }*/
 function attemptViewProject($id){
     $connection = connectionToDataBase();
@@ -268,10 +268,10 @@ function attemptViewProject($id){
 		}
 		else {
 			$responseStatus = array("status" => "500");
-			return array("responseStatus"=>$responseStatus);;
+			return array("responseStatus"=>$responseStatus);
 		}
     $responseStatus = array("status" => "500");
-    return array("responseStatus"=>$responseStatus);;
+    return array("responseStatus"=>$responseStatus);
 }
 function attemptLoadProjects(){
     $connection = connectionToDataBase();
@@ -312,15 +312,15 @@ function attemptLoadProjects(){
 			else {	
 				$connection -> close();
 				$responseStatus = array("status" => "500");
-				return array("responseStatus"=>$responseStatus);;
+				return array("responseStatus"=>$responseStatus);
 			}	
 		}
 		else {
 			$responseStatus = array("status" => "500");
-			return array("responseStatus"=>$responseStatus);;
+			return array("responseStatus"=>$responseStatus);
 		}
     $responseStatus = array("status" => "500");
-    return array("responseStatus"=>$responseStatus);;
+    return array("responseStatus"=>$responseStatus);
 }
 function attemptViewRating($project_id, $user_id) {
 	$connection = connectionToDataBase();
@@ -343,15 +343,15 @@ function attemptViewRating($project_id, $user_id) {
 				$connection -> close();
 				$responseStatus = array("status" => "EXITO");
 				array_push($responseData,array("rating" => "You haven't rated this yet"));
-				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);;
+				return array("responseStatus"=>$responseStatus,"responseData"=>$responseData);
 			}	
 		}
 		else {
 			$responseStatus = array("status" => "500");
-			return array("responseStatus"=>$responseStatus);;
+			return array("responseStatus"=>$responseStatus);
 		}
     $responseStatus = array("status" => "500");
-    return array("responseStatus"=>$responseStatus);;
+    return array("responseStatus"=>$responseStatus);
 }
 function attemptViewComments($id){
     $connection = connectionToDataBase();
@@ -381,15 +381,15 @@ function attemptViewComments($id){
 			else {	
 				$connection -> close();
 				$responseStatus = array("status" => "500");
-				return array("responseStatus"=>$responseStatus);;
+				return array("responseStatus"=>$responseStatus);
 			}	
 		}
 		else {
 			$responseStatus = array("status" => "500");
-			return array("responseStatus"=>$responseStatus);;
+			return array("responseStatus"=>$responseStatus);
 		}
     $responseStatus = array("status" => "500");
-    return array("responseStatus"=>$responseStatus);;
+    return array("responseStatus"=>$responseStatus);
 }
 
 function attemptUpdateRating($project_id, $user_id, $rating) {
@@ -430,10 +430,10 @@ function attemptUpdateRating($project_id, $user_id, $rating) {
 		}
 		else {
 			$responseStatus = array("status" => "500");
-			return array("responseStatus"=>$responseStatus);;
+			return array("responseStatus"=>$responseStatus);
 		}
     $responseStatus = array("status" => "500");
-    return array("responseStatus"=>$responseStatus);;
+    return array("responseStatus"=>$responseStatus);
 }
 
 function attemptInsertComment($user_id, $project_id, $text){
@@ -449,7 +449,7 @@ function attemptInsertComment($user_id, $project_id, $text){
 			else {
 				$responseStatus = array("status" => "500");
                 $connection -> close();
-				return array("responseStatus"=>$responseStatus);;
+				return array("responseStatus"=>$responseStatus);
 			}
 		}
 		else {
@@ -457,7 +457,7 @@ function attemptInsertComment($user_id, $project_id, $text){
 			return array("status"=> "EXITO");
 		}
 	$responseStatus = array("status" => "500");
-    return array("responseStatus"=>$responseStatus);;
+    return array("responseStatus"=>$responseStatus);
 }
 
 	function attemptCreaVirtualSample($dInicio,$dFin,$Current){
