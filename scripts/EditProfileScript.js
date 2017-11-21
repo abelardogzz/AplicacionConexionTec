@@ -1,8 +1,22 @@
 $(document).ready(function(){
+    //var url = window.location.href;
+    //alert(url.substr(url.indexOf("Q")+2));
+$.ajax({
 
-    //AgregarScripts de sesiones
-    //Carga el perfil para ponerlo en los campos 
-    //Modifica los campos y al darle "save" se actualiza
+    url : "../sessions/checksession.php",
+    contentType : "application/x-www-form-urlencoded",
+    success: function(jsonResponse){
+        alert("There is a session");
+        console.log(jsonResponse);
+        
+    },
+    error : function(errorMessage){
+        alert("There is no session");
+        window.location.replace("../profile.html");
+        console.log(errorMessage);
+        
+    }
+});
 
     var jsonToSend = {
                 "action" : "LOADPROFILE"
@@ -16,17 +30,21 @@ $(document).ready(function(){
         success: function(jsonData){
             //On success, it returns an array of objects
             console.log(jsonData);
+            $("#ieditNombre").removeAttr("disabled");
             $("#ieditNombre").val(jsonData.Pnombre);
+
+            $("#ieditApellidoP").removeAttr("disabled");
+            $("#ieditApellidoM").removeAttr("disabled");
             $("#ieditApellidoP").val(jsonData.ApellidoP) ;
             $("#ieditApellidoM").val(jsonData.ApellidoM );
-            $("#iedituserName").val(jsonData.username );
+
+            $("#ieditEmail").removeAttr("disabled");
             $("#ieditEmail").val(jsonData.email);
 
-                      
 
         },
         error: function(errMessage){
-            alert("ERROR IN Load PROFILE");
+            alert("ERROR al editar PROFILE");
                 //alert(errorMessage.responseText);
             alert(errMessage.responseText);
             console.log(errMessage);
@@ -57,6 +75,7 @@ $(document).ready(function(){
                 if( jsonData.status == "SUCCESS"){
                     //window.location.replace("profile.html");
                     alert("Se Edito el perfil con exito!");
+
                     console.log(jsonData.profile);
                     window.location.replace("../profile.html");
                 }
@@ -76,6 +95,7 @@ $(document).ready(function(){
             }
         });
     });
+
 
 
     $("#Perfil").on('click',function(){

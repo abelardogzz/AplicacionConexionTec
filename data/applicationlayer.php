@@ -66,6 +66,7 @@ switch($action){
 
 function ProfileSerivce(){
 	session_start();
+
 	$email = $_SESSION["email"]; //Se utiliza el email para identificarlo
 	$result = attemptProfileService($email);
 

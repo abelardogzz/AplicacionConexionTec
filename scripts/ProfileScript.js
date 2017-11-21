@@ -1,14 +1,28 @@
 $(document).ready(function(){
 	//Agregar los archivos de Sessiones
+$.ajax({
 
-
+                        url : "./sessions/checksession.php",
+                        contentType : "application/x-www-form-urlencoded",
+                        success: function(jsonResponse){
+                            alert("There is a session");
+                            console.log(jsonResponse);
+                            
+                        },
+                        error : function(errorMessage){
+                            alert("There is no session");
+                            window.location.replace("./user/sign_in.html");
+                            console.log(errorMessage);
+                            
+                        }
+        });
 
 var jsonToSend = {
                 "action" : "LOADPROFILE"
         };
 
     $.ajax({
-        url:"data/applicationLayer.php",
+        url:"./data/applicationLayer.php",
         type: "POST", <!--GET|POST|PUT-->
         data: jsonToSend,
         dataType: "json",
@@ -25,12 +39,14 @@ var jsonToSend = {
 
         },
         error: function(errMessage){
-            alert("ERROR IN Load PROFILE");
+            //alert("ERROR IN Load PROFILE");
                 //alert(errorMessage.responseText);
             alert(errMessage.responseText);
             console.log(errMessage);
+            console.log(sess);
         }
     });
+
 
 
     var jsonToSend = {
@@ -86,7 +102,6 @@ var jsonToSend = {
         //alert(radioValue);
         window.location.replace("projects/edit_project.html?id="+radioValue);
     });
-
 
 
 });

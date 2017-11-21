@@ -5,6 +5,7 @@
 		$username = "root";
 		$password = "root";
 
+
 		$dbname = "conexionTec";
 
 
@@ -86,6 +87,7 @@
 			}
 			else
 			{//Realiza el update de datos
+
 			//Queda pendiente el campo que hace referencia al registro
 			//Eso lo puedo obtener de las sesiones pero no se cual vamos a usar
 		        $sql = "UPDATE Users SET uPNombre = '$nombre', uApellidoP = '$appP', uApellidoM = '$appM', uEmail = '$email' WHERE uEmail = '$email' ";

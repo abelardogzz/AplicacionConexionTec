@@ -4,6 +4,7 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "root";
+
 	$dbname = "conexionTec";
 
 	// Create connection

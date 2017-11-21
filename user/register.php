@@ -4,6 +4,7 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "root";
+
 	$dbname = "conexionTec";
 
 	// Create connection
@@ -25,8 +26,8 @@
 
 		if($result->num_rows > 0)
 		{
-			header('HTTP/1.1 409 Conflict, Username already in use');
-			die('Username already in use');
+			header('HTTP/1.1 409 Conflict, Email already in use');
+			die('Email already in use');
 		}
 		else
 		{
@@ -40,12 +41,12 @@
 
 
 
-			
 			$sql = "INSERT INTO Users (uPNombre, uApellidoP, uPassword, uEmail, TipoDeUsuario, Deleted) VALUES ('$name','$lastName', '$hash', '$email', 'Publico',FALSE)";
 	    	
 	    	if (mysqli_query($conn, $sql)) 
 	    	{
 	    		session_start();
+
 				$_SESSION["email"] = $email;
 			    echo json_encode("New record created successfully");
 			} 
