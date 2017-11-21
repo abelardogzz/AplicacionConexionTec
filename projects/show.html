@@ -31,7 +31,7 @@
       </div>
       <div class="nav_section flRow-jcAro-aiCen">
         <a class="page">%LINK%</a>
-        <a class="button">%BOTÓN%</a>
+        <a class="button" id = "logout">log out</a>
       </div>
     </nav>
 
@@ -99,8 +99,11 @@
                 dataType : "json",
                 contentType : "application/x-www-form-urlencoded",
                 success: function(jsonResponse){
-                    console.log(jsonResponse);
                     $(".idUser").attr("id",jsonResponse);
+                    var newHtml = "";
+                  newHtml += "<a class='page' href='../profile.html'> mi perfil</a>";
+                  $('.page').replaceWith(newHtml);
+                  newHtml = "";
                 },
                 error : function(errorMessage){
                     alert("please log in");
