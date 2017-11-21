@@ -76,6 +76,7 @@
           <h4>Comments</h4>
           <textarea id="textComment" placeholder="Leave a comment"></textarea>
           <a class="button" id="addComment">Comment</a>
+            <span class="idUser" hidden></span>
             <p></p>
           <div class="featured">
             <h4>Featured comments</h4>
@@ -88,6 +89,25 @@
 </body>
 <script type="text/javascript">
 		$(document).ready(function(){
+            var verSesion = {
+                "action" : "CHECKSESSION"
+            };
+            $.ajax({
+                url : "../data/applicationLayer.php",
+                type : "POST",
+                data: verSesion,
+                dataType : "json",
+                contentType : "application/x-www-form-urlencoded",
+                success: function(jsonResponse){
+                    console.log(jsonResponse);
+                    $(".idUser").attr("id",jsonResponse);
+                },
+                error : function(errorMessage){
+                    alert("please log in");
+                    window.location.replace("../user/sign_in.html");
+                }
+
+            });
             
         //MANEJO DE CARRUSEL DE IMAGENES
         var array_index = 0;
@@ -237,7 +257,8 @@
             var actualizarRating = {
                 "action" : "UPDATERATING",
                 "project_id" : idRetrieved,
-                "rating" : stars
+                "rating" : stars,
+                "userID" : $(".idUser").attr("id")
             };
             $.ajax({ 
                 url: "../data/applicationLayer.php",
@@ -261,22 +282,27 @@
             var insertarCommentario = {
                 "action" : "INSERTCOMMENT",
                 "project_id" : idRetrieved,
-                "text" : comment
+                "text" : comment,
+                "userID": $(".idUser").attr("id")
             };
             $.ajax({ 
                 url: "../data/applicationLayer.php",
                 type: "POST",
                 data: insertarCommentario,
                 success: function(data){
+                    console.log(data);
                     // Reload page after adding comment
                     var listaComments = "";
                     var user = data;
                     listaComments +='<div class="comment card">' +
-                                       '<strong>' + user + '</strong>'+
+                                       '<strong>' + user["id"] + '</strong>'+
                                        '<p>' + comment + '</p>'+
                                     '</div>';
                     $("#commentSection").append(listaComments);
                     alert("Comentario registrado");
+                },
+                error : function(errorMsg){
+                    console.log(errorMsg);
                 }
             });
         });

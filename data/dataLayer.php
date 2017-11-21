@@ -3,7 +3,7 @@
 	function connectionToDataBase(){
 		$servername = "localhost";
 		$username = "root";
-		$password = "root";
+		$password = "";
 		$dbname = "conexiontec";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
@@ -16,7 +16,32 @@
 		}
 	}
 
+    function attemptCheckSession(){
+        $conn = connectionToDataBase();
+        if ($conn->connect_error) 
+        {
+            header('HTTP/1.1 500 Bad connection to Database');
+            die("The server is down, we couldn't establish the DB connection");
+        }
+        else
+        {
+                session_start();
 
+            if ($_SESSION["current_id"])
+            {
+                
+                $idSesion = $_SESSION["current_id"];
+                return array("sesion" => $idSesion);
+                //json_encode($_SESSION["current_id"]);
+
+            }
+            else
+            {
+                header('HTTP/1.1 406 User not logged in'); 
+                die('user is not logged in');
+            }
+        } 
+    }
 	function attemptProfileService($username){
 		$conn = connectionToDataBase();
 
@@ -406,7 +431,7 @@ function attemptUpdateRating($project_id, $user_id, $rating) {
 	  			else {
 	  				$responseStatus = array("status" =>"500");
 	  				$connection -> close();
-					return array("responseStatus"=>$responseStatus);
+					return array("status" => "500", "responseStatus"=>$responseStatus);
 	  			}
 			}
 			else {	
@@ -415,45 +440,45 @@ function attemptUpdateRating($project_id, $user_id, $rating) {
 	  			if ($result === TRUE) {
 	  				$responseStatus = array("status" =>"EXITO");
 	  				$connection -> close();
-					return array("stauts" => "EITO", "responseStatus"=>$responseStatus);
+					return array("stauts" => "EXITO", "responseStatus"=>$responseStatus);
 	  			}
 	  			else {
 	  				$responseStatus = array("status" =>"500");
 	  				$connection -> close();
-					return array("responseStatus"=>$responseStatus);
+					return array("stauts" => "500", "responseStatus"=>$responseStatus);
 	  			}
 			}	
 		}
 		else {
 			$responseStatus = array("status" => "500");
-			return array("responseStatus"=>$responseStatus);;
+			return array("status" => "500", "responseStatus"=>$responseStatus);;
 		}
     $responseStatus = array("status" => "500");
-    return array("responseStatus"=>$responseStatus);;
+    return array("status" => "500", "responseStatus"=>$responseStatus);;
 }
 
 function attemptInsertComment($user_id, $project_id, $text){
 	$connection = connectionToDataBase();
 		if ($connection != null) {
-			$sql = "INSERT INTO Comments (user_id, project_id, cDate, comment) VALUES ('$user_id', '$project_id', CURDATE(), '$text')";
+			$sql = "INSERT INTO comments (user_id, project_id, cDate, comment) VALUES ('$user_id', '$project_id', CURDATE(), '$text')";
 			$result = $connection ->query($sql);
-			if ($result === TRUE) {
+			if ($result == TRUE) {
 				$responseStatus = array("status" =>"EXITO");
 				$connection -> close();
-				return array("status" => "EXITO" ,"responseStatus"=> "EXITO");
+				return array("status" => "EXITO");
 			}
 			else {
 				$responseStatus = array("status" => "500");
                 $connection -> close();
-				return array("responseStatus"=>$responseStatus);;
+				return array("status" => "500");
 			}
 		}
 		else {
 			$responseStatus = array("status" => "500");
-			return array("status"=> "EXITO");
+			return array("status"=> "500");
 		}
 	$responseStatus = array("status" => "500");
-    return array("responseStatus"=>$responseStatus);;
+    return array("status"=>"500");
 }
 
 	function attemptCreaVirtualSample($dInicio,$dFin,$Current){

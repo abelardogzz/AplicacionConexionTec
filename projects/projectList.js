@@ -121,7 +121,7 @@ $(document).ready(function(){
                 for(i = 0; i < jsonResp.length; i++){
                   newHtml+= "<div class='element'><header class='image_header'><div class='gradient_curtain flCol-aiBas-jcBet'>";
                    //newHtml += "<div>" + "<img name='pPicture' src='" + jsonResp[i].image + "''>";
-                   newHtml += "<a id= '" + jsonResp[i].projectID + "href='#'' class='details_link'>Ver Detalles</a>";
+                   newHtml += "<a id= '" + jsonResp[i].projectID + "'class='details_link'>Ver Detalles</a>";
                    newHtml += "<div class='text_container'>";
                    newHtml += "<h5>" + jsonResp[i].projectName + "</h5>";
                    newHtml +="<p>Subtitle</p></div></div> </header><footer class='flRow-jcBet'><div class='text_container'>";
