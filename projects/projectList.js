@@ -20,7 +20,7 @@ $(document).ready(function(){
                           $('.page').replaceWith(newHtml);
                           newHtml = "";
 
-                          newHtml += "<a class='button' href='user/sign_in.html'>iniciar session</a> </div>";
+                          newHtml += "<a class='button' href='user/sign_in.html'>iniciar sesión</a> </div>";
                            $('.button').replaceWith(newHtml);
                           
                         }
@@ -124,7 +124,7 @@ $(document).ready(function(){
                    newHtml += "<a id= '" + jsonResp[i].projectID + "'class='details_link'>Ver Detalles</a>";
                    newHtml += "<div class='text_container'>";
                    newHtml += "<h5>" + jsonResp[i].projectName + "</h5>";
-                   newHtml +="<p>Subtitle</p></div></div> </header><footer class='flRow-jcBet'><div class='text_container'>";
+                   newHtml +="<p id="+ jsonResp[i].rating +">" + jsonResp[i].rating + "</p></div></div> </header><footer class='flRow-jcBet'><div class='text_container'>";
                    newHtml += "<h5> Project owner: " + jsonResp[i].creatorN + " " + jsonResp[i].creatorLN + "</h5>";
                    newHtml += "<p> Area: " + jsonResp[i].area + "</p>";
                    newHtml += "</div> </footer></div>";
