@@ -20,10 +20,10 @@
 	{
 			session_start();
 
-		if (isset($_SESSION["username"]))
+		if (isset($_SESSION["email"]))
 		{
 
-			echo json_encode($_SESSION["username"]);
+			echo json_encode($_SESSION["email"]);
 
 		}
 		else

@@ -12,7 +12,7 @@ $(document).ready(function(){
 		                url : "../sessions/checksession.php",
 		                contentType : "application/x-www-form-urlencoded",
 		                success: function(jsonResponse){
-		                	 window.location.replace("../profile.html");
+		                	 window.location.replace("../projects.html");
 		                },
 		                error : function(errorMessage){
 
