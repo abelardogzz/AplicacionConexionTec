@@ -119,7 +119,9 @@ $(document).ready(function(){
                           var newHtml = "";
                 idPost = jsonResp.length;
                 for(i = 0; i < jsonResp.length; i++){
-                  newHtml+= "<div class='element'><header class='image_header'><div class='gradient_curtain flCol-aiBas-jcBet'>";
+                  newHtml+= "<div class='element'><header name='image'";
+                  newHtml += "style='.gallery div.element header.image_header;background: url("+jsonResp[i].image+");'"; 
+                  newHtml += "class='image_header'><div class='gradient_curtain flCol-aiBas-jcBet'>";
                    //newHtml += "<div>" + "<img name='pPicture' src='" + jsonResp[i].image + "''>";
                    newHtml += "<a id= '" + jsonResp[i].projectID + "'class='details_link'>Ver Detalles</a>";
                    newHtml += "<div class='text_container'>";
@@ -129,6 +131,7 @@ $(document).ready(function(){
                    newHtml += "<p> Area: " + jsonResp[i].area + "</p>";
                    newHtml += "</div> </footer></div>";
 
+        
 
                           }
 

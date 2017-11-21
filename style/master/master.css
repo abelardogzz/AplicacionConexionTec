@@ -986,7 +986,7 @@ a {
       border-radius: 4px 4px 0 0; }
       /* line 22, ../scss/components/_gallery.scss */
       .gallery div.element header.image_header {
-        background: url("https://www.what-dog.net/Images/faces2/scroll0015.jpg");
+        background: url("https://www.what-dog.net/Images/faces2/scroll0015.jpg") no-repeat;
         background-position: center;
         background-size: cover;
         width: 300px;
