@@ -3,8 +3,8 @@
 
 	$servername = "localhost";
 	$username = "root";
-	$password = "root";
 
+	$password = "root";
 	$dbname = "conexionTec";
 
 	// Create connection
