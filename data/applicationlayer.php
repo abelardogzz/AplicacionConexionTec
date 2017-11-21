@@ -325,7 +325,7 @@ function LoadProjectsPersonakes(){
         echo json_encode($result["projects"]);
     }   
     elseif($result["status"] == "Projects NOT FOUND"){
-            echo json_encode(array("tipoUsuario" => "Publico"));    
+            echo json_encode(array("tipoUsuario" => "AdminProyecto", "UserType" => $result["tipoUsuario"]));    
     }
     else{
 

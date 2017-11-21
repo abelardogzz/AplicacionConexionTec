@@ -247,5 +247,10 @@ $(document).ready(function(){
             });
 	});
 
-
+    $("#Perfil").on("click",function(){
+         window.location.replace("../profile.html");
+    });
+    $("#proyectos").on("click",function(){
+         window.location.replace("../projects.html");
+    });
 });

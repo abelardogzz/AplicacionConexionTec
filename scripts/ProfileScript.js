@@ -62,8 +62,9 @@ var jsonToSend = {
         success: function(jsonData){
             /*On success, it returns an array of objects*/
             console.log(jsonData);
-            alert(jsonData["tipoUsuario"]);
-            if (jsonData["tipoUsuario"] != 'Publico' && jsonData["tipoUsuario"] != 'Admin' ){
+            //alert(jsonData["UserType"]);
+            if (jsonData["UserType"] == 'AdminProyecto'){
+                alert("hola AdminProyecto");
                 $("#tablaProyects").removeAttr('hidden','');
                 newhtml = "";
                 for (var x in jsonData){
@@ -77,6 +78,12 @@ var jsonToSend = {
 
             
                 $('#Projectos').append(newhtml);
+            }if (jsonData["UserType"] == 'Admin'){
+                $("#BtnAdminVS").removeAttr('hidden','');
+                alert("hola admin");
+            }
+            if (jsonData["UserType"] == 'Publico'){
+                alert("hola");
             }
             //$("#tablaProyects").attr('hidden','true');
 
@@ -101,6 +108,10 @@ var jsonToSend = {
     $("#projectos").on('click',function(){
 
         window.location.replace("projects.html");
+    });
+    $("#BtnAdminVS").on('click',function(){
+
+        window.location.replace("virtualSamples/admin_VirtualSample.html");
     });
     $("#btnEditProjecto").on('click',function(){
         var radioValue = $("input[name='projectToedit']:checked").val();
