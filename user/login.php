@@ -27,7 +27,7 @@
 		//echo $userPassword;
 		
 
-		$sql = "SELECT * FROM Users WHERE uEmail = '$username' AND uPassword = '$hash'";
+		$sql = "SELECT * FROM Users WHERE uEmail = '$email' AND uPassword = '$hash'";
 		$result = $conn->query($sql);
 		//echo $result;
 

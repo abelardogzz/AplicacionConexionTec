@@ -62,23 +62,28 @@ var jsonToSend = {
         success: function(jsonData){
             /*On success, it returns an array of objects*/
             console.log(jsonData);
-            newhtml = "";
-            for (var x in jsonData){
-                newhtml += "<tr>";
-                newhtml += "<td>"+ jsonData[x].Nombre +"\t </td>";
-                newhtml += "<td>"+ jsonData[x].Descripcion +"\t</td>";
-                newhtml += "<td>"+ jsonData[x].area +"\t </td>";
-                newhtml += "<td><input type=\"radio\" name=\"projectToedit\" id=\""+jsonData[x].ID+"\" value=\""+jsonData[x].ID+"\" /> ";
-                newhtml += "</tr>";
-            }
+            //alert(jsonData["status"]);
+            if (jsonData["tipoUsuario"] != 'Publico'){
+                $("#tablaProyects").removeAttr('hidden','');
+                newhtml = "";
+                for (var x in jsonData){
+                    newhtml += "<tr>";
+                    newhtml += "<td>"+ jsonData[x].Nombre +"\t </td>";
+                    newhtml += "<td>"+ jsonData[x].Descripcion +"\t</td>";
+                    newhtml += "<td>"+ jsonData[x].area +"\t </td>";
+                    newhtml += "<td><input type=\"radio\" name=\"projectToedit\" id=\""+jsonData[x].ID+"\" value=\""+jsonData[x].ID+"\" /> ";
+                    newhtml += "</tr>";
+                }
 
             
-            $('#Projectos').append(newhtml);
+                $('#Projectos').append(newhtml);
+            }
+            //$("#tablaProyects").attr('hidden','true');
 
         },
         error: function(errMessage){
-            alert("ERROR IN Load PROFILE");
-                //alert(errorMessage.responseText);
+            alert("ERROR IN Load perfil Projects");
+            //alert(errMessage["status"]);
             alert(errMessage.responseText);
             console.log(errMessage);
         }

@@ -645,7 +645,8 @@ function attemptInsertComment($user_id, $project_id, $text){
 			    	$response = array("Nombre" => $row["pNombre"],
 			    						"Descripcion" => $row["pDescripcion"],
 			    						"ID" => $row["project_id"],
-			    						"area" => $row["pArea"]
+			    						"area" => $row["pArea"],
+			    						"tipoUsuario" => $row["TipoDeUsuario"]
 			    						);   
 			    	array_push($projects, $response);
 			    	

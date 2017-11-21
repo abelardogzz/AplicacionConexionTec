@@ -309,7 +309,11 @@ function LoadProjectsPersonakes(){
 
         echo json_encode($result["projects"]);
     }   
+    elseif($result["status"] == "Projects NOT FOUND"){
+            echo json_encode(array("tipoUsuario" => "Publico"));    
+    }
     else{
+
         //Si no es 'success' manda un error
         header('HTTP/1.1 500' . $result["status"]);
         die($result["status"]);
