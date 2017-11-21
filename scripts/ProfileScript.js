@@ -76,6 +76,10 @@ var jsonToSend = {
 
         window.location.replace("user/edit.html");
     });
+    $("#projectos").on('click',function(){
+
+        window.location.replace("projects.html");
+    });
     $("#btnEditProjecto").on('click',function(){
         var radioValue = $("input[name='projectToedit']:checked").val();
         //alert(radioValue);

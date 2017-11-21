@@ -35,7 +35,7 @@ $(document).ready(function(){
 
         
     $("#BtnEdit").on("click",function(){
-        alert("Editando proyecto!");
+        //alert("Editando proyecto!");
         //Datos actializados del usuario para hacer cambios
         var jsonToSend = {
                 "action" : "EDITPROFILE",
@@ -58,7 +58,7 @@ $(document).ready(function(){
                     //window.location.replace("profile.html");
                     alert("Se Edito el perfil con exito!");
                     console.log(jsonData.profile);
-                    window.location.replace("profile.html");
+                    window.location.replace("../profile.html");
                 }
                 else{
                     alert("Error al actualizar los campos");
