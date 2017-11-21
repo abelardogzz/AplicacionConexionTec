@@ -47,15 +47,16 @@ var jsonToSend = {
             /*On success, it returns an array of objects*/
             console.log(jsonData);
             newhtml = "";
-            for (){
+            for (var x in jsonData){
                 
-                newhtml += "<td>"+ jsonData.Nombre +"</td>";
-                newhtml += "<td>"+ jsonData.Descripcion +"</td>";
-                newhtml += "<td>"+ jsonData.area +"</td>";
+                newhtml += "<td>"+ jsonData[x].Nombre +"</td>";
+                newhtml += "<td>"+ jsonData[x].Descripcion +"</td>";
+                newhtml += "<td>"+ jsonData[x].area +"</td>";
+                newhtml += "<td><input type=\"radio\" name=\"projectToedit\" id=\""+jsonData[x].ID+"\"/> ";
             }
 
             
-            $('#dshowProfile').append(newhtml);
+            $('#Projectos').append(newhtml);
 
         },
         error: function(errMessage){
@@ -75,5 +76,11 @@ var jsonToSend = {
 
         window.location.replace("user/edit.html");
     });
+    $("#btnEditProjecto").on('click',function(){
+        
+        window.location.replace("projects/edit_project.html");
+    });
+
+
 
 });
