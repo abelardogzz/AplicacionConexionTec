@@ -1,4 +1,32 @@
-$(document).ready(function(){  
+$(document).ready(function(){
+    
+      $.ajax({
+
+                        url : "sessions/checksession.php",
+                        contentType : "application/x-www-form-urlencoded",
+                        success: function(jsonResponse){
+                          var newHtml = "";
+                          newHtml += "<a class='page' href='profile.html'> mi perfil</a>";
+                          $('.page').replaceWith(newHtml);
+                          newHtml = "";
+
+                          $('#logout').removeAttr('hidden');
+     
+                        },
+                        error : function(errorMessage){
+
+                          var newHtml = "";
+                          newHtml += "<a class='page' href='profile.html' hidden = 'true'> mi perfil</a>";
+                          $('.page').replaceWith(newHtml);
+                          newHtml = "";
+
+                          newHtml += "<a class='button' href='user/sign_in.html'>iniciar session</a> </div>";
+                           $('.button').replaceWith(newHtml);
+                          
+                        }
+
+                    });
+
 
      $('#searchbox').bind('keypress', function(e) {
             if(e.keyCode==13){
@@ -91,7 +119,9 @@ $(document).ready(function(){
                           var newHtml = "";
                 idPost = jsonResp.length;
                 for(i = 0; i < jsonResp.length; i++){
-                  newHtml+= "<div class='element'><header class='image_header'><div class='gradient_curtain flCol-aiBas-jcBet'>";
+                  newHtml+= "<div class='element'><header name='image'";
+                  newHtml += "style='.gallery div.element header.image_header;background: url("+jsonResp[i].image+");'"; 
+                  newHtml += "class='image_header'><div class='gradient_curtain flCol-aiBas-jcBet'>";
                    //newHtml += "<div>" + "<img name='pPicture' src='" + jsonResp[i].image + "''>";
                    newHtml += "<a id= '" + jsonResp[i].projectID + "href='#'' class='details_link'>Ver Detalles</a>";
                    newHtml += "<div class='text_container'>";
@@ -101,6 +131,7 @@ $(document).ready(function(){
                    newHtml += "<p> Area: " + jsonResp[i].area + "</p>";
                    newHtml += "</div> </footer></div>";
 
+        
 
                           }
 
