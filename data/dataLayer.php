@@ -623,4 +623,48 @@ function attemptInsertComment($user_id, $project_id, $text){
 				return array("status" => "Problema de conexion con la Base de datos, al cambiar VS");
 		}
 	}
+
+	function attemptLoadPersonalProjects($email){
+		$conn = connectionToDataBase();
+
+		if ($conn != null){
+			$conn ->set_charset('utf8mb4');
+			$sql = " SELECT * FROM Users WHERE uEmail = '$email' ";
+			$sql = "SELECT * FROM users JOIN project on users.user_id = project.user_id WHERE users.uEmail = '$email' ";
+			$result = $conn->query($sql); 
+			//echo $result->num_rows;
+			if ($result->num_rows > 0)//Double check
+			{
+				
+				// output data of each row
+				$projects = array();
+			    while($row = $result->fetch_assoc()) 
+			    {
+			    	$response = array("Nombre" => $row["pNombre"],
+			    						"Descripcion" => $row["pDescripcion"],
+			    						"area" => $row["pArea"]
+			    						);   
+			    	array_push($projects, $response);
+			    	
+
+				}
+			    $conn-> close();
+			    return array("status" => "SUCCESS","projects" => $projects);
+
+			    //echo json_encode($result->fetch_assoc());
+			}
+			else
+			{
+				$conn -> close();
+				return array("status" => "Projects NOT FOUND");
+		    	//header('HTTP/1.1 406 User not found'); //Pre-Prepares a json file with mssg
+		        //die("Wrong credentials provided!"); 
+			}
+		}else{
+				$conn -> close();
+				return array("status" => "CONNECTION WITH DB WENT WRONG");
+		}
+
+	}
+
 ?>

@@ -23,6 +23,8 @@ $(document).ready(function(){
 // CHECK IF ALL DATA IS ENTERED
 
 	$("#register").on("click", function(){
+		alert($("#name").val());
+		alert($("#lastName").val());
 
 			var jsonToSend = {
 							"name" : $("#name").val(),

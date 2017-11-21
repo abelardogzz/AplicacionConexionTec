@@ -41,12 +41,12 @@
 
 
 			
-			$sql = "INSERT INTO Users (uPNombre, uApellidoP, uPassword, uEmail, TipoDeUsuario, Deleted) VALUES ('name','lastName', '$hash', '$email', 'Publico',FALSE)";
+			$sql = "INSERT INTO Users (uPNombre, uApellidoP, uPassword, uEmail, TipoDeUsuario, Deleted) VALUES ('$name','$lastName', '$hash', '$email', 'Publico',FALSE)";
 	    	
 	    	if (mysqli_query($conn, $sql)) 
 	    	{
 	    		session_start();
-				$_SESSION["user_id"] = $email;
+				$_SESSION["email"] = $email;
 			    echo json_encode("New record created successfully");
 			} 
 			else 

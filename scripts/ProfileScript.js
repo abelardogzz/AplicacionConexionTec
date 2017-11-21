@@ -16,20 +16,60 @@ var jsonToSend = {
         success: function(jsonData){
             /*On success, it returns an array of objects*/
             console.log(jsonData);
-            $('#dshowProfile').append(jsonData.Pnombre);
-            $('#dshowProfile').append(jsonData.ApellidoP);
-            $('#dshowProfile').append(jsonData.ApellidoM);
-            $('#dshowProfile').append(jsonData.username);
-            $('#dshowProfile').append(jsonData.email);
+            newhtml = ""
+            newhtml += "Nombre: "+jsonData.Pnombre+"</br>";
+            newhtml += "Apellido Paterno: "+jsonData.ApellidoP+"</br> ";
+            newhtml += "Email: "+jsonData.email+"</br> ";
+            
+            $('#dshowProfile').append(newhtml);
 
         },
         error: function(errMessage){
             alert("ERROR IN Load PROFILE");
                 //alert(errorMessage.responseText);
-            alert(errMessage.statusText);
+            alert(errMessage.responseText);
             console.log(errMessage);
         }
     });
+
+
+    var jsonToSend = {
+                "action" : "LOADPERSONALPROJECTS"
+        };
+
+    $.ajax({
+        url:"data/applicationLayer.php",
+        type: "POST", <!--GET|POST|PUT-->
+        data: jsonToSend,
+        dataType: "json",
+        contentType : "application/x-www-form-urlencoded", /** Espesify bc default xml and it reads diferently*/
+        success: function(jsonData){
+            /*On success, it returns an array of objects*/
+            console.log(jsonData);
+            newhtml = "";
+            for (){
+                
+                newhtml += "<td>"+ jsonData.Nombre +"</td>";
+                newhtml += "<td>"+ jsonData.Descripcion +"</td>";
+                newhtml += "<td>"+ jsonData.area +"</td>";
+            }
+
+            
+            $('#dshowProfile').append(newhtml);
+
+        },
+        error: function(errMessage){
+            alert("ERROR IN Load PROFILE");
+                //alert(errorMessage.responseText);
+            alert(errMessage.responseText);
+            console.log(errMessage);
+        }
+    });
+
+
+
+
+
 
     $("#BtnEdita").on('click',function(){
 

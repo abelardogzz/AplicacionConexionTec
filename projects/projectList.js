@@ -117,6 +117,10 @@ $(document).ready(function(){
     });
     $(document).on('click', '.details_link', verProyecto);
 
+    $("#Perfil").on('click',function(){
+
+        window.location.replace("profile.html");
+    });
 
 });
 

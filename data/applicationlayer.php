@@ -55,6 +55,8 @@ switch($action){
         break;
     case "UPDATECURRENTVS" : UpdateVS();
         break;
+    case "LOADPERSONALPROJECTS" : LoadProjectsPersonakes();
+        break;
 }
 
 /**
@@ -296,5 +298,21 @@ function UpdateVS(){
     }
 }
 
+function LoadProjectsPersonakes(){
+    session_start();
+    $email = $_SESSION["email"]; //Se utiliza el email para identificarlo
+    $result = attemptLoadPersonalProjects($email);
+
+    //El resultado, si el 'status' es 'success' manda los datos del perfil
+    if ($result["status"] == "SUCCESS"){
+
+        echo json_encode($result["projects"]);
+    }   
+    else{
+        //Si no es 'success' manda un error
+        header('HTTP/1.1 500' . $result["status"]);
+        die($result["status"]);
+    }
+}
 
 ?>

@@ -56,8 +56,9 @@ $(document).ready(function(){
                 console.log(jsonData);
                 if( jsonData.status == "SUCCESS"){
                     //window.location.replace("profile.html");
-                    alert("Se Edito con exito!");
+                    alert("Se Edito el perfil con exito!");
                     console.log(jsonData.profile);
+                    window.location.replace("profile.html");
                 }
                 else{
                     alert("Error al actualizar los campos");
@@ -75,4 +76,11 @@ $(document).ready(function(){
             }
         });
     });
+
+
+    $("#Perfil").on('click',function(){
+
+        window.location.replace("../profile.html");
+    });
+
 });
