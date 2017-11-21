@@ -1,0 +1,105 @@
+<!--
+  File name: ~/virtualSamples/show.html
+  Page name: Show Virtual Sample
+  Description:
+    Here is where all of the projects inside a virtual sample will be desplayed. It will contain two
+    sections:
+    - Section 1: Filters.
+    - Section 2: List of projects.
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- UTF-8 charset -->
+    <meta charset="utf-8">
+
+    <!-- Title -->
+    <title>Panel Administrador - ConexiónTec</title>
+
+    <!-- Metadata -->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="../style/master/master.css">
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="../style/design_js/_adder.js"></script>
+    <script type="text/javascript" src="edit_VirtualSample.js" ></script>
+  </head>
+  <body class="flCol-aiCen-jcCen">
+
+    <!-- Navbar -->
+    <nav class="flRow-jcBet-aiCen-fwWra">
+      <div class="nav_section flRow-jcAro">
+        <a class="home">Conexión Tec</a>
+      </div>
+      <div class="nav_section flRow-jcAro-aiCen">
+        <a class="page"> ENLACE </a>
+        <a class="button"> Cerrar Sesion</a>
+      </div>
+    </nav>
+
+
+    <div class="dashboard flCol-aiCen">
+      <div class="dash_row flRow-jcBet-aiCen">
+        <div class="dash_element card form flCol-aiCen">
+          <div class="title flCol-aiCen-jcCen">
+            <h1>Nueva muestra virtual</h1>
+            <p>
+              Escribir las fechas de Inicio y Fin de la muestra y oprimir crear, en caso de ser invalidas fechas se notificara
+            </p>
+          </div>
+          <div class="flCol-jcCen-aiCen"> 
+            <p>Fecha de inicio:</p>
+            <input id="fechaInicioCrea" type="text" placeholder="aaaa/mm/dd" class="input">
+            <p>Fecha de fin:</p>
+            <input id="fechaFinCrea" type="text" placeholder="aaaa/mm/dd" class="input">
+          </div>
+          <div>
+            <a id="BtnCreaVS" class="button">Crear</a>
+          </div>
+        </div>
+
+        <div class="dash_element card">
+          <h2>Periodos</h2>
+          <p>Botones para activar y desactivar el registro o calificacion en la muestras virtual activa </p>
+          <div class="flRow-jcBet-aiCen">
+            <h3>Registro</h3>
+            <a id="BtnDetenerReg" class="toggle button positive">Detener</a>
+          </div>
+          <div class="flRow-jcBet-aiCen">
+            <h3>Calificación</h3>
+            <a id="BtnDetenerCal" class="toggle button positive">Detener</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="dash_row flRow-jcCen">
+        <div class="dash_element card flCol-jcCen-aiCen">
+          <h2>Muestras virtuales</h2>
+          <p> Historia de Muestras  </p>
+          <table id="sVirtualSamples">
+            <tr>
+              <th>Fecha de inicio</th><th>Fecha de fin</th><th>Current</th>
+            </tr>
+           
+
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- <footer>
+
+    </footer> -->
+  </body>
+</html>
+

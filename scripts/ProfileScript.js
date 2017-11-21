@@ -32,7 +32,8 @@ var jsonToSend = {
     });
 
     $("#BtnEdita").on('click',function(){
-        window.location.replace("../user/edit.html");
+
+        window.location.replace("user/edit.html");
     });
 
 });

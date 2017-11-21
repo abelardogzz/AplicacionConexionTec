@@ -21,23 +21,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Style -->
-    <link rel="stylesheet" href="style/master.css">
+    <link rel="stylesheet" href="style/master/master.css">
+    
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+     <script src="style/design_js/_adder.js"></script>
+    <script type="text/javascript" src="user/jquery.js"></script>
+    <script type="text/javascript" src="projects/projectList.js"></script>
 
     <!-- Title -->
     <title>Perfil - ConexiónTec</title>
   </head>
-  <body>
+  <body class="flCol-aiCen-jcCen">
+
     <!-- Navbar -->
-    <nav id="navbar">
+    <nav class="flRow-jcBet-aiCen-fwWra">
+      <div class="nav_section flRow-jcAro">
+        <a class="home">Conexión Tec</a>
+      </div>
+      <div class="nav_section flRow-jcAro-aiCen">
+        <a class="page">%LINK%</a>
+        <a class="button">%BOTÓN%</a>
+      </div>
     </nav>
 
+
     <!-- Section 1 - Project Filters -->
-    <section id="sProjectFilter">
-    </section>
+    <nav class="flRow-jcAro-aiCen-fwWra">
+      <div class="search">
+        <input id="searchbox" type="text" placeholder="Search">
+        <input id="doSearch" type="submit" value="search" hidden>
+      </div>
+      <div class="filter flCol-aiCen">
+        <p>Muestra virtual</p>
+        <select id='virtualSample'>
+        <option name='virtualSample' value='0' default>todos las muestras</option>
+        </select> </p>
+      </div>
+      <div class="filter flCol-aiCen">
+        <p>Calificación</p>
+        <select id='grade'>
+    <option name='grade' value='0' default>todas las calificaciones </option>
+    <option name='grade' value='5'> 5 </option>
+    <option name='grade' value='4'>4 o mas</option>
+    <option name='grade' value='3'>3 o mas</option>
+    <option name='grade' value='2'>2 o mas</option>    
+        </select>
+      </div>
+      <div class="filter flCol-aiCen">
+        <p>Área</p>
+        <select id='area' >
+    <option name='area' value='0' default>todas las áreas </option>
+    </select>
+      </div>
+    </nav>
+    
 
     <!-- Section 2 - Project List -->
-    <section id="sProjectList">
-    </section>
+    <main class="flRow-aiCen-jcCen">
+      <div class="gallery flRow-fwWra-jcAro-aiSta">
+            <div id="element">
+            </div>
+        </div>
+      </main>
 
     <!-- Footer -->
     <footer id="footer">

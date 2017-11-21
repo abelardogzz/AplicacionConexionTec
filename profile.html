@@ -23,14 +23,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Style -->
-    <link rel="stylesheet" href="style/master.css">
+    <link rel="stylesheet" href="style/master/master.css">
 
     <!-- Title -->
     <title>Perfil - ConexiónTec</title>
 
     <!-- Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../scripts/ProfileScript.js" ></script>
+    <script type="text/javascript" src="scripts/ProfileScript.js" ></script>
+    <script type="text/javascript" src="user/jquery.js"></script>
+    <script type="text/javascript" src="sessions/destroySession.js"></script>
   </head>
   <body>
     <!-- Navbar -->
@@ -40,7 +42,7 @@
         </div>
         <div class="nav_section flRow-jcAro-aiCen">
           <a class="page">%LINK%</a>
-          <a class="button">%BOTÓN%</a>
+          <a id="logout" class="button">Logout</a>
         </div>
     </nav>
 
