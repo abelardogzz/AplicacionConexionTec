@@ -1,4 +1,32 @@
-$(document).ready(function(){  
+$(document).ready(function(){
+    
+      $.ajax({
+
+                        url : "sessions/checksession.php",
+                        contentType : "application/x-www-form-urlencoded",
+                        success: function(jsonResponse){
+                          var newHtml = "";
+                          newHtml += "<a class='page' href='profile.html'> mi perfil</a>";
+                          $('.page').replaceWith(newHtml);
+                          newHtml = "";
+
+                          $('#logout').removeAttr('hidden');
+     
+                        },
+                        error : function(errorMessage){
+
+                          var newHtml = "";
+                          newHtml += "<a class='page' href='profile.html' hidden = 'true'> mi perfil</a>";
+                          $('.page').replaceWith(newHtml);
+                          newHtml = "";
+
+                          newHtml += "<a class='button' href='user/sign_in.html'>iniciar session</a> </div>";
+                           $('.button').replaceWith(newHtml);
+                          
+                        }
+
+                    });
+
 
      $('#searchbox').bind('keypress', function(e) {
             if(e.keyCode==13){
