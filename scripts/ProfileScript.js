@@ -62,8 +62,8 @@ var jsonToSend = {
         success: function(jsonData){
             /*On success, it returns an array of objects*/
             console.log(jsonData);
-            //alert(jsonData["status"]);
-            if (jsonData["tipoUsuario"] != 'Publico'){
+            alert(jsonData["tipoUsuario"]);
+            if (jsonData["tipoUsuario"] != 'Publico' && jsonData["tipoUsuario"] != 'Admin' ){
                 $("#tablaProyects").removeAttr('hidden','');
                 newhtml = "";
                 for (var x in jsonData){

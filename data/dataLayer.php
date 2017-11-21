@@ -457,10 +457,10 @@ function attemptUpdateRating($project_id, $user_id, $rating) {
 		else {
 			$responseStatus = array("status" => "500");
 
-			return array("status" => "500", "responseStatus"=>$responseStatus);;
+			return array("status" => "500", "responseStatus"=>$responseStatus);
 		}
     $responseStatus = array("status" => "500");
-    return array("status" => "500", "responseStatus"=>$responseStatus);;
+    return array("status" => "500", "responseStatus"=>$responseStatus);
 
 }
 
