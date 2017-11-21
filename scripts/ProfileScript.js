@@ -48,11 +48,12 @@ var jsonToSend = {
             console.log(jsonData);
             newhtml = "";
             for (var x in jsonData){
-                
-                newhtml += "<td>"+ jsonData[x].Nombre +"</td>";
-                newhtml += "<td>"+ jsonData[x].Descripcion +"</td>";
-                newhtml += "<td>"+ jsonData[x].area +"</td>";
+                newhtml += "<tr>";
+                newhtml += "<td>"+ jsonData[x].Nombre +"\t </td>";
+                newhtml += "<td>"+ jsonData[x].Descripcion +"\t</td>";
+                newhtml += "<td>"+ jsonData[x].area +"\t </td>";
                 newhtml += "<td><input type=\"radio\" name=\"projectToedit\" id=\""+jsonData[x].ID+"\" value=\""+jsonData[x].ID+"\" /> ";
+                newhtml += "</tr>";
             }
 
             
