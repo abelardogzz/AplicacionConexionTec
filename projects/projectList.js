@@ -98,7 +98,7 @@ $(document).ready(function(){
    
 
     $("#doSearch").on("click", function(){
-
+      
       var $word = $("#searchbox");
       $("#sProjectList").empty();
   
@@ -116,31 +116,30 @@ $(document).ready(function(){
                         dataType : "json",
                         contentType : "application/x-www-form-urlencoded",
                         success: function(jsonResp){
-                          var newHtml = "";
-                idPost = jsonResp.length;
-                for(i = 0; i < jsonResp.length; i++){
-                  newHtml+= "<div class='element'><header name='image'";
-                  newHtml += "style='.gallery div.element header.image_header;background: url("+jsonResp[i].image+");'"; 
-                  newHtml += "class='image_header'><div class='gradient_curtain flCol-aiBas-jcBet'>";
-                   //newHtml += "<div>" + "<img name='pPicture' src='" + jsonResp[i].image + "''>";
-                   newHtml += "<a id= '" + jsonResp[i].projectID + "'class='details_link'>Ver Detalles</a>";
-                   newHtml += "<div class='text_container'>";
-                   newHtml += "<h5>" + jsonResp[i].projectName + "</h5>";
-                   newHtml +="<p id="+ jsonResp[i].rating +">" + jsonResp[i].rating + "</p></div></div> </header><footer class='flRow-jcBet'><div class='text_container'>";
-                   newHtml += "<h5> Project owner: " + jsonResp[i].creatorN + " " + jsonResp[i].creatorLN + "</h5>";
-                   newHtml += "<p> Area: " + jsonResp[i].area + "</p>";
-                   newHtml += "</div> </footer></div>";
-
-        
+                          var newHtml = "<div id = 'list' class='gallery flRow-fwWra-jcAro-aiSta'>";
+                          idPost = jsonResp.length;
+                          for(i = 0; i < jsonResp.length; i++){
+                            newHtml+= "<div id='element' class='element'><header name='image'";
+                            newHtml += "style='.gallery div.element header.image_header;background: url("+jsonResp[i].image+");'"; 
+                            newHtml += "class='image_header'><div class='gradient_curtain flCol-aiBas-jcBet'>";
+                             //newHtml += "<div>" + "<img name='pPicture' src='" + jsonResp[i].image + "''>";
+                             newHtml += "<a id= '" + jsonResp[i].projectID + "'class='details_link'>Ver Detalles</a>";
+                             newHtml += "<div class='text_container'>";
+                             newHtml += "<h5>" + jsonResp[i].projectName + "</h5>";
+                             newHtml +="<p id="+ jsonResp[i].rating +">" + jsonResp[i].rating + "</p></div></div> </header><footer class='flRow-jcBet'><div class='text_container'>";
+                             newHtml += "<h5> Project owner: " + jsonResp[i].creatorN + " " + jsonResp[i].creatorLN + "</h5>";
+                             newHtml += "<p> Area: " + jsonResp[i].area + "</p>";
+                             newHtml += "</div> </footer></div>";
 
                           }
+                          newHtml+="</div>"
 
-                          $("#element").replaceWith(newHtml);
+                          $("#list").replaceWith(newHtml);
                         },
                         error : function(errorMessage){
                             var newHtml = "";
-                            newHtml += "<div> NO RESULTS WERE FOUND </div> ";
-                            $(".element").replaceWith(newHtml);
+                            newHtml = "<div id = 'list' class='gallery flRow-fwWra-jcAro-aiSta'><div> NO RESULTS WERE FOUND </div></div> ";
+                            $("#list").replaceWith(newHtml);
                         }
 
                     });
