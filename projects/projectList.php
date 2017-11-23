@@ -3,7 +3,7 @@
 
 	$servername = "localhost";
 	$username = "root";
-	$password = "root";
+	$password = "";
 	$dbname = "conexionTec";
 
 	$ipost = 0;

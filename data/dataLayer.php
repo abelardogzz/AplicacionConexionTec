@@ -3,7 +3,7 @@
 	function connectionToDataBase(){
 		$servername = "localhost";
 		$username = "root";
-		$password = "root";
+		$password = "";
 		$dbname = "conexiontec";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
