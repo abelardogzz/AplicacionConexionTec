@@ -343,6 +343,32 @@ function attemptLoadProjects(){
     $responseStatus = array("status" => "500");
     return array("responseStatus"=>$responseStatus);;
 }
+function attemptCheckRating($project_id){
+    $connection = connectionToDatabase();
+    
+    if($connection != null){
+        $sql = "SELECT AVG(grade) As ratings FROM grade WHERE project_id = '$project_id' GROUP BY project_id";
+        $result = $connection -> query($sql);
+        $responseData = array();
+        if($result ->num_rows !=0){
+            $responseStatus = array("status" => "EXITO");
+            while($row = $result ->fetch_assoc()){
+                array_push($responseData, array("rating" => $row["ratings"]));
+            }
+            $connection -> close();
+            $responseStatus = array("status" => "EXITO");
+            return array("responseStatus" => $responseStatus, "responseData" => $responseData);
+        }else{
+            $connection -> close();
+            $responseStatus = array("status" => "EXITO");
+            array_push($responseData, array("rating" => 5));
+            return array("responseStatus" => $responseStatus, "responseData" => $responseData);
+        }
+    }else{
+        $responseStatus = array("status" => "500");
+        return array("responseStatus" => $responseStatus);
+    }
+}
 function attemptViewRating($project_id, $user_id) {
 	$connection = connectionToDataBase();
 
@@ -440,12 +466,12 @@ function attemptUpdateRating($project_id, $user_id, $rating) {
 	  			if ($result === TRUE) {
 	  				$responseStatus = array("status" =>"EXITO");
 	  				$connection -> close();
-					return array("stauts" => "EXITO", "responseStatus"=>$responseStatus);
+					return array("status" => "EXITO", "responseStatus"=>$responseStatus);
 	  			}
 	  			else {
 	  				$responseStatus = array("status" =>"500");
 	  				$connection -> close();
-					return array("stauts" => "500", "responseStatus"=>$responseStatus);
+					return array("status" => "500", "responseStatus"=>$responseStatus);
 	  			}
 			}	
 		}
