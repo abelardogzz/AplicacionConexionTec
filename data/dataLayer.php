@@ -3,8 +3,8 @@
 	function connectionToDataBase(){
 		$servername = "localhost";
 		$username = "root";
-		$password = "root";
 
+		$password = "root";
 		$dbname = "conexiontec";
 
 
