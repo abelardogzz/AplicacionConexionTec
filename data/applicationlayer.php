@@ -59,6 +59,22 @@ switch($action){
         break;
     case "LOADPERSONALPROJECTS" : LoadProjectsPersonakes();
         break;
+    case "CHECKRATING" : checkRating();
+        break;
+}
+
+function checkRating(){
+    $project_id = $_POST["id"];
+    $response = attemptCheckRating($project_id);
+    $responseStatus = $response["responseStatus"];
+    if ($responseStatus["status"] == "EXITO") { 
+        $responseData = $response["responseData"];
+        echo json_encode($responseData);
+    }
+    else {
+        header('HTTP/1.1 500 Bad connection to Database');
+        die("The server is down, we couldn't establish the DB connection");
+    }
 }
 
 function checkSession(){
@@ -197,7 +213,7 @@ function viewComments() {
 
 function viewRating() {
     $project_id = $_POST['project_id'];
-    $user_id = checkSession();
+    $user_id = $_POST['user_id'];
     $response = attemptViewRating($project_id, $user_id);
     $responseStatus = $response["responseStatus"];
 

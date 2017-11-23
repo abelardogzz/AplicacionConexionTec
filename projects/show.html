@@ -39,6 +39,7 @@
     <div class="profile">
       <!-- Project information -->
       <div class="profile_details" id="nombreProyecto">
+         <span class="ratingovrl" hidden></span>
       </div>
       <div class="flRow-jcCen">
         <div class="media_image flRow-jcBet-aiCen" id="image_carousel">
@@ -89,6 +90,7 @@
 </body>
 <script type="text/javascript">
 		$(document).ready(function(){
+            var idRetrieved = getUrlParameter("id");
             var verSesion = {
                 "action" : "CHECKSESSION"
             };
@@ -104,6 +106,45 @@
                   newHtml += "<a class='page' href='../profile.html'> mi perfil</a>";
                   $('.page').replaceWith(newHtml);
                   newHtml = "";
+                var verRating = {
+                "action" : "VIEWRATING",
+                "project_id" : idRetrieved,
+                "user_id" : jsonResponse
+                };    
+                $.ajax({
+                    url : "../data/applicationLayer.php",
+                    type : "POST",
+                    data: verRating,
+                    dataType : "json",
+                    contentType : "application/x-www-form-urlencoded",
+                    success : function(jsonReceived){  
+                        var ratings = jsonReceived;
+                        var listaRatings = "";
+                       /* for(var i = 0; i < ratings.length; i++){
+                            listaRatings += ratings[i].rating;
+                        }
+                        $("#rating").append(listaRatings);
+                        if (listaRatings !== "You haven't rated this yet") {
+                            var rating = parseInt(listaRatings);
+                            for (var i = 1; i <= ratings[0].rating ; i++) {
+                                $(".stars > #star-" +  i).css("color", "black");
+                            }
+                        }*/
+                        
+                        /*for(var i = 1; i<= ratings[0].rating; i++){
+                            $(".stars > #star-" + i).text("star");
+                        }*/
+                        /*$("a.material-icons").mouseenter(function(){
+                          $(this).text("star").prevAll().text("star");
+                        }).mouseleave(function(){
+                          $(this).text("star_border").prevAll().text("star_border");
+                        });*/
+
+                    },
+                    error : function(errorMessage){
+                        alert(errorMessage.responseText);
+                    }
+                });           
                 },
                 error : function(errorMessage){
                     alert("please log in");
@@ -111,7 +152,32 @@
                 }
 
             });
-            
+            var verRating2 = {
+                "action" : "CHECKRATING",
+                "id" : idRetrieved
+            };
+            $.ajax({
+               url: "../data/applicationLayer.php",
+               type: "POST",
+               data: verRating2,
+               dataType: "json",
+               contentType: "application/x-www-form-urlencoded",
+               success: function(jsonResponse){
+                   $(".ratingovrl").attr("id",jsonResponse[0].rating);
+               },
+               error : function(errorMessage){
+                   console.log("error");
+               }
+            });
+            var verProyecto = { 
+                "action" : "VIEWPROJECT",
+                "id" :   idRetrieved                
+                               };
+            var verComentarios = {
+                "action" : "VIEWCOMMENTS",
+                "id" :   idRetrieved
+                               };
+
         //MANEJO DE CARRUSEL DE IMAGENES
         var array_index = 0;
         $("#carousel_right").click(function(){
@@ -143,18 +209,6 @@
         var idRetrieved = getUrlParameter("id");
         $("#readIdOfProject").text(getUrlParameter("id"));	
     
-        var verProyecto = { 
-            "action" : "VIEWPROJECT",
-            "id" :   idRetrieved                
-                           };
-        var verComentarios = {
-            "action" : "VIEWCOMMENTS",
-            "id" :   idRetrieved
-                           };
-        var verRating = {
-            "action" : "VIEWRATING",
-            "project_id" : idRetrieved
-        };
         $.ajax({
             url : "../data/applicationLayer.php",
             type : "POST",
@@ -170,12 +224,8 @@
                           '<div class="flRow-jcBet-aiSta">' +
                               '<div class="details">' +
                                 '<h4>' + projects[0].primerNombre + ' '+ projects[0].segNombre + '</h4>' +
-                                    '<p>' + projects[0].pArea +'</p>' +  
-                                '<i class="material-icons">star</i>' +
-                                '<i class="material-icons">star</i>' +
-                                '<i class="material-icons">star</i>' +
-                                '<i class="material-icons">star_half</i>' +
-                                '<i class="material-icons">star_border</i>' +
+                                    '<p>' + projects[0].pArea +'</p>' + 
+                                    '<span>Calificación: ' + $(".ratingovrl").attr("id") + '/5</span>' +
                               '</div>' +
                         '</div>';
                 $("#nombreProyecto").append(pName);
@@ -202,31 +252,6 @@
                 $(".video_container").append(videoAppend);
                 
                 
-            },
-            error : function(errorMessage){
-                alert(errorMessage.responseText);
-            }
-        });
-        $.ajax({
-            url : "../data/applicationLayer.php",
-            type : "POST",
-            data: verRating,
-            dataType : "json",
-            contentType : "application/x-www-form-urlencoded",
-            success : function(jsonReceived){  
-                var ratings = jsonReceived;
-                var listaRatings = "";
-                for(var i = 0; i < ratings.length; i++){
-                    listaRatings += ratings[i].rating;
-                }
-                $("#rating").append(listaRatings);
-                if (listaRatings !== "You haven't rated this yet") {
-                    var rating = parseInt(listaRatings);
-                    for (var i = 1; i <= listaRatings && i <= 5 ; i++) {
-                        $(".stars > #star-" +  i).css("color", "gold");
-                    }
-                }
-
             },
             error : function(errorMessage){
                 alert(errorMessage.responseText);
@@ -288,21 +313,26 @@
                 "text" : comment,
                 "userID": $(".idUser").attr("id")
             };
+            var getuserName = {
+                "action" : "GETUSERNAME",
+                "userID" : $(".idUser").attr("id")
+            }
             $.ajax({ 
                 url: "../data/applicationLayer.php",
                 type: "POST",
                 data: insertarCommentario,
                 success: function(data){
-                    console.log(data);
                     // Reload page after adding comment
-                    var listaComments = "";
+                    /*var listaComments = "";
                     var user = data;
                     listaComments +='<div class="comment card">' +
                                        '<strong>' + user["id"] + '</strong>'+
                                        '<p>' + comment + '</p>'+
                                     '</div>';
                     $("#commentSection").append(listaComments);
+                    */
                     alert("Comentario registrado");
+                    location.reload();
                 },
                 error : function(errorMsg){
                     console.log(errorMsg);
