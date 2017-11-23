@@ -54,7 +54,7 @@ var jsonToSend = {
         };
 
     $.ajax({
-        url:"data/applicationLayer.php",
+        url:"./data/applicationLayer.php",
         type: "POST", <!--GET|POST|PUT-->
         data: jsonToSend,
         dataType: "json",
@@ -62,8 +62,13 @@ var jsonToSend = {
         success: function(jsonData){
             /*On success, it returns an array of objects*/
             console.log(jsonData);
-            //alert(jsonData["UserType"]);
-            if (jsonData["UserType"] == 'AdminProyecto'){
+            alert(jsonData["UserType"]);
+            if (jsonData["UserType"] == 'Admin'){
+                $("#BtnAdminVS").removeAttr('hidden','');
+                alert("hola admin");
+            } else if (jsonData["UserType"] == 'Publico'){
+                alert("hola");
+            }else if (jsonData[0]["UserType"] == 'AdminProyecto'){
                 alert("hola AdminProyecto");
                 $("#tablaProyects").removeAttr('hidden','');
                 newhtml = "";
@@ -78,12 +83,6 @@ var jsonToSend = {
 
             
                 $('#Projectos').append(newhtml);
-            }if (jsonData["UserType"] == 'Admin'){
-                $("#BtnAdminVS").removeAttr('hidden','');
-                alert("hola admin");
-            }
-            if (jsonData["UserType"] == 'Publico'){
-                alert("hola");
             }
             //$("#tablaProyects").attr('hidden','true');
 
