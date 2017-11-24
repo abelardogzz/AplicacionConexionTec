@@ -62,14 +62,14 @@ var jsonToSend = {
         success: function(jsonData){
             /*On success, it returns an array of objects*/
             console.log(jsonData);
-            alert(jsonData["UserType"]);
+            //alert(jsonData["UserType"]);
             if (jsonData["UserType"] == 'Admin'){
                 $("#BtnAdminVS").removeAttr('hidden','');
-                alert("hola admin");
+                //alert("hola admin");
             } else if (jsonData["UserType"] == 'Publico'){
-                alert("hola");
+                //alert("hola");
             }else if (jsonData[0]["UserType"] == 'AdminProyecto'){
-                alert("hola AdminProyecto");
+                //alert("hola AdminProyecto");
                 $("#tablaProyects").removeAttr('hidden','');
                 newhtml = "";
                 for (var x in jsonData){
