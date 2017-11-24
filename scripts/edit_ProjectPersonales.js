@@ -51,7 +51,7 @@ $(document).ready(function(){
                 console.log(jsonData);
                 if( jsonData.status == "SUCCESS"){
                     //window.location.replace("profile.html");
-                    alert("Se Edito Projecto con exito!");
+                    //alert("Se Edito Projecto con exito!");
                     console.log(jsonData.projecto);
                     window.location.replace("../profile.html");
                 }

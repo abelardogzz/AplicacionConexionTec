@@ -128,7 +128,7 @@ $(document).ready(function(){
                 contentType : "application/x-www-form-urlencoded", //Forces the content type to json
 
                 success : function(jsonResponse){
-                    alert("Se creo correctamente");
+                    alert("Muestra Virtual Creada Correctamente");
                     //alert(jsonResponse.message);
                     console.log(jsonResponse);
                     newhtml = "<tr><td>" + $("#fechaInicioCrea").val() ;

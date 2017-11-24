@@ -32,7 +32,7 @@ $(document).ready(function(){
     });
   
     $("#BtnEdit").on("click",function(){
-        alert("Editando proyecto!");
+        //alert("Editando proyecto!");
         //Datos actializados del usuario para hacer cambios
         var jsonToSend = {
                 "action" : "EDITPROJECT",

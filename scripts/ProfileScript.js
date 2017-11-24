@@ -5,12 +5,12 @@ $.ajax({
                         url : "./sessions/checksession.php",
                         contentType : "application/x-www-form-urlencoded",
                         success: function(jsonResponse){
-                            alert("There is a session");
+                            //alert("There is a session");
                             console.log(jsonResponse);
                             
                         },
                         error : function(errorMessage){
-                            alert("There is no session");
+                            //alert("There is no session");
                             window.location.replace("./user/sign_in.html");
                             console.log(errorMessage);
                             

@@ -138,7 +138,7 @@ $(document).ready(function(){
                         },
                         error : function(errorMessage){
                             var newHtml = "";
-                            newHtml = "<div id = 'list' class='gallery flRow-fwWra-jcAro-aiSta'><div> NO RESULTS WERE FOUND </div></div> ";
+                            newHtml = "<div id = 'list' class='gallery flRow-fwWra-jcAro-aiSta'><div> NO HAY RESULTADOS </div></div> ";
                             $("#list").replaceWith(newHtml);
                         }
 

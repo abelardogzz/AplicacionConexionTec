@@ -6,12 +6,12 @@ $.ajax({
     url : "../sessions/checksession.php",
     contentType : "application/x-www-form-urlencoded",
     success: function(jsonResponse){
-        alert("There is a session");
+        //alert("There is a session");
         console.log(jsonResponse);
         
     },
     error : function(errorMessage){
-        alert("There is no session");
+        //alert("Inicia Session");
         window.location.replace("../profile.html");
         console.log(errorMessage);
         
@@ -74,7 +74,7 @@ $.ajax({
                 console.log(jsonData);
                 if( jsonData.status == "SUCCESS"){
                     //window.location.replace("profile.html");
-                    alert("Se Edito el perfil con exito!");
+                    //alert("Se Edito el perfil con exito!");
 
                     console.log(jsonData.profile);
                     window.location.replace("../profile.html");
