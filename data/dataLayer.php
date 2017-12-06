@@ -610,7 +610,8 @@ function attemptInsertComment($user_id, $project_id, $text){
 
 		if ($conn != null){
 			$conn ->set_charset('utf8mb4');
-			$sql = "SELECT * FROM virtualsample";
+			//$sql = "SELECT * FROM virtualsample";
+			$sql = "SELECT * FROM virtualsample ORDER BY virtualSample_id DESC ";
 			$result = $conn->query($sql); 
 
 			if ($result->num_rows <= 0){//Double check{

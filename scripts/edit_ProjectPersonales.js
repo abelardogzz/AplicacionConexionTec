@@ -29,7 +29,7 @@ $(document).ready(function(){
     });
   
     $("#BtnEdit").on("click",function(){
-        alert("Editando proyecto!");
+        //alert("Editando proyecto!");
         //Datos actializados del usuario para hacer cambios
         var jsonToSend = {
                 "action" : "EDITPROJECT",
@@ -51,7 +51,7 @@ $(document).ready(function(){
                 console.log(jsonData);
                 if( jsonData.status == "SUCCESS"){
                     //window.location.replace("profile.html");
-                    //alert("Se Edito Projecto con exito!");
+                    //alert("Proyecto con exito!");
                     console.log(jsonData.projecto);
                     window.location.replace("../profile.html");
                 }
