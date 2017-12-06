@@ -46,7 +46,7 @@
 	    	if (mysqli_query($conn, $sql)) 
 	    	{
 	    		session_start();
-				$_SESSION["user_id"] = $email;
+				$_SESSION["email"] = $email;
 			    echo json_encode("New record created successfully");
 			} 
 			else 
