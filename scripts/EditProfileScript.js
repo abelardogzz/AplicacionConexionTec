@@ -38,7 +38,7 @@ $.ajax({
             $("#ieditApellidoP").val(jsonData.ApellidoP) ;
             $("#ieditApellidoM").val(jsonData.ApellidoM );
 
-            $("#ieditEmail").removeAttr("disabled");
+            //$("#ieditEmail").removeAttr("disabled");
             $("#ieditEmail").val(jsonData.email);
 
 

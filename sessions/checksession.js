@@ -9,7 +9,7 @@ $(document).ready(function(){
                             console.log(jsonResponse);
                         },
                         error : function(errorMessage){
-                            alert("please log in");
+                            alert("Inicia Sesion para ver detalles.");
                             window.location.replace("./user/sign_up.html");
                         }
 
